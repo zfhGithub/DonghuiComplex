@@ -652,6 +652,48 @@
     <Content Include="客服插件\index.html" />
     <Content Include="客服插件\js\jQuery.js" />
     <Content Include="客服插件\说明.txt" />
+    <Content Include="移民-257\css\animated-logo.min.css" />
+    <Content Include="移民-257\css\bootstrap.min.css" />
+    <Content Include="移民-257\css\our-team.css" />
+    <Content Include="移民-257\css\reset.css" />
+    <Content Include="移民-257\css\style.css" />
+    <Content Include="移民-257\font-awesome\css\font-awesome.css" />
+    <Content Include="移民-257\font-awesome\css\font-awesome.min.css" />
+    <Content Include="移民-257\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="移民-257\images\15.jpg" />
+    <Content Include="移民-257\images\16.jpg" />
+    <Content Include="移民-257\images\17.jpg" />
+    <Content Include="移民-257\images\18.jpg" />
+    <Content Include="移民-257\images\19.jpg" />
+    <Content Include="移民-257\images\20.jpg" />
+    <Content Include="移民-257\images\21.jpg" />
+    <Content Include="移民-257\images\4.jpg" />
+    <Content Include="移民-257\images\5.jpg" />
+    <Content Include="移民-257\images\6.jpg" />
+    <Content Include="移民-257\images\7.jpg" />
+    <Content Include="移民-257\images\avatar-1.jpg" />
+    <Content Include="移民-257\images\avatar-2.jpg" />
+    <Content Include="移民-257\images\avatar-3.jpg" />
+    <Content Include="移民-257\images\avatar-4.jpg" />
+    <Content Include="移民-257\images\avatar-5.jpg" />
+    <Content Include="移民-257\images\avatar-6.jpg" />
+    <Content Include="移民-257\images\bg-1.jpg" />
+    <Content Include="移民-257\images\bg.jpg" />
+    <Content Include="移民-257\images\CSS.png" />
+    <Content Include="移民-257\images\dots.png" />
+    <Content Include="移民-257\images\Html.png" />
+    <Content Include="移民-257\images\screen.png" />
+    <Content Include="移民-257\images\Setting.png" />
+    <Content Include="移民-257\index.html" />
+    <Content Include="移民-257\js\agency.js" />
+    <Content Include="移民-257\js\bootstrap.min.js" />
+    <Content Include="移民-257\js\cbpAnimatedHeader.js" />
+    <Content Include="移民-257\js\classie.js" />
+    <Content Include="移民-257\js\jquery.easing.min.js" />
+    <Content Include="移民-257\js\jquery.flexslider-min.js" />
+    <Content Include="移民-257\js\main.js" />
+    <Content Include="移民-257\js\masonry.pkgd.min.js" />
+    <Content Include="移民-257\js\modernizr.js" />
     <Content Include="首页-337\fonts\Federo-Regular.ttf" />
     <Content Include="首页-337\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="首页-337\fonts\glyphicons-halflings-regular.ttf" />
@@ -745,6 +787,36 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="移民-257\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="移民-257\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="移民-257\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="移民-257\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="移民-257\font-awesome\less\bordered-pulled.less" />
+    <Content Include="移民-257\font-awesome\less\core.less" />
+    <Content Include="移民-257\font-awesome\less\fixed-width.less" />
+    <Content Include="移民-257\font-awesome\less\font-awesome.less" />
+    <Content Include="移民-257\font-awesome\less\icons.less" />
+    <Content Include="移民-257\font-awesome\less\larger.less" />
+    <Content Include="移民-257\font-awesome\less\list.less" />
+    <Content Include="移民-257\font-awesome\less\mixins.less" />
+    <Content Include="移民-257\font-awesome\less\path.less" />
+    <Content Include="移民-257\font-awesome\less\rotated-flipped.less" />
+    <Content Include="移民-257\font-awesome\less\spinning.less" />
+    <Content Include="移民-257\font-awesome\less\stacked.less" />
+    <Content Include="移民-257\font-awesome\less\variables.less" />
+    <Content Include="移民-257\font-awesome\scss\font-awesome.scss" />
+    <Content Include="移民-257\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="移民-257\font-awesome\scss\_core.scss" />
+    <Content Include="移民-257\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="移民-257\font-awesome\scss\_icons.scss" />
+    <Content Include="移民-257\font-awesome\scss\_larger.scss" />
+    <Content Include="移民-257\font-awesome\scss\_list.scss" />
+    <Content Include="移民-257\font-awesome\scss\_mixins.scss" />
+    <Content Include="移民-257\font-awesome\scss\_path.scss" />
+    <Content Include="移民-257\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="移民-257\font-awesome\scss\_spinning.scss" />
+    <Content Include="移民-257\font-awesome\scss\_stacked.scss" />
+    <Content Include="移民-257\font-awesome\scss\_variables.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="118\css\bootstrap.css" />
@@ -948,9 +1020,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="移民-257\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SqlOper\SqlOper.csproj">
       <Project>{37abcf99-953d-4325-ae07-37ab9a944629}</Project>

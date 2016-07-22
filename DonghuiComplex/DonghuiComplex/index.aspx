@@ -111,25 +111,25 @@
 							<h2>去塞班岛放松一下心情吧</h2>
 							<p>这里有新鲜的空气，有怡人的景色.</p>
 							<div class="features">
-								<section style="background-image:url('/images/pic01.jpg')">
-									<span class="icon major fa-code"></span>
+								<section style="background-image:url('/images/pic01.jpg');height:270px;">
+								<%--	<span class="icon major fa-code"></span>
 									<h3>Lorem ipsum amet</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>--%>
 								</section>
 								<section style="background-image:url('/images/pic02.jpg')">
-									<span class="icon major fa-lock"></span>
+									<%--<span class="icon major fa-lock"></span>
 									<h3>Aliquam sed nullam</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>--%>
 								</section>
-								<section style="background-image:url('/images/pic03.jpg')">
-									<span class="icon major fa-cog"></span>
+								<section style="background-image:url('/images/pic03.jpg');height:270px;">
+									<%--<span class="icon major fa-cog"></span>
 									<h3>Sed erat ullam corper</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>--%>
 								</section>
 								<section style="background-image:url('/images/pic04.jpg')">
-									<span class="icon major fa-desktop"></span>
+									<%--<span class="icon major fa-desktop"></span>
 									<h3>Veroeros quis lorem</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>--%>
 								</section>
 							<%--	<section>
 									<span class="icon major fa-chain"></span>
@@ -142,7 +142,7 @@
 									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
 								</section>--%>
 							</div>
-                            <br />    
+                           
 							<ul class="actions">
 								<li><a href="#" class="button">了解更多</a></li>
 							</ul>
@@ -177,8 +177,8 @@
 								<section>
 									<ul class="contact">
 										<li>
-											<h3>Address</h3>
-											<span>12345 Somewhere Road #654<br />
+											<h3>地址</h3>
+											<span>广东省四会市四会大道<br />
 											Nashville, TN 00000-0000<br />
 											USA</span>
 										</li>
@@ -250,7 +250,7 @@
 			<footer id="footer" class="wrapper style1-alt">
 				<div class="inner">
 					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a rel="nofollow" href="http://html5up.net">HTML5 UP</a></li>
+					<%--	<li>&copy; Untitled. All rights reserved.</li><li>Design: <a rel="nofollow" href="http://html5up.net">HTML5 UP</a></li>--%>
 					</ul>
 				</div>
 			</footer>
