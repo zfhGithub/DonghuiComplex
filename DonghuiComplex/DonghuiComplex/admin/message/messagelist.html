@@ -1,0 +1,50 @@
+﻿
+<div class="bjui-pageHeader">
+    <div class="pull-right">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy"> 复选框-批量操作<span class="caret"></span></button>
+            <ul class="dropdown-menu right" role="menu" style="min-width: 153px;">
+                <li><a href="ajax.ashx?action=CheckDe" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>
+                <li><a href="ajax.ashx?action=CheckUp" data-toggle="doajaxchecked" data-confirm-msg="选中标记为已读？" data-idname="delids" data-group="ids">选中标记为已读</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="bjui-pageContent CommentManagement">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="Comtab">
+        <thead>
+            <tr>
+
+                <th data-order-field="rowindex">序号</th>
+                <th data-order-field="name">名称</th>
+                <th data-order-field="email">E-mail</th>
+                <th data-order-field="phone">手机号码</th>
+                <th data-order-field="msg">留言内容</th>
+                <th data-order-field="time ">留言时间</th>
+                <th data-order-field="status">状态</th>
+                <th width="26"><input type="checkbox" class="checkboxCtrl" data-group="ids" data-toggle="icheck"></th>
+                <th data-order-field="del">操作</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize" id="ComSelected">
+            <select data-toggle="selectpicker" id="Comselect">
+
+                <option value="20" id="three">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+
+            </select>
+
+        </div>
+        <span>&nbsp;条, 共&nbsp;<span id="Comtotal"></span>  条</span>
+    </div>
+    <div class="pagination-box" id="pag" data-total="10" data-page-size="2" data-page-current="1">
+    </div>
+
+</div>

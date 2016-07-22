@@ -31,7 +31,7 @@
 		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="优化咨询" target="_blank"></a></li>
 		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="售后咨询" target="_blank"></a></li>
 		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="财务咨询" target="_blank"></a></li>
-		<li><a href="http://www.777moban.com/" title="联系方式" target="_blank"></a></li>
+		<li><a href="#" title="联系方式" target="_blank"></a></li>
 	</ul>
 </div>
 		<!-- Sidebar -->
