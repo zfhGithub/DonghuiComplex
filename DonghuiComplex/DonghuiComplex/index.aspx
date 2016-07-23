@@ -31,7 +31,7 @@
 		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="优化咨询" target="_blank"></a></li>
 		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="售后咨询" target="_blank"></a></li>
 		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="财务咨询" target="_blank"></a></li>
-		<li><a href="http://www.777moban.com/" title="联系方式" target="_blank"></a></li>
+	    <li><a href="#" title="联系方式" target="_blank"></a></li>
 	</ul>
 </div>
 		<!-- Sidebar -->
@@ -110,26 +110,26 @@
 						<div class="inner">
 							<h2>去塞班岛放松一下心情吧</h2>
 							<p>这里有新鲜的空气，有怡人的景色.</p>
-							<div class="features">
-								<section style="background-image:url('/images/pic01.jpg')">
-									<span class="icon major fa-code"></span>
+								<div class="features">
+								<section style="background-image:url('/images/pic01.jpg');height:270px;">
+								<%--	<span class="icon major fa-code"></span>
 									<h3>Lorem ipsum amet</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>--%>
 								</section>
 								<section style="background-image:url('/images/pic02.jpg')">
-									<span class="icon major fa-lock"></span>
+									<%--<span class="icon major fa-lock"></span>
 									<h3>Aliquam sed nullam</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>--%>
 								</section>
-								<section style="background-image:url('/images/pic03.jpg')">
-									<span class="icon major fa-cog"></span>
+								<section style="background-image:url('/images/pic03.jpg');height:270px;">
+									<%--<span class="icon major fa-cog"></span>
 									<h3>Sed erat ullam corper</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>--%>
 								</section>
 								<section style="background-image:url('/images/pic04.jpg')">
-									<span class="icon major fa-desktop"></span>
+									<%--<span class="icon major fa-desktop"></span>
 									<h3>Veroeros quis lorem</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>--%>
 								</section>
 							<%--	<section>
 									<span class="icon major fa-chain"></span>
@@ -255,7 +255,7 @@
 			<footer id="footer" class="wrapper style1-alt">
 				<div class="inner">
 					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a rel="nofollow" href="http://html5up.net">HTML5 UP</a></li>
+					<%--	<li>&copy; Untitled. All rights reserved.</li><li>Design: <a rel="nofollow" href="http://html5up.net">HTML5 UP</a></li>--%>
 					</ul>
 				</div>
 			</footer>
