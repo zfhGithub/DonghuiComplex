@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Best.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="DonghuiComplex.Global" Language="C#" %>

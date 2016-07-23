@@ -6,7 +6,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.IO; 
 
-namespace Best
+namespace DonghuiComplex
 {
     public class Global : HttpApplication
     {
