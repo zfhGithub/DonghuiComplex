@@ -60,7 +60,7 @@
 							<p>雾霾、地沟油、水污染、环境污染、毒奶粉、假疫苗让中国人折寿25个月 出国要趁早，我们来不及 <br />
 					   	必须给孩子一个机会！ <%--<a rel="nofollow" href="http://html5up.net/license">Creative Commons</a>--%> </p>
 							<ul class="actions">
-								<li><a href="#one" class="button scrolly">了解更多</a></li>
+								<li><a href="http://www.saibanboy.com/" class="button scrolly">了解更多</a></li>
 							</ul>
 						</div>
 					</section>
@@ -74,7 +74,7 @@
 									<h2>移民去海外</h2>
 									<p>移民留学、海外房产投资一站式服务平台！选择最适合您的全球资产配置方案。<br /> 咨询热线：4006759982.</p>
 									<ul class="actions">
-										<li><a href="#" class="button">了解更多</a></li>
+										<li><a href="ym-257/index.html" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
@@ -86,7 +86,7 @@
 									<h2>移民新政策</h2>
 									<p>在这里了解最新的移民咨询.</p>
 									<ul class="actions">
-										<li><a href="#" class="button">了解更多</a></li>
+										<li><a href="ym-257/index.html" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
@@ -144,7 +144,7 @@
 							</div>
                             <br />    
 							<ul class="actions">
-								<li><a href="#" class="button">了解更多</a></li>
+								<li><a href="ly-300/index.html" class="button">了解更多</a></li>
 							</ul>
 						</div>
 					</section>
@@ -202,7 +202,12 @@
 										</li>
 									</ul>
 								</section>
+                               
 							</div>
+                            <br />
+                             	<ul class="actions">
+								<li><a href="ny-118/index.html" class="button">了解更多</a></li>
+						    	</ul>
 						</div>
 					</section>
                 <!-- four -->
@@ -211,10 +216,10 @@
 							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
 							<div class="content">
 								<div class="inner">
-									<h2>移民去海外</h2>
+									<h2>塞班岛地产</h2>
 									<p>移民留学、海外房产投资一站式服务平台！选择最适合您的全球资产配置方案。<br /> 咨询热线：4006759982.</p>
 									<ul class="actions">
-										<li><a href="#" class="button">了解更多</a></li>
+										<li><a href="dc-337/index.html" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
@@ -223,10 +228,10 @@
 							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
 							<div class="content">
 								<div class="inner">
-									<h2>移民新政策</h2>
+									<h2>买房移民</h2>
 									<p>在这里了解最新的移民咨询.</p>
 									<ul class="actions">
-										<li><a href="#" class="button">了解更多</a></li>
+										<li><a href="dc-337/index.html" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
