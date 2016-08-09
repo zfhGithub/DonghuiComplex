@@ -20,20 +20,13 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
             <link href="assets/css/style.css" rel="stylesheet" />
+
+
+            <link href="assets/customerservice/customer-service.css" rel="stylesheet" />
+    <link href="assets/customerservice/lanren.css" rel="stylesheet" />
 	</head>
 	<body>
-   <div id="haiiskefu">
-	<div class="kfleft" title="点击查看联系方式"></div>
-	<ul>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="销售咨询" target="_blank"></a></li>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="美工咨询" target="_blank"></a></li>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="技术咨询" target="_blank"></a></li>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="优化咨询" target="_blank"></a></li>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="售后咨询" target="_blank"></a></li>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="财务咨询" target="_blank"></a></li>
-		<li><a href="#" title="联系方式" target="_blank"></a></li>
-	</ul>
-</div>
+  
 		<!-- Sidebar -->
 			<section id="sidebar">
 				<div class="inner">
@@ -255,7 +248,40 @@
 				</div>
 			</footer>
       
- 
+  <div id="rightArrow" class="open-im">&nbsp;</div>
+    
+    <div id="floatDivBoxs">
+        <div class="floatDtt">在线客服</div>
+        <div class="floatShadow">
+            <ul class="floatDqq">
+                <%
+                    foreach (KeyValuePair<string,string> item in qqList)
+                    {
+                        if ( item.Key.Split('-').Length > 0)
+                        { 
+                        %>
+                       <li><a target="_blank" href="tencent://message/?uin=<%= item.Key.Split('-')[0] %>&Site=sc.chinaz.com&Menu=yes">
+                        <img src="assets/customerservice/images/qq.png" align="absmiddle"><%= item.Value %></a></li>
+                    <%}}
+                     %>  
+            </ul>
+            <div class="floatDtxt">热线电话</div>
+            <div class="floatDtel">
+                <img src="assets/customerservice/images/online_phone.jpg" width="155" height="45" alt=""></div>
+            <div class="floatImg">
+                <img src="assets/customerservice/images/erweima.jpg" width="100%">微信公众账号</div>
+        </div>
+        <div class="floatDbg"></div>
+    </div>
+
+
+    <div class="lanrenzhijia_m" id="lanrenzhijia_m">
+        <ul>
+            <a href="javascript:;" class="close" name="close"></a>
+            <a href="tencent://message/?uin=639083793&Site=sc.chinaz.com&Menu=yes" target="_blank" style="left: 145px;"></a>
+            <a href="javascript:;" name="close" style="left: 235px;"></a>
+        </ul>
+    </div>
 		<!-- Scripts -->
         <script src="assets/js/jQuery.js"></script>
 			<%--<script src="assets/js/jquery.min.js"></script>--%>
@@ -274,7 +300,27 @@ $(function() {
 		} else {
 			$('#haiiskefu').animate({right:0}, 200);
 		}
-	});
+    });
+    $('#lanrenzhijia_m').delay(3000).slideDown();
+    $('a[name=close]').click(function () {
+        $('#lanrenzhijia_m').slideUp();
+        $('#lanrenzhijia_m').delay(5000).slideDown();
+    });
+
+    var flag = 0;
+    $('#rightArrow').on("click", function () {
+        if (flag == 1) {
+            $("#floatDivBoxs").animate({ right: '-175px' }, 300);
+            $(this).animate({ right: '-5px' }, 300);
+            $(this).css('background-position', '0px 0');
+            flag = 0;
+        } else {
+            $("#floatDivBoxs").animate({ right: '0' }, 300);
+            $(this).animate({ right: '170px' }, 300);
+            $(this).css('background-position', '0px 0');
+            flag = 1;
+        }
+    });
 });
 </script>
 

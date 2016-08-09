@@ -67,6 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\changepwd.html" />
+    <Content Include="admin\home\agriculture.html" />
+    <Content Include="admin\home\estate.html" />
+    <Content Include="admin\home\immigrant.html" />
+    <Content Include="admin\home\saibandao.html" />
+    <Content Include="admin\home\tourism.html" />
     <Content Include="admin\Index.aspx" />
     <Content Include="admin\index_layout.html" />
     <Content Include="admin\js\ajax\area_all.html" />
@@ -622,6 +627,16 @@
     <Content Include="assets\css\images\intro.svg" />
     <Content Include="assets\css\main.css" />
     <Content Include="assets\css\style.css" />
+    <Content Include="assets\customerservice\customer-service.css" />
+    <Content Include="assets\customerservice\images\erweima.jpg" />
+    <Content Include="assets\customerservice\images\invite_bg.png" />
+    <Content Include="assets\customerservice\images\online_arrow.jpg" />
+    <Content Include="assets\customerservice\images\online_botbg.jpg" />
+    <Content Include="assets\customerservice\images\online_phone.jpg" />
+    <Content Include="assets\customerservice\images\open_im.png" />
+    <Content Include="assets\customerservice\images\qq.png" />
+    <Content Include="assets\customerservice\js.js" />
+    <Content Include="assets\customerservice\lanren.css" />
     <Content Include="assets\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\js\ie\html5shiv.js" />
     <Content Include="assets\js\ie\respond.min.js" />
@@ -646,12 +661,12 @@
     <Content Include="packages.config" />
     <Content Include="农业-300\fonts\fontawesome-webfont.ttf" />
     <Content Include="农业-300\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="客服插件\css\style.css" />
-    <Content Include="客服插件\images\kefu.png" />
-    <Content Include="客服插件\images\kefu1.png" />
-    <Content Include="客服插件\index.html" />
-    <Content Include="客服插件\js\jQuery.js" />
-    <Content Include="客服插件\说明.txt" />
+    <Content Include="CustomerService\css\style.css" />
+    <Content Include="CustomerService\images\kefu.png" />
+    <Content Include="CustomerService\images\kefu1.png" />
+    <Content Include="CustomerService\index.html" />
+    <Content Include="CustomerService\js\jQuery.js" />
+    <Content Include="CustomerService\说明.txt" />
     <Content Include="移民-257\css\animated-logo.min.css" />
     <Content Include="移民-257\css\bootstrap.min.css" />
     <Content Include="移民-257\css\our-team.css" />
@@ -781,6 +796,7 @@
     <Content Include="admin\js\font\typicons.eot" />
     <Content Include="admin\js\font\typicons.ttf" />
     <Content Include="admin\js\font\typicons.woff" />
+    <Content Include="assets\customerservice\images\online_phone.psd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1005,9 +1021,16 @@
     <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="com\aboutinfo.cs" />
+    <Compile Include="com\advantage.cs" />
+    <Compile Include="com\article.cs" />
     <Compile Include="com\BaseClass.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="com\case.cs" />
+    <Compile Include="com\message.cs" />
+    <Compile Include="com\price.cs" />
+    <Compile Include="com\settings.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1018,6 +1041,7 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

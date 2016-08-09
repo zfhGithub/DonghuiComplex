@@ -1,0 +1,5 @@
+﻿
+.lanrenzhijia_m{ width:315px; height:145px; background:url(images/invite_bg.png) no-repeat; position:fixed; left:50%; top:50%; margin:-72px 0 0 -157px; display:none;}
+.lanrenzhijia_m ul .close{ width:25px; height:25px; display:block; position:absolute; right:0; top:0;}
+.lanrenzhijia_m ul{width:315px; height:145px; position:relative;}
+.lanrenzhijia_m ul a{ display:block; width:70px; height:22px; position:absolute; top:104px;}

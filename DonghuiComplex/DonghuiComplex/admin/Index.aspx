@@ -249,9 +249,12 @@ $(function(){
                     <li class="active"><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-check-square-o"></i> 功能管理 </a>
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-hnav-tree1" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="check-square-o">
-                                <li data-id="1" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">公司信息</li>                  
-                                <li data-id="12" data-pid="1" data-url="about/aboutinfo.html"data-tabid="addproduct">关于我们</li>
-                                <li data-id="13" data-pid="1" data-url="about/contact.html" data-tabid="contact" data-faicon="check-square-o">联系信息</li>
+                                <li data-id="1" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">首页管理</li>                  
+                                <li data-id="12" data-pid="1" data-url="home/saibandao.html"data-tabid="saibandao" data-faicon="check-square-o">塞班岛生子</li>
+                                <li data-id="13" data-pid="1" data-url="home/immigrant.html" data-tabid="immigrant" data-faicon="check-square-o">移民</li>
+                                <li data-id="13" data-pid="1" data-url="home/tourism.html" data-tabid="tourism" data-faicon="check-square-o">旅游</li>
+                                <li data-id="13" data-pid="1" data-url="home/agriculture.html" data-tabid="agriculture" data-faicon="check-square-o">农业</li>
+                                <li data-id="13" data-pid="1" data-url="home/estate.html" data-tabid="estate" data-faicon="check-square-o">地产</li>
  
                                  
                                 <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">留言管理</li> 
