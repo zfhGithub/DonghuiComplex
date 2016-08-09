@@ -20,13 +20,20 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
             <link href="assets/css/style.css" rel="stylesheet" />
-
-
-            <link href="assets/customerservice/customer-service.css" rel="stylesheet" />
-    <link href="assets/customerservice/lanren.css" rel="stylesheet" />
 	</head>
 	<body>
-  
+   <div id="haiiskefu">
+	<div class="kfleft" title="点击查看联系方式"></div>
+	<ul>
+		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="销售咨询" target="_blank"></a></li>
+		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="美工咨询" target="_blank"></a></li>
+		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="技术咨询" target="_blank"></a></li>
+		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="优化咨询" target="_blank"></a></li>
+		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="售后咨询" target="_blank"></a></li>
+		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="财务咨询" target="_blank"></a></li>
+	    <li><a href="#" title="联系方式" target="_blank"></a></li>
+	</ul>
+</div>
 		<!-- Sidebar -->
 			<section id="sidebar">
 				<div class="inner">
@@ -53,7 +60,7 @@
 							<p>雾霾、地沟油、水污染、环境污染、毒奶粉、假疫苗让中国人折寿25个月 出国要趁早，我们来不及 <br />
 					   	必须给孩子一个机会！ <%--<a rel="nofollow" href="http://html5up.net/license">Creative Commons</a>--%> </p>
 							<ul class="actions">
-								<li><a href="#one" class="button scrolly">了解更多</a></li>
+								<li><a href="http://www.saibanboy.com/" class="button scrolly">了解更多</a></li>
 							</ul>
 						</div>
 					</section>
@@ -67,7 +74,7 @@
 									<h2>移民去海外</h2>
 									<p>移民留学、海外房产投资一站式服务平台！选择最适合您的全球资产配置方案。<br /> 咨询热线：4006759982.</p>
 									<ul class="actions">
-										<li><a href="#" class="button">了解更多</a></li>
+										<li><a href="ym-257/index.html" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
@@ -79,7 +86,7 @@
 									<h2>移民新政策</h2>
 									<p>在这里了解最新的移民咨询.</p>
 									<ul class="actions">
-										<li><a href="#" class="button">了解更多</a></li>
+										<li><a href="ym-257/index.html" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
@@ -103,7 +110,7 @@
 						<div class="inner">
 							<h2>去塞班岛放松一下心情吧</h2>
 							<p>这里有新鲜的空气，有怡人的景色.</p>
-							<div class="features">
+								<div class="features">
 								<section style="background-image:url('/images/pic01.jpg');height:270px;">
 								<%--	<span class="icon major fa-code"></span>
 									<h3>Lorem ipsum amet</h3>
@@ -135,9 +142,9 @@
 									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
 								</section>--%>
 							</div>
-                           
+                            <br />    
 							<ul class="actions">
-								<li><a href="#" class="button">了解更多</a></li>
+								<li><a href="ly-300/index.html" class="button">了解更多</a></li>
 							</ul>
 						</div>
 					</section>
@@ -170,8 +177,8 @@
 								<section>
 									<ul class="contact">
 										<li>
-											<h3>地址</h3>
-											<span>广东省四会市四会大道<br />
+											<h3>Address</h3>
+											<span>12345 Somewhere Road #654<br />
 											Nashville, TN 00000-0000<br />
 											USA</span>
 										</li>
@@ -195,7 +202,12 @@
 										</li>
 									</ul>
 								</section>
+                               
 							</div>
+                            <br />
+                             	<ul class="actions">
+								<li><a href="ny-118/index.html" class="button">了解更多</a></li>
+						    	</ul>
 						</div>
 					</section>
                 <!-- four -->
@@ -204,10 +216,10 @@
 							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
 							<div class="content">
 								<div class="inner">
-									<h2>移民去海外</h2>
+									<h2>塞班岛地产</h2>
 									<p>移民留学、海外房产投资一站式服务平台！选择最适合您的全球资产配置方案。<br /> 咨询热线：4006759982.</p>
 									<ul class="actions">
-										<li><a href="#" class="button">了解更多</a></li>
+										<li><a href="dc-337/index.html" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
@@ -216,10 +228,10 @@
 							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
 							<div class="content">
 								<div class="inner">
-									<h2>移民新政策</h2>
+									<h2>买房移民</h2>
 									<p>在这里了解最新的移民咨询.</p>
 									<ul class="actions">
-										<li><a href="#" class="button">了解更多</a></li>
+										<li><a href="dc-337/index.html" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
@@ -248,40 +260,7 @@
 				</div>
 			</footer>
       
-  <div id="rightArrow" class="open-im">&nbsp;</div>
-    
-    <div id="floatDivBoxs">
-        <div class="floatDtt">在线客服</div>
-        <div class="floatShadow">
-            <ul class="floatDqq">
-                <%
-                    foreach (KeyValuePair<string,string> item in qqList)
-                    {
-                        if ( item.Key.Split('-').Length > 0)
-                        { 
-                        %>
-                       <li><a target="_blank" href="tencent://message/?uin=<%= item.Key.Split('-')[0] %>&Site=sc.chinaz.com&Menu=yes">
-                        <img src="assets/customerservice/images/qq.png" align="absmiddle"><%= item.Value %></a></li>
-                    <%}}
-                     %>  
-            </ul>
-            <div class="floatDtxt">热线电话</div>
-            <div class="floatDtel">
-                <img src="assets/customerservice/images/online_phone.jpg" width="155" height="45" alt=""></div>
-            <div class="floatImg">
-                <img src="assets/customerservice/images/erweima.jpg" width="100%">微信公众账号</div>
-        </div>
-        <div class="floatDbg"></div>
-    </div>
-
-
-    <div class="lanrenzhijia_m" id="lanrenzhijia_m">
-        <ul>
-            <a href="javascript:;" class="close" name="close"></a>
-            <a href="tencent://message/?uin=639083793&Site=sc.chinaz.com&Menu=yes" target="_blank" style="left: 145px;"></a>
-            <a href="javascript:;" name="close" style="left: 235px;"></a>
-        </ul>
-    </div>
+ 
 		<!-- Scripts -->
         <script src="assets/js/jQuery.js"></script>
 			<%--<script src="assets/js/jquery.min.js"></script>--%>
@@ -300,27 +279,7 @@ $(function() {
 		} else {
 			$('#haiiskefu').animate({right:0}, 200);
 		}
-    });
-    $('#lanrenzhijia_m').delay(3000).slideDown();
-    $('a[name=close]').click(function () {
-        $('#lanrenzhijia_m').slideUp();
-        $('#lanrenzhijia_m').delay(5000).slideDown();
-    });
-
-    var flag = 0;
-    $('#rightArrow').on("click", function () {
-        if (flag == 1) {
-            $("#floatDivBoxs").animate({ right: '-175px' }, 300);
-            $(this).animate({ right: '-5px' }, 300);
-            $(this).css('background-position', '0px 0');
-            flag = 0;
-        } else {
-            $("#floatDivBoxs").animate({ right: '0' }, 300);
-            $(this).animate({ right: '170px' }, 300);
-            $(this).css('background-position', '0px 0');
-            flag = 1;
-        }
-    });
+	});
 });
 </script>
 
