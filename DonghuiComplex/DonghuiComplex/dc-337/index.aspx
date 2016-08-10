@@ -1,14 +1,20 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="DonghuiComplex.dc_337.index" %>
+
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Home</title>
+<title>地产</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!--Custom-Theme-files-->
 <link href="css/style.css" rel='stylesheet' type='text/css' />
-<link href="css/time.css" rel='stylesheet' type='text/css' />		
+<link href="css/time.css" rel='stylesheet' type='text/css' />	
+
+             <link href="/assets/customerservice/customer-service.css" rel="stylesheet" />
+        <link href="/assets/customerservice/lanren.css" rel="stylesheet" />
+    	
 <!--/script-->
 <script src="js/modernizr.custom.js"></script>
 <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="all" />
@@ -47,17 +53,17 @@
      <div class="container">
       <div class="header-top">
 	       	<div class="logo">
-                    <a href="index.html"><h1>My <span>hat</span></h1> </a>
+                    <a href="index.html"><h1>地产</h1> </a>
 			 </div>	
 				    <div class="top-menu">
 					    <span class="menu"> </span>
 						<ul class="cl-effect-7">
-								<li><a class="scroll" class="active" href="index.html">Home</a></li>
-								<li><a class="scroll" href="#latest">Latest Hats</a></li>
-								<li><a class="scroll" href="#services">Services</a></li>
-								<li><a class="scroll" href="#gallery">Gallery</a></li>
-								<li><a class="scroll" href="#news">News</a></li>
-								<li><a class="scroll" href="#contact">contact</a></li>
+								<li><a class="scroll" class="active" href="index.aspx">首页</a></li>
+								<%--<li><a class="scroll" href="#latest">Latest Hats</a></li>--%>
+								<li><a class="scroll" href="#services">服务</a></li>
+								<li><a class="scroll" href="#gallery">楼盘</a></li>
+								<li><a class="scroll" href="#news">新闻</a></li>
+								<li><a class="scroll" href="#contact">留言</a></li>
 							</ul>
 				</div>
                 <!-- script-for-menu -->
@@ -130,6 +136,7 @@
  </div>
     <!--//end-banner-->
   <!--/latest-->
+   <!-- 
   	   <div class="latest" id="latest">
 	       <div class="container">
 		        <h3 class="tittle">Latest Hats</h3>
@@ -164,10 +171,11 @@
 				</div>
 			</div>
 	</div>
-	<!--/services-->
+	-->
+    <!--/services-->
 	  <div class="services" id="services">
 	      <div class="container">
-		   <h3 class="tittle">Our Services</h3>
+		   <h3 class="tittle">我们的服务</h3>
 		      <div class="serve-top">
 				 <div class="col-md-6 serve-icons">
 					<div class="s-sub">
@@ -613,9 +621,76 @@
 					</div>
 		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
-
+      <div id="rightArrow" class="open-im">&nbsp;</div>
+    
+        <div id="floatDivBoxs">
+            <div class="floatDtt">在线客服</div>
+            <div class="floatShadow">
+                <ul class="floatDqq">
+                    <%
+                        foreach (KeyValuePair<string, string> item in qqList)
+                        {
+                            if (item.Key.Split('-').Length > 0)
+                            {
+                    %>
+                    <li><a target="_blank" href="tencent://message/?uin=<%= item.Key.Split('-')[0] %>&Site=sc.chinaz.com&Menu=yes">
+                        <img src="/assets/customerservice/images/qq.png" align="absmiddle"><%= item.Value %></a></li>
+                    <%}
+                        }
+                    %>
+                </ul>
+                <div class="floatDtxt">热线电话</div>
+                <div class="floatDtel">
+                    <ul class="floatDphone">
+                        <%
+                            for (int i = 0; i < phoneList.Count; i++)
+                            {%>
+                        <li><a href="javascript:;">
+                            <img src="/assets/customerservice/images/phone.png" align="absmiddle">
+                            <%= phoneList[i] %> </a></li>
+                        <%}
+                        %>
+                    </ul>
+                    <div class="floatImg">
+                        <img src="/assets/customerservice/images/erweima.jpg" width="100%">微信公众账号
+                    </div>
+                </div>
+                <div class="floatDbg"></div>
+            </div>
+        </div>
+    <div class="lanrenzhijia_m" id="lanrenzhijia_m">
+        <ul>
+            <a href="javascript:;" class="close" name="close"></a>
+            <a href="tencent://message/?uin=639083793&Site=sc.chinaz.com&Menu=yes" target="_blank" style="left: 145px;"></a>
+            <a href="javascript:;" name="close" style="left: 235px;"></a>
+        </ul>
+    </div>
 <!--JS-->
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+           <script type="text/javascript">
+$(function() {
+    $('#lanrenzhijia_m').delay(3000).slideDown();
+    $('a[name=close]').click(function () {
+        $('#lanrenzhijia_m').slideUp();
+        $('#lanrenzhijia_m').delay(5000).slideDown();
+    });
+
+    var flag = 0;
+    $('#rightArrow').on("click", function () {
+        if (flag == 1) {
+            $("#floatDivBoxs").animate({ right: '-175px' }, 300);
+            $(this).animate({ right: '-5px' }, 300);
+            $(this).css('background-position', '0px 0');
+            flag = 0;
+        } else {
+            $("#floatDivBoxs").animate({ right: '0' }, 300);
+            $(this).animate({ right: '170px' }, 300);
+            $(this).css('background-position', '0px 0');
+            flag = 1;
+        }
+    });
+});
+</script>
 
 <!--//JS-->
 

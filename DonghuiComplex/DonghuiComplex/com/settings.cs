@@ -25,18 +25,26 @@ namespace DonghuiComplex.com
             {
                 qqs = qqs + ";" + qq + "/" + name;
             }
-        
+
             return s.ExecuteSql(" update Company set CustomerServiceQQ='" + qqs + "'");
         }
         public static string[] getServices()
         {
             SQLServerOperating s = new SQLServerOperating();
             string qqs = s.Select("select CustomerServiceQQ from Company");
-         
-            return qqs.Split(';'); 
+
+            return qqs.Split(';');
+        }
+        public static string[] getServicesPhones()
+        {
+            SQLServerOperating s = new SQLServerOperating();
+            string qqs = s.Select("select CustomerServicePhone from Company");
+            return qqs.Split(';');
         }
 
-        public static Dictionary<string, string> getQQs() {
+
+        public static Dictionary<string, string> getQQs()
+        {
             SQLServerOperating s = new SQLServerOperating();
             string qqs = s.Select("select CustomerServiceQQ from Company");
             string[] str = qqs.Split(';');
@@ -44,16 +52,56 @@ namespace DonghuiComplex.com
             for (int i = 0; i < str.Length; i++)
             {
                 string[] o = str[i].Split('/');
-                dic[o[0]+"-"+i] = o[1];
+                dic[o[0] + "-" + i] = o[1];
             }
             return dic;
         }
+        public static List<string> getPhones()
+        {
+            SQLServerOperating s = new SQLServerOperating();
+            string qqs = s.Select("select CustomerServicePhone from Company");
+            string[] str = qqs.Split(';');
+            List<string> list = new List<string>();
+            for (int i = 0; i < str.Length; i++)
+            {
+                list.Add(str[i]);
+            }
+            return list;
+        }
+
         public static int deleteQQ(string qq, string name)
         {
             SQLServerOperating s = new SQLServerOperating();
             string qqs = s.Select("select CustomerServiceQQ from Company");
-            qqs = qqs.Replace(qq + "/" + name+";", "").Replace(";"+qq + "/" + name,"").Replace(qq+"/"+name,"");
+            qqs = qqs.Replace(qq + "/" + name + ";", "").Replace(";" + qq + "/" + name, "").Replace(qq + "/" + name, "");
             return s.ExecuteSql(" update Company set CustomerServiceQQ='" + qqs.Trim() + "'");
+        }
+        public static int deletePhone(string Phone)
+        {
+            SQLServerOperating s = new SQLServerOperating();
+            string CustomerServicePhone = s.Select("select CustomerServicePhone from Company");
+            CustomerServicePhone = CustomerServicePhone.Replace(Phone + ";", "").Replace(";" + Phone, "").Replace(Phone, "");
+            return s.ExecuteSql(" update Company set CustomerServicePhone='" + CustomerServicePhone.Trim() + "'");
+        }
+
+        public static int addServicesPhone(string phone)
+        {
+            if (string.IsNullOrEmpty(phone))
+            {
+                return -1;
+            }
+            SQLServerOperating s = new SQLServerOperating();
+            string CustomerServicePhone = s.Select("select CustomerServicePhone from Company");
+            if (CustomerServicePhone.Trim().Equals(string.Empty))
+            {
+                CustomerServicePhone = phone;
+            }
+            else
+            {
+                CustomerServicePhone = CustomerServicePhone + ";" + phone;
+            }
+
+            return s.ExecuteSql(" update Company set CustomerServicePhone='" + CustomerServicePhone + "'");
         }
     }
 }

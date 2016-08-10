@@ -10,7 +10,7 @@
 
 
 	<head>
-		<title>Hyperspace by HTML5 UP</title>
+		<title>主页</title>
 		<meta charset="utf-8" />
             
  
@@ -19,21 +19,13 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-            <link href="assets/css/style.css" rel="stylesheet" />
+         <%--   <link href="assets/css/style.css" rel="stylesheet" />--%>
+
+                <link href="assets/customerservice/customer-service.css" rel="stylesheet" />
+    <link href="assets/customerservice/lanren.css" rel="stylesheet" />
 	</head>
 	<body>
-   <div id="haiiskefu">
-	<div class="kfleft" title="点击查看联系方式"></div>
-	<ul>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="销售咨询" target="_blank"></a></li>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="美工咨询" target="_blank"></a></li>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="技术咨询" target="_blank"></a></li>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="优化咨询" target="_blank"></a></li>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="售后咨询" target="_blank"></a></li>
-		<li><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" title="财务咨询" target="_blank"></a></li>
-	    <li><a href="#" title="联系方式" target="_blank"></a></li>
-	</ul>
-</div>
+   
 		<!-- Sidebar -->
 			<section id="sidebar">
 				<div class="inner">
@@ -44,6 +36,7 @@
 							<li><a href="#two">旅游</a></li>
 							<li><a href="#three">农业</a></li>
                             <li><a href="#four">地产</a></li>
+                            <li><a href="#six">留言</a> </li>
 						</ul>
 					</nav>
 				</div>
@@ -74,7 +67,7 @@
 									<h2>移民去海外</h2>
 									<p>移民留学、海外房产投资一站式服务平台！选择最适合您的全球资产配置方案。<br /> 咨询热线：4006759982.</p>
 									<ul class="actions">
-										<li><a href="ym-257/index.html" class="button">了解更多</a></li>
+										<li><a href="ym-257/index.aspx" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
@@ -86,7 +79,7 @@
 									<h2>移民新政策</h2>
 									<p>在这里了解最新的移民咨询.</p>
 									<ul class="actions">
-										<li><a href="ym-257/index.html" class="button">了解更多</a></li>
+										<li><a href="ym-257/index.aspx" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
@@ -144,7 +137,7 @@
 							</div>
                             <br />    
 							<ul class="actions">
-								<li><a href="ly-300/index.html" class="button">了解更多</a></li>
+								<li><a href="ly-300/index.aspx" class="button">了解更多</a></li>
 							</ul>
 						</div>
 					</section>
@@ -206,7 +199,7 @@
 							</div>
                             <br />
                              	<ul class="actions">
-								<li><a href="ny-118/index.html" class="button">了解更多</a></li>
+								<li><a href="ny-118/index.aspx" class="button">了解更多</a></li>
 						    	</ul>
 						</div>
 					</section>
@@ -219,7 +212,7 @@
 									<h2>塞班岛地产</h2>
 									<p>移民留学、海外房产投资一站式服务平台！选择最适合您的全球资产配置方案。<br /> 咨询热线：4006759982.</p>
 									<ul class="actions">
-										<li><a href="dc-337/index.html" class="button">了解更多</a></li>
+										<li><a href="dc-337/index.aspx" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
@@ -231,7 +224,7 @@
 									<h2>买房移民</h2>
 									<p>在这里了解最新的移民咨询.</p>
 									<ul class="actions">
-										<li><a href="dc-337/index.html" class="button">了解更多</a></li>
+										<li><a href="dc-337/index.aspx" class="button">了解更多</a></li>
 									</ul>
 								</div>
 							</div>
@@ -249,6 +242,62 @@
 							</div>
 						</section>--%>
 					</section>
+
+                	<section id="six" class="wrapper style1 fade-up">
+						<div class="inner">
+							<h2>Get in touch</h2>
+							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
+							<div class="split style1">
+								<section>
+									<form method="post" action="#">
+										<div class="field half first">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="5"></textarea>
+										</div>
+										<ul class="actions">
+											<li><a href="" class="button submit">Send Message</a></li>
+										</ul>
+									</form>
+								</section>
+								<section>
+									<ul class="contact">
+										<li>
+											<h3>Address</h3>
+											<span>12345 Somewhere Road #654<br />
+											Nashville, TN 00000-0000<br />
+											USA</span>
+										</li>
+										<li>
+											<h3>Email</h3>
+											<a href="#">user@untitled.tld</a>
+										</li>
+										<li>
+											<h3>Phone</h3>
+											<span>(000) 000-0000</span>
+										</li>
+										<li>
+											<h3>Social</h3>
+											<ul class="icons">
+												<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+												<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+												<li><a href="#" class="fa-github"><span class="label">GitHub</span></a></li>
+												<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+												<li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
+											</ul>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
 			</div>
 
 		<!-- Footer -->
@@ -259,11 +308,54 @@
 					</ul>
 				</div>
 			</footer>
-      
+      <div id="rightArrow" class="open-im">&nbsp;</div>
+    
+        <div id="floatDivBoxs">
+            <div class="floatDtt">在线客服</div>
+            <div class="floatShadow">
+                <ul class="floatDqq">
+                    <%
+                        foreach (KeyValuePair<string, string> item in qqList)
+                        {
+                            if (item.Key.Split('-').Length > 0)
+                            {
+                    %>
+                    <li><a target="_blank" href="tencent://message/?uin=<%= item.Key.Split('-')[0] %>&Site=sc.chinaz.com&Menu=yes">
+                        <img src="assets/customerservice/images/qq.png" align="absmiddle"><%= item.Value %></a></li>
+                    <%}
+                        }
+                    %>
+                </ul>
+                <div class="floatDtxt">热线电话</div>
+                <div class="floatDtel">
+                    <ul class="floatDphone">
+                        <%
+                            for (int i = 0; i < phoneList.Count; i++)
+                            {%>
+                        <li><a href="javascript:;">
+                            <img src="assets/customerservice/images/phone.png" align="absmiddle">
+                            <%= phoneList[i] %> </a></li>
+                        <%}
+                        %>
+                    </ul>
+                    <div class="floatImg">
+                        <img src="assets/customerservice/images/erweima.jpg" width="100%">微信公众账号
+                    </div>
+                </div>
+                <div class="floatDbg"></div>
+            </div>
+        </div>
+    <div class="lanrenzhijia_m" id="lanrenzhijia_m">
+        <ul>
+            <a href="javascript:;" class="close" name="close"></a>
+            <a href="tencent://message/?uin=639083793&Site=sc.chinaz.com&Menu=yes" target="_blank" style="left: 145px;"></a>
+            <a href="javascript:;" name="close" style="left: 235px;"></a>
+        </ul>
+    </div>
  
 		<!-- Scripts -->
-        <script src="assets/js/jQuery.js"></script>
-			<%--<script src="assets/js/jquery.min.js"></script>--%>
+        <%--<script src="assets/js/jQuery.js"></script>--%>
+			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
@@ -272,14 +364,26 @@
 			<script src="assets/js/main.js"></script>
             <script type="text/javascript">
 $(function() {
-    $(".kfleft").click(function(){
-		var i=$("#haiiskefu").css("right");
-		if (i=='0px'){
-			$('#haiiskefu').animate({right:-80}, 200);
-		} else {
-			$('#haiiskefu').animate({right:0}, 200);
-		}
-	});
+    $('#lanrenzhijia_m').delay(3000).slideDown();
+    $('a[name=close]').click(function () {
+        $('#lanrenzhijia_m').slideUp();
+        $('#lanrenzhijia_m').delay(5000).slideDown();
+    });
+
+    var flag = 0;
+    $('#rightArrow').on("click", function () {
+        if (flag == 1) {
+            $("#floatDivBoxs").animate({ right: '-175px' }, 300);
+            $(this).animate({ right: '-5px' }, 300);
+            $(this).css('background-position', '0px 0');
+            flag = 0;
+        } else {
+            $("#floatDivBoxs").animate({ right: '0' }, 300);
+            $(this).animate({ right: '170px' }, 300);
+            $(this).css('background-position', '0px 0');
+            flag = 1;
+        }
+    });
 });
 </script>
 

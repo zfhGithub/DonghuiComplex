@@ -203,7 +203,7 @@ header .intro-text .intro-lead-in {margin-bottom: 30px;font-family: 'Shadows Int
     }
     .timeline>li .timeline-image {
         left: 50%;
-        width: 100px;
+        width: 100px;bg.jpg
         height: 100px;
         margin-left: -50px;
     }

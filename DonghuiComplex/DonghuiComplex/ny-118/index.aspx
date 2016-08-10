@@ -1,7 +1,9 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="DonghuiComplex.ny_118.index" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-		<title>Home</title>
+		<title>农业</title>
 		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 		<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -29,6 +31,9 @@
 				});
 			});
 		</script>
+
+        <link href="/assets/customerservice/customer-service.css" rel="stylesheet" />
+        <link href="/assets/customerservice/lanren.css" rel="stylesheet" />
 <!-- start-smoth-scrolling -->
 </head>
 	
@@ -38,17 +43,18 @@
 	<div class="container">
 		<div class="navi">
 				<div class="head-logo">
-					<a href="index.html"><img src="images/logo.png" alt=" "></a>
+					<a href="index.aspx"><img src="images/logo.png" alt=" "></a>
 				</div>
 				<div class="banner-nav">
 					<span class="menu"><img src="images/menu.png" alt=" "/></span>
 						<nav class="cl-effect-3">
 							<ul class="nav1">
-								<li class="active"><a href="#home" class="scroll">Home</a></li>
-								<li><a href="#about" class="scroll">ABOUT</a></li>
-								<li><a href="#products" class="scroll">PRODUCTS</a></li>
-								<li><a href="#pricing" class="scroll">PRICING</a></li>
-								<li><a href="#contact" class="scroll">CONTACT</a></li>
+								<li class="active"><a href="#home" class="scroll">首页</a></li>
+								<li><a href="#about" class="scroll">关于</a></li>
+								<li><a href="#products" class="scroll">产品</a></li>
+                                <li><a href="#top" class="scroll">新闻</a> </li>
+							<%--	<li><a href="#pricing" class="scroll">PRICING</a></li>--%>
+								<li><a href="#contact" class="scroll">留言</a></li>
 							</ul>
 						</nav>
 				</div>
@@ -65,8 +71,8 @@
 				<!-- //script for menu -->
 		<div class="banner-info">
 			<div class="banner-info-left">
-				<h3>OUR MISSION IS TO MAKE YOUR <span> BUSINESS GROW</span></h3>
-				<p>Donec rutrum congue leo eget malesuada<span>Curabitur non nulla sit amet.</span></p>
+				<h3>我们的使命是让您  <span>吃到放心的农产品</span></h3>
+				<p><%--Donec rutrum congue leo eget malesuada--%><span><%--Curabitur non nulla sit amet.--%></span></p>
 				<div class="start">
 					<a href="#">Learn More...</a>
 				</div>
@@ -169,6 +175,7 @@
 				  </script>
 			<!--//End-slider-script -->
 			<div  id="top" class="callbacks_container">
+                	<h3>新闻</h3>
 				<ul class="rslides" id="slider3">
 					<li>
 						<div class="banner-bottom-info">
@@ -217,7 +224,7 @@
 <!-- about -->
 	<div id="about" class="about">
 	<div class="container">
-		<h3>ABOUT US</h3>
+		<h3>关于我们</h3>
 		<p class="para">Curabitur aliquet quam id dui posuere blandit.
 			<span>Nulla Quis lorum nisl tempus convallis quis ac lactus porttitor accumsan tincidunt.</span></p>
 		<div class="about-grids">
@@ -491,7 +498,8 @@
 	</div>
 <!-- //about -->
 <!-- pricing -->
-	<div id="pricing" class="pricing">
+<!-- 
+    	<div id="pricing" class="pricing">
 	<div class="container">
 		<div class="price">
 			<h3>PRICING</h3>
@@ -556,6 +564,7 @@
 		<div class="clearfix"> </div>
 	</div>
 	</div>
+ -->
 <!-- //pricing -->
 <!-- gallery -->
 	<div id="products" class="portfolio">
@@ -695,20 +704,20 @@
 <!-- contact -->
 	<div id="contact" class="contact">
 	<div class="container">
-		<h3>CONTACT</h3>
+		<h3>留言</h3>
 		<p class="para">Curabitur aliquet quam id dui posuere blandit.
 			<span>Nulla Quis lorum nisl tempus convallis quis ac lactus
 			porttitor accumsan tincidunt.</span></p>
-		<div class="map">
+		<%--<div class="map">
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d315198.42131784896!2d5.849972999999987!3d51.888564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c7a7e5143e7afb%3A0xb21ce1ae282c4483!2sBarenbrug+Holland+B.V.!5e0!3m2!1sen!2sin!4v1427362466033" frameborder="0" style="border:0"></iframe>
-		</div>
+		</div>--%>
 		<div class="contact-contact">
 			<form>
 				<input type="text" placeholder="Name" required>
 				<input type="text" placeholder="E-mail" required>
 				<input type="text" placeholder="Subject" required>
 				<textarea placeholder="Message" required></textarea>
-				<input type="submit" value="SEND MESSAGE">
+				<input type="submit" value="提交留言">
 			</form>
 		</div>
 	</div>
@@ -732,22 +741,87 @@
 	</div>
 	</div>
 <!-- //footer -->
+      <div id="rightArrow" class="open-im">&nbsp;</div>
+    
+        <div id="floatDivBoxs">
+            <div class="floatDtt">在线客服</div>
+            <div class="floatShadow">
+                <ul class="floatDqq">
+                    <%
+                        foreach (KeyValuePair<string, string> item in qqList)
+                        {
+                            if (item.Key.Split('-').Length > 0)
+                            {
+                    %>
+                    <li><a target="_blank" href="tencent://message/?uin=<%= item.Key.Split('-')[0] %>&Site=sc.chinaz.com&Menu=yes">
+                        <img src="/assets/customerservice/images/qq.png" align="absmiddle"><%= item.Value %></a></li>
+                    <%}
+                        }
+                    %>
+                </ul>
+                <div class="floatDtxt">热线电话</div>
+                <div class="floatDtel">
+                    <ul class="floatDphone">
+                        <%
+                            for (int i = 0; i < phoneList.Count; i++)
+                            {%>
+                        <li><a href="javascript:;">
+                            <img src="/assets/customerservice/images/phone.png" align="absmiddle">
+                            <%= phoneList[i] %> </a></li>
+                        <%}
+                        %>
+                    </ul>
+                    <div class="floatImg">
+                          <img src="/assets/customerservice/images/erweima.jpg" width="100%">微信公众账号
+                    </div>
+                </div>
+                <div class="floatDbg"></div>
+            </div>
+        </div>
+    <div class="lanrenzhijia_m" id="lanrenzhijia_m">
+        <ul>
+            <a href="javascript:;" class="close" name="close"></a>
+            <a href="tencent://message/?uin=639083793&Site=sc.chinaz.com&Menu=yes" target="_blank" style="left: 145px;"></a>
+            <a href="javascript:;" name="close" style="left: 235px;"></a>
+        </ul>
+    </div>
+
 <!-- here stars scrolling icon -->
 	<script type="text/javascript">
-									$(document).ready(function() {
-										/*
-										var defaults = {
-								  			containerID: 'toTop', // fading element id
-											containerHoverID: 'toTopHover', // fading element hover id
-											scrollSpeed: 1200,
-											easingType: 'linear' 
-								 		};
-										*/
-										
-										$().UItoTop({ easingType: 'easeOutQuart' });
-										
-									});
+	    $(document).ready(function () {
+	        /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear' 
+            };
+            */
+
+	        $().UItoTop({ easingType: 'easeOutQuart' });
+	        $('#lanrenzhijia_m').delay(3000).slideDown();
+	        $('a[name=close]').click(function () {
+	            $('#lanrenzhijia_m').slideUp();
+	            $('#lanrenzhijia_m').delay(5000).slideDown();
+	        });
+
+	        var flag = 0;
+	        $('#rightArrow').on("click", function () {
+	            if (flag == 1) {
+	                $("#floatDivBoxs").animate({ right: '-175px' }, 300);
+	                $(this).animate({ right: '-5px' }, 300);
+	                $(this).css('background-position', '0px 0');
+	                flag = 0;
+	            } else {
+	                $("#floatDivBoxs").animate({ right: '0' }, 300);
+	                $(this).animate({ right: '170px' }, 300);
+	                $(this).css('background-position', '0px 0');
+	                flag = 1;
+	            }
+	        });
+	    });
 	</script>
+       
 <!-- //here ends scrolling icon -->
 </body>
 </html>

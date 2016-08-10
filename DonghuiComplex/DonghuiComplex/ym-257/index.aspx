@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="DonghuiComplex.ym_257.index" %>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,6 +29,9 @@
         <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
         <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.js"></script>
     <![endif]-->
+
+              <link href="/assets/customerservice/customer-service.css" rel="stylesheet" />
+    <link href="/assets/customerservice/lanren.css" rel="stylesheet" />
 </head>
 <body>
     <!-- /////////////////////////////////////////Navigation -->
@@ -156,8 +161,28 @@
         <!-- ////////////Content Box 02 -->
         <section id="new" class="box-content box-2 box-style">
             <div class="container">
-                <div class="row">
-                    <blockquote>对于一个成功的技术，现实必须优先于公共关系，为自然不能被愚弄.</blockquote>
+              
+                <div style="width: 50%;float:left">
+                      <ul>
+                    <li><h5>1.移民大新闻</h5> </li>
+                    <li> <h5>1.移民政策</h5></li>
+                    <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
+                    <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
+                           <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
+                        <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
+                           <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
+                </ul>
+                    </div>
+                      <div style="width:50%;float:left">
+                             <ul style="font-size:30px;">
+                    <li>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</li>
+                   <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
+                                  <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
+                                  <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
+                                  <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
+                                  <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
+                </ul>
+                   <%-- <blockquote>对于一个成功的技术，现实必须优先于公共关系，为自然不能被愚弄.</blockquote>--%>
                 </div>
             </div>
         </section>
@@ -573,6 +598,52 @@
         </div>
     </footer>
     <!-- Footer -->
+
+      <div id="rightArrow" class="open-im">&nbsp;</div>
+    
+        <div id="floatDivBoxs">
+            <div class="floatDtt">在线客服</div>
+            <div class="floatShadow">
+                <ul class="floatDqq">
+                    <%
+                        foreach (KeyValuePair<string, string> item in qqList)
+                        {
+                            if (item.Key.Split('-').Length > 0)
+                            {
+                    %>
+                    <li><a target="_blank" href="tencent://message/?uin=<%= item.Key.Split('-')[0] %>&Site=sc.chinaz.com&Menu=yes">
+                        <img src="/assets/customerservice/images/qq.png" align="absmiddle"><%= item.Value %></a></li>
+                    <%}
+                        }
+                    %>
+                </ul>
+                <div class="floatDtxt">热线电话</div>
+                <div class="floatDtel">
+                    <ul class="floatDphone">
+                        <%
+                            for (int i = 0; i < phoneList.Count; i++)
+                            {%>
+                        <li><a href="javascript:;">
+                            <img src="/assets/customerservice/images/phone.png" align="absmiddle">
+                            <%= phoneList[i] %> </a></li>
+                        <%}
+                        %>
+                    </ul>
+                    <div class="floatImg">
+                         <img src="/assets/customerservice/images/erweima.jpg" width="100%">微信公众账号
+                    </div>
+                </div>
+                <div class="floatDbg"></div>
+            </div>
+        </div>
+    <div class="lanrenzhijia_m" id="lanrenzhijia_m">
+        <ul>
+            <a href="javascript:;" class="close" name="close"></a>
+            <a href="tencent://message/?uin=639083793&Site=sc.chinaz.com&Menu=yes" target="_blank" style="left: 145px;"></a>
+            <a href="javascript:;" name="close" style="left: 235px;"></a>
+        </ul>
+    </div>
+
     <!-- jQuery -->
     <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="js/masonry.pkgd.min.js"></script>
@@ -588,6 +659,29 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/classie.js"></script>
     <script src="js/cbpAnimatedHeader.js"></script>
+        <script type="text/javascript">
+$(function() {
+    $('#lanrenzhijia_m').delay(3000).slideDown();
+    $('a[name=close]').click(function () {
+        $('#lanrenzhijia_m').slideUp();
+        $('#lanrenzhijia_m').delay(5000).slideDown();
+    });
 
+    var flag = 0;
+    $('#rightArrow').on("click", function () {
+        if (flag == 1) {
+            $("#floatDivBoxs").animate({ right: '-175px' }, 300);
+            $(this).animate({ right: '-5px' }, 300);
+            $(this).css('background-position', '0px 0');
+            flag = 0;
+        } else {
+            $("#floatDivBoxs").animate({ right: '0' }, 300);
+            $(this).animate({ right: '170px' }, 300);
+            $(this).css('background-position', '0px 0');
+            flag = 1;
+        }
+    });
+});
+</script>
 </body>
 </html>

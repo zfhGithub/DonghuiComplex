@@ -257,22 +257,34 @@ $(function(){
                                 <li data-id="13" data-pid="1" data-url="home/estate.html" data-tabid="estate" data-faicon="check-square-o">地产</li>
  
                                  
-                                <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">留言管理</li> 
-                                <li data-id="22" data-pid="2" data-url="message/messagelist.html"data-tabid="setBanner6" >留言列表</li>  
-                                 
-                                <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">领先优势</li> 
-                                <li data-id="32" data-pid="3" data-url="advantage/advantagelist.html"data-tabid="setBanner5" >优势管理</li> 
-                                <li data-id="31" data-pid="3" data-url="advantage/mycommit.html"data-tabid="setBanner4" >我们的承诺</li>  
+                                <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">移民模块</li> 
+                                <li data-id="22" data-pid="2" data-url="ym/setbackground.html"data-tabid="ym_setbackground" >设置背景</li>  
+                                <li data-id="23" data-pid="2" data-url="ym/myteam.html"data-tabid="ym_myteam" >我的团队</li>  
+                                <li data-id="24" data-pid="2" data-url="ym/aboutus.html"data-tabid="ym_aboutus" >关于我们</li>  
+                                <li data-id="25" data-pid="2" data-url="ym/services.html"data-tabid="ym_services" >服务</li>
+                                <li data-id="26" data-pid="2" data-url="ym/message.html"data-tabid="ym_message" >服务</li>  
 
-                                <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">价格</li> 
-                                <li data-id="42" data-pid="4" data-url="price/pricelist.html"data-tabid="setBanner3" >套餐管理</li> 
-                                
-                                <li data-id="5" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">案例</li> 
-                                <li data-id="52" data-pid="5" data-url="case/caselist.html"data-tabid="setBanner2" >案例管理</li> 
+                                <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">旅游模块</li> 
+                                <li data-id="32" data-pid="3" data-url="lv/setbanner.html"data-tabid="lv_setbanner" >轮播图</li> 
+                                <li data-id="31" data-pid="3" data-url="lv/live.html"data-tabid="lv_live" >服务</li>  
+                                <li data-id="33" data-pid="3" data-url="lv/message.html"data-tabid="lv_message" >留言</li>  
+                                <li data-id="33" data-pid="3" data-url="lv/services.html"data-tabid="lv_services" >服务</li>  
+
+                                <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">农业模块</li> 
+                                <li data-id="42" data-pid="4" data-url="ny/aboutus.html"data-tabid="ny_aboutus" >关于我们</li> 
+                                <li data-id="42" data-pid="4" data-url="ny/prducts.html"data-tabid="ny_prducts" >产品</li> 
+                                <li data-id="43" data-pid="4" data-url="ny/message.html"data-tabid="ny_message" >留言</li>  
+
+                                <li data-id="5" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">地产模块</li> 
+                                <li data-id="52" data-pid="5" data-url="dc/services.html"data-tabid="dc_services" >服务</li> 
+                                <li data-id="52" data-pid="5" data-url="dc/property.html"data-tabid="dc_property" >楼盘</li> 
+                                <li data-id="43" data-pid="4" data-url="dc/message.html"data-tabid="dc_message" >留言</li>  
 
                                 <li data-id="6" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">文章管理</li> 
                                 <li data-id="62" data-pid="6" data-url="article/articlelist.html" data-tabid="setBanner1" >文章列表</li> 
                                   
+                                 <li data-id="7" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">系统设置</li> 
+                                <li data-id="72" data-pid="7" data-url="article/articlelist.html" data-tabid="setBanner1" >文章列表</li> 
                             </ul>                
 
                            

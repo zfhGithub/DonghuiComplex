@@ -2,10 +2,105 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>塞班岛</title>
 	<meta charset="utf-8" />
 </head>
 <body>
 
+    <div class="bjui-pageContent">
+        <form action="ajax.ashx?action=setaboutus" id="j_aboutus_form" data-toggle="validate" data-alertmsg="false">
+            <input type="hidden" name="custom.id" value="edce142bc2ed4ec6b623aacaf602a4de">
+            <table class="table table-condensed table-hover" width="100%">
+                <tbody>
+                    <tr >
+                        <td>
+                            <label  for=""></label>
+                            <input type="text" name="saibandao_title" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="j_custom_content" class="control-label x85">内容：</label>
+                            <div style="display: inline-block; vertical-align: middle;">
+                                <textarea name="aboutus" id="j_form_aboutus" class="j-content" style="width: 700px;" data-upload-json="ajax.ashx?action=kindeditor&type=kindeditor"
+                                          data-after-upload="kindeditor_upload_success" data-file-manager-json="ajax.ashx?action=fileManagerJson"
+                                          data-toggle="kindeditor" data-minheight="100"></textarea>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="bjui-pageFooter">
+        <ul>
+            <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+            <li><button type="button" class="btn-default" id="btnAboutInfoSave" onclick="j_aboutus_form()" data-icon="save">保存</button></li>
+        </ul>
+    </div>
+
+    <script>
+    function j_aboutus_form() {
+        $("#j_aboutus_form").submit();
+        //var aboutus = $("#j_form_aboutus").text();
+        //var achievement = $("#j_form_achievement").text();
+        //var team = $("#j_form_team").text();
+        //KindEditor.html("#j_form_team");
+        //console.log(aboutus);
+        //console.log(achievement);
+        //console.log(team);
+        //$.ajax({
+        //    url: "ajax.ashx?action=setaboutinfo",
+        //    type:"post",
+        //    data: { aboutus:aboutus,achievement:achievement,team:team},
+        //    success: function (r) {
+
+        //       // KindEditor.html('#j_form_content', d.GoodsDetail);
+        //    }, error: function () {
+        //        console.log("error");
+        //    }
+        //});
+    }
+    $(function () {
+        $.ajax({
+            url: "ajax.ashx?action=getaboutinfo",
+            data: {   },
+            success: function (r) {
+                var d = JSON.parse(r)["d"][0];
+
+                $("#j_form_aboutus").html(d.AboutusText);
+                $("#j_form_achievement").html(d.AchievementText);
+                $("#j_form_team").html(d.MyTeamText);
+                KindEditor.html('#j_form_aboutus', d.AboutusText);
+                KindEditor.html('#j_form_achievement', d.AchievementText);
+                KindEditor.html('#j_form_team', d.MyTeamText);
+            }, error: function () {
+                console.log("error");
+            }
+        });
+
+        KindEditor.ready(function (K) {
+            var editor = K.editor({
+                allowFileManager: true
+            });
+            console.log(editor);
+
+            editor.plugin.multiImageDialog({
+                clickFn: function (urlList) {
+                    console.log(urlList);
+                    //var div = K('#J_imageView');
+                    // div.html('');
+                    K.each(urlList, function (i, data) {
+                        //  div.append('<img src="' + data.url + '">');
+                    });
+                    editor.hideDialog();
+                }
+            });
+
+
+        });
+    });
+    </script>
 </body>
 </html>

@@ -5,9 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DonghuiComplex
+namespace DonghuiComplex.dc_337
 {
-   
     public partial class index : System.Web.UI.Page
     {
         public List<string> phoneList = new List<string>();
@@ -16,6 +15,7 @@ namespace DonghuiComplex
         {
             qqList = com.settings.getQQs();
             phoneList = com.settings.getPhones();
+
         }
     }
 }
