@@ -23,8 +23,10 @@ namespace DonghuiComplex.admin
              
             switch (action)
             {
-                case "productlist":
-                    context.Response.Write("");
+                case "sethomesaibandao":
+                    string title = req.Params["title"];
+                    string content = req.Params["content"];
+                    context.Response.Write(Utils.GetReulst(200,"设置成功！","设置失败！",com.home.sanbandao.setHomeSaibandao(title,content)));
                     break;
             }
         }

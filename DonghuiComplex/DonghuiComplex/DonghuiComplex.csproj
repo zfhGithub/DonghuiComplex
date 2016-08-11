@@ -1143,6 +1143,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="com\case.cs" />
+    <Compile Include="com\home\sanbandao.cs" />
     <Compile Include="com\message.cs" />
     <Compile Include="com\price.cs" />
     <Compile Include="com\settings.cs" />

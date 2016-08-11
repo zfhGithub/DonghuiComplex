@@ -8,14 +8,14 @@
 <body>
 
     <div class="bjui-pageContent">
-        <form action="ajax.ashx?action=setaboutus" id="j_aboutus_form" data-toggle="validate" data-alertmsg="false">
+        <form action="ajax.ashx?action=sethomesaibandao" id="j_aboutus_form" data-toggle="validate" data-alertmsg="false">
             <input type="hidden" name="custom.id" value="edce142bc2ed4ec6b623aacaf602a4de">
             <table class="table table-condensed table-hover" width="100%">
                 <tbody>
                     <tr >
                         <td>
-                            <label  for=""></label>
-                            <input type="text" name="saibandao_title" value="" />
+                            <label for="saibandao_title" class="control-label x85">标题：</label>
+                            <input type="text" name="saibandao_title" id="saibandao_title" value="" data-role="required" size="70"/>
                         </td>
                     </tr>
                     <tr>
