@@ -631,6 +631,7 @@
     <Content Include="admin\ny\prducts.html" />
     <Content Include="admin\ym\aboutus.html" />
     <Content Include="admin\ym\myteam.html" />
+    <Content Include="admin\ym\news.html" />
     <Content Include="admin\ym\setbackground.html" />
     <Content Include="assets\css\font-awesome.min.css" />
     <Content Include="assets\css\ie8.css" />
@@ -1143,6 +1144,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="com\case.cs" />
+    <Compile Include="com\home\message.cs" />
     <Compile Include="com\home\sanbandao.cs" />
     <Compile Include="com\message.cs" />
     <Compile Include="com\price.cs" />

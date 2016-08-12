@@ -5,7 +5,77 @@
     <title>地产</title>
 	<meta charset="utf-8" />
 </head>
+
 <body>
 
+    <div class="bjui-pageContent">
+        <form action="ajax.ashx?action=sethomesaibandao" id="j_estate_form" data-toggle="validate" data-alertmsg="false">
+            <input type="hidden" name="custom.id" value="edce142bc2ed4ec6b623aacaf602a4de">
+            <table class="table table-condensed table-hover" width="100%">
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="estate_title" class="control-label x85">标题：</label>
+                            <input type="text" name="estate_title" id="estate_title" value="" data-role="required" size="70" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="estate_content" class="control-label x85">内容：</label>
+                            <div style="display: inline-block; vertical-align: middle;">
+                                <textarea name="estate_content" id="estate_content" class="j-content" style="width: 700px;" data-upload-json="ajax.ashx?action=kindeditor&type=kindeditor"
+                                          data-after-upload="kindeditor_upload_success" data-file-manager-json="ajax.ashx?action=fileManagerJson"
+                                          data-toggle="kindeditor" data-minheight="100"></textarea>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="bjui-pageFooter">
+        <ul>
+            <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+            <li><button type="submit" class="btn-default" data-icon="save">保存</button></li>
+        </ul>
+    </div>
+
+    <script>
+  
+    $(function () {
+        $.ajax({
+            url: "ajax.ashx?action=getestate",
+            data: {   },
+            success: function (r) {
+                var d = JSON.parse(r)["d"][0];  
+                $("#estate_title").val(d.title);
+                $("#estate_content").html(d.content);
+                KindEditor.html('#estate_content', d.content);
+            }, error: function () {
+                console.log("error");
+            }
+        });
+
+        KindEditor.ready(function (K) {
+            var editor = K.editor({
+                allowFileManager: true
+            }); 
+            editor.plugin.multiImageDialog({
+                clickFn: function (urlList) {
+                    console.log(urlList);
+                    //var div = K('#J_imageView');
+                    // div.html('');
+                    K.each(urlList, function (i, data) {
+                        //  div.append('<img src="' + data.url + '">');
+                    });
+                    editor.hideDialog();
+                }
+            });
+
+
+        });
+    });
+    </script>
 </body>
 </html>

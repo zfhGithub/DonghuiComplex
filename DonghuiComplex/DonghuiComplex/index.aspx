@@ -65,7 +65,7 @@
 							<div class="content">
 								<div class="inner">
 									<h2>移民去海外</h2>
-									<p>移民留学、海外房产投资一站式服务平台！选择最适合您的全球资产配置方案。<br /> 咨询热线：4006759982.</p>
+									<p>移民留学、海外房产投资一站式服务平台！选择最适合您的全球资产配置方案。<br /> <%--咨询热线：4006759982.--%></p>
 									<ul class="actions">
 										<li><a href="ym-257/index.aspx" class="button">了解更多</a></li>
 									</ul>
@@ -245,32 +245,39 @@
 
                 	<section id="six" class="wrapper style1 fade-up">
 						<div class="inner">
-							<h2>Get in touch</h2>
-							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
+							<h2>跟我们联系</h2>
+							<p>你可以留下你的问题和联系方式，我们会尽快联系你，解决你的疑惑。</p>
 							<div class="split style1">
 								<section>
-									<form method="post" action="#">
-										<div class="field half first">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
+									<form method="post" action="index.aspx">
+										<div class="field half first" style="border:0px solid red;width:170px;">
+											<label for="name">姓名</label>
+											<input type="text" name="name" id="name" placeholder="请输入姓名"/>
+										</div>
+                                        <div class="field half" style="width:170px;">
+											<label for="phone">电话</label>
+											<input type="text" name="phone" id="phone"  placeholder="请输入电话"/>
 										</div>
 										<div class="field half">
 											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
+											<input type="text" name="email" id="email"  placeholder="请输入Email"/>
 										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="5"></textarea>
+										<div class="field" style="border:0px solid red;">
+											<label for="message" style="margin-left:-170px;">内容</label>
+											<textarea name="message" id="message" rows="5" placeholder="请输入内容"></textarea>
 										</div>
 										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
+											<li><a href="" class="button submit">提交</a></li>
 										</ul>
 									</form>
 								</section>
 								<section>
 									<ul class="contact">
+                                        <li>
+											<h3>你也可以联系我们</h3> 
+										</li>
 										<li>
-											<h3>Address</h3>
+											<h3>地址</h3>
 											<span>12345 Somewhere Road #654<br />
 											Nashville, TN 00000-0000<br />
 											USA</span>
@@ -280,10 +287,10 @@
 											<a href="#">user@untitled.tld</a>
 										</li>
 										<li>
-											<h3>Phone</h3>
+											<h3>电话</h3>
 											<span>(000) 000-0000</span>
 										</li>
-										<li>
+										<%--<li>
 											<h3>Social</h3>
 											<ul class="icons">
 												<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
@@ -292,7 +299,7 @@
 												<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
 												<li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
 											</ul>
-										</li>
+										</li>--%>
 									</ul>
 								</section>
 							</div>
