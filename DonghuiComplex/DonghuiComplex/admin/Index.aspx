@@ -261,8 +261,7 @@ $(function(){
                                 <li data-id="22" data-pid="2" data-url="ym/setbackground.html"data-tabid="ym_setbackground" >设置背景</li>  
                                 <li data-id="23" data-pid="2" data-url="ym/myteam.html"data-tabid="ym_myteam" >我的团队</li>  
                                 <li data-id="24" data-pid="2" data-url="ym/aboutus.html"data-tabid="ym_aboutus" >关于我们</li>  
-                                <li data-id="25" data-pid="2" data-url="ym/services.html"data-tabid="ym_services" >服务</li>
-                                <li data-id="26" data-pid="2" data-url="ym/message.html"data-tabid="ym_message" >服务</li>  
+                                <li data-id="25" data-pid="2" data-url="ym/services.html"data-tabid="ym_services" >服务</li> 
 
                                 <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">旅游模块</li> 
                                 <li data-id="32" data-pid="3" data-url="lv/setbanner.html"data-tabid="lv_setbanner" >轮播图</li> 

@@ -374,7 +374,7 @@ $(function() {
     $('#lanrenzhijia_m').delay(3000).slideDown();
     $('a[name=close]').click(function () {
         $('#lanrenzhijia_m').slideUp();
-        $('#lanrenzhijia_m').delay(5000).slideDown();
+        $('#lanrenzhijia_m').delay(10000).slideDown();
     });
 
     var flag = 0;

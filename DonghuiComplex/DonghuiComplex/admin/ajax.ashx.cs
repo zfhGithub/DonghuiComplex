@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 
 namespace DonghuiComplex.admin
 {
@@ -28,6 +29,18 @@ namespace DonghuiComplex.admin
                     HttpPostedFile file = req.Files[0];
                     res.Write(Utils.UploadImage(file, req.QueryString["type"], context));
                     break;
+                #region 留言管理 
+                case "messagelist":
+                    string currentIndex = req.Form["pageIndex"];
+                    string pageCount = req.Form["pageSize"];
+                    Dictionary<string, string> jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.message.getMessageList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.message.getMessageListCount());
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                #endregion
+
                 #endregion
                 #region 首页设置
                 #region 设置
@@ -59,10 +72,10 @@ namespace DonghuiComplex.admin
                 #endregion
                 #region 获取
                 case "gethomesaibandao":
-                    context.Response.Write(Utils.DataTableToJSON( com.home.sanbandao.getHomeSaibandao()));
+                    context.Response.Write(Utils.DataTableToJSON(com.home.sanbandao.getHomeSaibandao()));
                     break;
                 case "getagriculture": //农业
-                    context.Response.Write( Utils.DataTableToJSON(com.home.sanbandao.getHomeAgriculture()));
+                    context.Response.Write(Utils.DataTableToJSON(com.home.sanbandao.getHomeAgriculture()));
                     break;
                 case "getestate": //地产
                     context.Response.Write(Utils.DataTableToJSON(com.home.sanbandao.getHomeEstate()));
@@ -71,10 +84,102 @@ namespace DonghuiComplex.admin
                     context.Response.Write(Utils.DataTableToJSON(com.home.sanbandao.getHomeImmigrant()));
                     break;
                 case "gettourism": //旅游
-                    context.Response.Write(Utils.DataTableToJSON(com.home.sanbandao.getHomeTourism( )));
+                    context.Response.Write(Utils.DataTableToJSON(com.home.sanbandao.getHomeTourism()));
+                    break;
+                #endregion
+                #endregion
+
+                #region 移民板块
+                #region 团队
+                case "addymteam":
+                    int status = com.ym.myteam.addTeam(req.Form["ym_team_title"], req.Form["ym_team_subtitle"], req.Form["ym_team_photo"], req.Form["ym_team_content"]);
+                    string reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatemyteam":
+                    status = com.ym.myteam.updateTeam(req.Params["id"], req.Form["ym_team_title"], req.Form["ym_team_subtitle"], req.Form["ym_team_photo"], req.Form["ym_team_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "ymteamlist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.ym.myteam.getMyteamList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.ym.myteam.getMyteamCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deleteymteam":
+                    string id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ym.myteam.deleteMyteamById(id)));
+                    break;
+                case "getymteamdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.ym.myteam.getMyteamDetailById(id)));
+                    break;
+                #endregion
+
+                #region 关于我们
+                case "addymaboutus":
+                    status = com.ym.aboutus.addAboutus(req.Form["ym_aboutus_title"], req.Form["ym_aboutus_subtitle"], req.Form["ym_aboutus_photo"], req.Form["ym_aboutus_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updateaboutus":
+                    status = com.ym.aboutus.updateAboutus(req.Params["id"], req.Form["ym_aboutus_title"], req.Form["ym_aboutus_subtitle"], req.Form["ym_aboutus_photo"], req.Form["ym_aboutus_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "ymaboutsuslist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.ym.aboutus.getAboutusList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.ym.aboutus.getAboutusCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deleteymaboutus":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ym.aboutus.deleteAboutusById(id)));
+                    break;
+                case "getymaboutusdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.ym.aboutus.getAboutusDetailById(id)));
+                    break;
+                #endregion
+
+                #region 服务
+                case "addymservices":
+                    status = com.ym.services.addServices(req.Form["ym_services_title"], req.Form["ym_services_subtitle"], req.Form["ym_services_photo"], req.Form["ym_services_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updateservices":
+                    status = com.ym.services.updateServices(req.Params["id"], req.Form["ym_services_title"], req.Form["ym_services_subtitle"], req.Form["ym_services_photo"], req.Form["ym_services_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "ymserviceslist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.ym.services.getServicesList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.ym.services.getServicesCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deleteymservices":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ym.services.deleteServicesById(id)));
+                    break;
+                case "getymservicesdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.ym.services.getServicesDetailById(id)));
                     break;
                     #endregion
-                    #endregion
+                #endregion
             }
         }
 

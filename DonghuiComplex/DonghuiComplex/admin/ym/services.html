@@ -8,9 +8,8 @@
     function ProductInfo() {
         var customNo = $("#customNo").val();
         var customName = $("#customName").val();
-        //var Protype = $("#Protype").find("option:selected").val();
         $.ajax({
-            url: 'ajax.ashx?action=ymteamlist',
+            url: 'ajax.ashx?action=ymserviceslist',
                 data: {
                     "pageIndex": pageIndex,
                     "pageSize": pageSize,
@@ -24,17 +23,17 @@
                     count = JSON.parse(count);
                     TotalPage = json["count"];//总记录数
                     //求出最大页
-                    MaxPage = Math.ceil(TotalPage / pageSize); 
+                    MaxPage = Math.ceil(TotalPage / pageSize);
 
                     var da = json["data"];
                     da = JSON.parse(da);
-                    var data = da["d"]; 
-                    $.each(data, function (k, v) { 
-                        html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.title + "</td><td>" + v.subtitle + "</td><td>" + v.created + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>"); 
-                        html.push(" <td><a href='#' onclick='edit_ym_myteam(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
-                        html.push(" <a href='ajax.ashx?action=deleteymteam&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
+                    var data = da["d"];
+                    $.each(data, function (k, v) {
+                        html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.title + "</td><td>" + v.subtitle + "</td><td>" + v.created + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
+                        html.push(" <td><a href='#' onclick='edit_ym_services(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
+                        html.push(" <a href='ajax.ashx?action=deleteymservices&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
                     });
-                    $("#ym_myteam_list tbody").empty().append(html.join(''));
+                    $("#ym_services_list tbody").empty().append(html.join(''));
                     html = [];
 
                     $("#total").html(TotalPage);//共..条数据
@@ -53,7 +52,6 @@
                     html.push("<li class='j-last'><a href='javascript:' onclick='weiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
                     html.push("<li class='jumpto'><span class='p-input'><input  id='putvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='Letgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
                     html.push("<ul>");
-                //    console.log(pageIndex, pageSize, MaxPage, TotalPage);
                     $("#ination").empty().append(html.join(''));
                     //如果当前页等于1就让首页、上一页不可点击
                     if (pageIndex == 1) {
@@ -67,8 +65,6 @@
                         $(".j-last").addClass("disabled");
                         return MaxPage;
                     }
-
-
             }
         });
     }
@@ -149,14 +145,14 @@
         pageIndex = 1;
         ProductInfo();
     }
-    var ym_myteam_editid;
-    function edit_ym_myteam(_this, id, name) {
-        ym_myteam_editid = id;
-        $(_this).dialog({ id: 'dialog_addym_team', url: '/admin/ym/addteam.html',width:860,height:500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog' ,onClose: "dialog_before_close" });
+    var ym_services_editid;
+    function edit_ym_services(_this, id, name) {
+        ym_services_editid = id;
+        $(_this).dialog({ id: 'dialog_addym_services', url: '/admin/ym/addservices.html',width:860,height:500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog' ,onClose: "dialog_before_close" });
     }
     function dialog_before_close($dialog) {
-        ym_myteam_editid = undefined;
-        $("body").navtab("refresh", "ym_myteam");
+        ym_services_editid = undefined;
+        $("body").navtab("refresh", "ym_services");
         return true;
     }
 </script>
@@ -184,9 +180,9 @@
          <button type="submit" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
          <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo" onclick="Clear()">清空查询</a>-->
         <div class="pull-right">
-            <button type="button" class="btn-blue" data-url="ym/addteam.html" data-id="dialog_addym_team" data-width="860" data-height="500"
+            <button type="button" class="btn-blue" data-url="ym/addservices.html" data-id="dialog_addym_services" data-width="860" data-height="500"
                     data-toggle="dialog">
-                添加团队
+                添加
             </button>
             <!--  <button type="button" class="btn-blue" data-url="/B-JUI/ajaxDone2.html?id={#bjui-selected}" data-toggle="doajax" data-confirm-msg="确定要删除选中项吗？" data-icon="remove" title="可以在控制台(network)查看被删除ID">删除选中行</button>&nbsp;
             <div class="btn-group">
@@ -213,12 +209,12 @@
     </div>-->
 </div>
 <div class="bjui-pageContent tableContent">
-    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="ym_myteam_list">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="ym_services_list">
         <thead>
             <tr>
                 <th data-order-field="rowid">序号</th>
                 <th data-order-field="id">标题</th>
-                <th data-order-field="name">二级标题</th> 
+                <th data-order-field="name">二级标题</th>
                 <th data-order-field="created">创建时间</th>
                 <th data-order-field="birthplace">图片</th>
                 <th data-order-field="#">操作</th>

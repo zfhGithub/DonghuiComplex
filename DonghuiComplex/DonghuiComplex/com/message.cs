@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 
-namespace Donghui.com
+namespace DonghuiComplex.com
 {
     public class message
     {
@@ -15,7 +15,7 @@ namespace Donghui.com
             return s.ExecuteSql(strSql);
         }
 
-        public static DataTable getMessageList(string currentIndex, string pageCount)
+        public static DataTable getMessageList(string currentIndex, string pageCount,string type="")
         {
             string strSql = string.Format(@"SELECT TOP {0} * 
                             FROM(

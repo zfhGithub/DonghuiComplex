@@ -31,7 +31,7 @@ namespace DonghuiComplex.admin
                     if (dt.Rows.Count > 0)
                     {
                         DataRow row = dt.Rows[0];
-                        Models.Users users = new Models.Users()
+                        SQLOper.Models.Users users = new SQLOper.Models.Users()
                         {
                             Id = row["id"].ToString(),
                             LoginName = row["LoginName"].ToString(),

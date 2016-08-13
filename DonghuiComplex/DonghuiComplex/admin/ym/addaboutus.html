@@ -1,0 +1,95 @@
+﻿
+<div class="bjui-pageContent">
+    <form action="ajax.ashx?action=addymaboutus" id="j_addymaboutus_form" data-toggle="validate" data-alertmsg="false">
+        <input type="hidden" name="custom.id" value="edce142bc2ed4ec6b623aacaf602a4de">
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="ym_aboutus_title" class="control-label x85"> 标题：</label>
+                        <input type="text" name="ym_aboutus_title" id="ym_aboutus_title" value="" data-rule="required" size="25">
+                    </td>
+
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <label for="ym_aboutus_subtitle" class="control-label x85">二级标题：</label>
+                        <textarea name="ym_aboutus_subtitle" id="ym_aboutus_subtitle" data-toggle="autoheight" cols="60" rows="1" data-rule="required"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="j_custom_note" class="control-label x85">图片：</label>
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <div id="ym_aboutus_photo_up" data-toggle="upload" data-uploader="ajax.ashx?action=kindeditor&type=head"
+                                 data-file-size-limit="2097152"
+                                 data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
+                                 data-multi="true"
+                                 data-drag-drop="true"
+                                 data-on-upload-success="head_upload_success"
+                                 data-icon="cloud-upload"></div>
+                            <input type="hidden" name="ym_aboutus_photo" value="" id="ym_aboutus_photo" data-rule="图片:required">
+                            <span id="ym_aboutus_photo_show"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="ym_aboutus_content" class="control-label x85">内容：</label>
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <textarea name="ym_aboutus_content" id="ym_aboutus_content" class="j-content" style="width: 700px;" data-upload-json="ajax.ashx?action=kindeditor&type=kindeditor"
+                                      data-after-upload="kindeditor_upload_success" data-file-manager-json="ajax.ashx?action=fileManagerJson"
+                                      data-toggle="kindeditor" data-minheight="200"></textarea>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="addadvantagesave()">保存</button></li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        if (ym_aboutus_editid) {
+            $.ajax({
+                url: "ajax.ashx?action=getymaboutusdetailbyid",
+                data: { id: ym_aboutus_editid },
+                type: "post",
+                success: function (r) {
+                    var d = JSON.parse(r)["d"][0];
+                    $("#ym_aboutus_title").val(d.title);
+                    $("#ym_aboutus_subtitle").val(d.subtitle);
+                    $("#ym_aboutus_photo").val(d.photo);
+                    $('#ym_aboutus_photo_show').html('已上传图片：<img src="' + d.photo + '" width="100">');
+                    $("#ym_aboutus_content").html(d.content);
+                    KindEditor.html('#ym_aboutus_content', d.content);
+                }, error: function () {
+                    console.log("error");
+                }
+            });
+        }
+    });
+    function head_upload_success(file, data) {
+        var json = JSON.parse(data);
+        if (json.statusCode == 200)
+        {
+            $("#ym_aboutus_photo").val(json.url);
+            $('#ym_aboutus_photo_show').html('已上传图片：<img src="' + json.url + '" width="100">')
+        }
+
+    }
+    function addadvantagesave() {
+        if (ym_aboutus_editid) {
+            $("#j_addymaboutus_form").attr("action", "ajax.ashx?action=updateaboutus&id=" + ym_aboutus_editid);
+        }
+        $("#j_addymaboutus_form").submit();
+    }
+</script>

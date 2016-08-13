@@ -117,43 +117,24 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-3 box-item">
+                    <%
+                        for (int i = 0; i < myteamList.Rows.Count; i++)
+                        {
+                            %>
+                       <div class="col-sm-3 box-item">
                         <div class="wrap-img">
-                            <img src="images/avatar-3.jpg" />
+                            <img src="<%= myteamList.Rows[i]["photo"].ToString() %>" />
                         </div>
-                        <h3 class="blue">美国投资移民第一人</h3>
+                        <h3 class="blue"><%= myteamList.Rows[i]["title"].ToString() %></h3>
                         <p>
-                            侨外集团总裁.
-                            丁颖.
+                           <%= myteamList.Rows[i]["subtitle"].ToString() %>
                         </p>
                         <!--<button type="submit" class="btn btn-2 ">More</button>-->
                     </div>
-                    <div class="col-sm-3 box-item">
-                        <div class="wrap-img">
-                            <img src="images/avatar-1.jpg" />
-                        </div>
-                        <h3 class="yellow">Durst财团副总裁</h3>
-                        <p>
-                            Alexander Durst.
-                        </p>
-                        <!--<button type="submit" class="btn btn-2 ">More</button>-->
-                    </div>
-                    <div class="col-sm-3 box-item">
-                        <div class="wrap-img">
-                            <img src="images/avatar-2.jpg" />
-                        </div>
-                        <h3 class="red">美国移民基金总裁CEO</h3>
-                        <p>Nicholas Mastroianni.</p>
-                        <!--<button type="submit" class="btn btn-2 ">More</button>-->
-                    </div>
-                    <div class="col-sm-3 box-item">
-                        <div class="wrap-img">
-                            <img src="images/avatar-6.jpg" />
-                        </div>
-                        <h3 class="green">Durst集团总裁</h3>
-                        <p>Jody Durst.</p>
-                        <!--<button type="submit" class="btn btn-2 ">More</button>-->
-                    </div>
+                     <%
+                        } %>
+                 
+                 
                 </div>
             </div>
         </section>
@@ -194,69 +175,42 @@
                     <div class="col-lg-12">
                         <h2>关于我们</h2>
                         <hr>
-                        <div class="intro">Lorem ipsum dolor sit amet</div>
+                        <div class="intro">我们有强大的团队和优质的服务.</div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <ul class="timeline">
-                            <li class="blue">
+                            <%
+                                for (int i = 0; i < aboutusList.Rows.Count; i++)
+                                {
+                                    string str = "";
+                                    if (i % 4 == 0)
+                                        str = "blue";
+                                    if (i % 4 == 1)
+                                        str = "timeline-inverted red";
+                                    if (i % 4 == 2)
+                                        str = "green";
+                                    if (i % 4 == 3)
+                                        str = "timeline-inverted yellow";
+                                    %>
+                              <li class="<%= str %>">
                                 <div class="timeline-image">
-                                    <img class="img-circle img-responsive" src="images/4.jpg" alt="">
+                                    <img class="img-circle img-responsive" src="<%= aboutusList.Rows[i]["photo"].ToString() %>" alt="">
                                 </div>
                                 <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4>2009-2011</h4>
-                                        <h4 class="subheading">Our Humble Beginnings</h4>
+                                    <div class="timeline-heading"> 
+                                        <h4 class="subheading"><%= aboutusList.Rows[i]["title"].ToString() %></h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                        <p class="text-muted"><%= aboutusList.Rows[i]["subtitle"].ToString() %></p>
                                     </div>
                                 </div>
                             </li>
-                            <li class="timeline-inverted red">
-                                <div class="timeline-image">
-                                    <img class="img-circle img-responsive" src="images/5.jpg" alt="">
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4>March 2011</h4>
-                                        <h4 class="subheading">An Agency is Born</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="green">
-                                <div class="timeline-image">
-                                    <img class="img-circle img-responsive" src="images/6.jpg" alt="">
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4>December 2012</h4>
-                                        <h4 class="subheading">Transition to Full Service</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="timeline-inverted yellow">
-                                <div class="timeline-image">
-                                    <img class="img-circle img-responsive" src="images/7.jpg" alt="">
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4>July 2014</h4>
-                                        <h4 class="subheading">Phase Two Expansion</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="timeline-inverted ">
+
+                                <%}
+                                 %> 
+                          <%--  <li class="timeline-inverted ">
                                 <div class="timeline-image">
                                     <h4>
                                         Be Part
@@ -264,7 +218,7 @@
                                         <br>Story!
                                     </h4>
                                 </div>
-                            </li>
+                            </li>--%>
                         </ul>
                     </div>
                 </div>
@@ -274,56 +228,52 @@
         <!-- ////////////Content Box 04 -->
         <section id="services" class="box-content box-4 box-style">
             <div class="clearfix">
-                <div class="cd-testimonials-wrapper cd-container">
-                    <ul class="cd-testimonials">
-                        <li>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="cd-testimonials-wrapper cd-container" >
+              <%--      <div style="width:100%;border:2px solid pink;height:300px;text-align:center;margin:0 auto;">
+                        <div style="border: 1px solid red; width: 200px; height: 300px; float: left;  ">
+                        </div>
+                        <div style="border: 1px solid red; width: 200px; height: 300px; float: left; ">
+                        </div>
+                        <div style="border: 1px solid red; width: 200px; height: 300px; float: left;  ">
+                        </div>
+                        <div style="border: 1px solid red; width: 200px; height: 300px; float: left;  ">
+                        </div>
+                    </div>--%>
+                   <ul class="cd-testimonials">
+                       <%
+                           for (int i = 0; i < servicesList.Rows.Count; i++)
+                           {%>
+                          <li>  
                             <div class="cd-author">
-                                <img src="images/avatar-1.jpg" alt="Author image">
+                                <img src="<%= servicesList.Rows[i]["photo"].ToString() %>" alt="Author image" style="width:150px;height:150px;">
                                 <ul class="cd-author-info">
-                                    <li>MyName</li>
-                                    <li>CEO, AmberCreative</li>
+                                    <li><%= servicesList.Rows[i]["title"].ToString() %></li>
+                                    <li><%= servicesList.Rows[i]["subtitle"].ToString() %></li>
                                 </ul>
                             </div>
+                            <p><%= servicesList.Rows[i]["content"].ToString() %></p>
                         </li>
-                        <li>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ea, perferendis error repudiandae numquam dolor fuga temporibus. Unde omnis, consequuntur.</p>
-                            <div class="cd-author">
-                                <img src="images/avatar-2.jpg" alt="Author image">
-                                <ul class="cd-author-info">
-                                    <li>MyName</li>
-                                    <li>Designer, CodyHouse</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam totam nulla est, illo molestiae maxime officiis, quae ad, ipsum vitae deserunt molestias eius alias.</p>
-                            <div class="cd-author">
-                                <img src="images/avatar-3.jpg" alt="Author image">
-                                <ul class="cd-author-info">
-                                    <li>MyName</li>
-                                    <li>CEO, CompanyName</li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul> <!-- cd-testimonials -->
+                           <%}
+                            %>
+                     
+                       
+                    </ul>  <!-- cd-testimonials -->
                 </div> <!-- cd-testimonials-wrapper -->
 
-                <div class="cd-see-all"><a href="#0" class="btn btn-1">See all</a></div>
+               <div class="cd-see-all"><a href="#0" class="btn btn-1">See all</a></div> 
 
                 <div class="cd-testimonials-all">
                     <div class="cd-testimonials-all-wrapper">
                         <ul>
                             <li class="cd-testimonials-item">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit totam saepe iste maiores neque animi molestias nihil illum nisi temporibus.</p>
-
-                                <div class="cd-author">
+                                  <div class="cd-author">
                                     <img src="images/avatar-1.jpg" alt="Author image">
                                     <ul class="cd-author-info">
-                                        <li>MyName</li>
+                                        <li>MyNam11e</li>
                                         <li>CEO, CompanyName</li>
                                     </ul>
                                 </div> <!-- cd-author -->
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit totam saepe iste maiores neque animi molestias nihil illum nisi temporibus.</p> 
                             </li>
                             <li class="cd-testimonials-item">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore nostrum nisi, doloremque error hic nam nemo doloribus porro impedit perferendis. Tempora, distinctio hic suscipit. At ullam eaque atque recusandae modi fugiat voluptatem laborum laboriosam rerum, consequatur reprehenderit omnis, enim pariatur nam, quidem, quas vel reiciendis aspernatur consequuntur. Commodi quasi enim, nisi alias fugit architecto, doloremque, eligendi quam autem exercitationem consectetur.</p>
@@ -478,7 +428,7 @@
                     </div>
                     <div class="col-md-8">
                         <div id="contact-form">
-                            <form name="form1" method="post" action="contact.php">
+                            <form name="form1" method="post" action="index.aspx">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -494,7 +444,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="text" class="form-control input-lg" name="subject" id="subject" placeholder="请输入你的电话" required="required" />
+                                            <input type="text" class="form-control input-lg" name="phone" id="phone" placeholder="请输入你的电话" required="required" />
                                         </div>
                                     </div>
                                 </div>
@@ -664,7 +614,7 @@ $(function() {
     $('#lanrenzhijia_m').delay(3000).slideDown();
     $('a[name=close]').click(function () {
         $('#lanrenzhijia_m').slideUp();
-        $('#lanrenzhijia_m').delay(5000).slideDown();
+        $('#lanrenzhijia_m').delay(10000).slideDown();
     });
 
     var flag = 0;

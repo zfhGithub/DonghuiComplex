@@ -630,8 +630,12 @@
     <Content Include="admin\ny\message.html" />
     <Content Include="admin\ny\prducts.html" />
     <Content Include="admin\ym\aboutus.html" />
+    <Content Include="admin\ym\addaboutus.html" />
+    <Content Include="admin\ym\addservices.html" />
+    <Content Include="admin\ym\addteam.html" />
     <Content Include="admin\ym\myteam.html" />
     <Content Include="admin\ym\news.html" />
+    <Content Include="admin\ym\services.html" />
     <Content Include="admin\ym\setbackground.html" />
     <Content Include="assets\css\font-awesome.min.css" />
     <Content Include="assets\css\ie8.css" />
@@ -1149,6 +1153,9 @@
     <Compile Include="com\message.cs" />
     <Compile Include="com\price.cs" />
     <Compile Include="com\settings.cs" />
+    <Compile Include="com\ym\aboutus.cs" />
+    <Compile Include="com\ym\myteam.cs" />
+    <Compile Include="com\ym\services.cs" />
     <Compile Include="dc-337\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SQLOper.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -267,9 +268,9 @@ namespace SqlOper
                 #region 上传商品头像 
                 if (file.ContentLength > 2097152)
                 {
-                    return "{\"status\":\"0\",\"statusCode\":\"300\"}";
+                    return "{\"status\":\"0\",\"statusCode\":\"300\",message:\"图片不能大于2兆\"}";
                 }
-                String filepath = HttpContext.Current.Server.MapPath("~") + @"image\head\";
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"images\head\";
                 if (!Directory.Exists(filepath))
                 {
                     Directory.CreateDirectory(filepath);
@@ -279,7 +280,7 @@ namespace SqlOper
 
                 //  string rt = Utils.GetThumbnail(filepath + fileName, filepath + "best-" + fileName, 160, 100, "best-" + fileName);
                 //  Utils.SetPicDescription(filepath + "best-" + fileName, "BESTCAPS", pointX: 0.2f, pointY: 0.5f);
-                return "{ \"statusCode\":\"200\",\"url\":\"/image/head/" + fileName + "\"}"; ;
+                return "{ \"statusCode\":\"200\",\"url\":\"/images/head/" + fileName + "\"}"; ;
                 #endregion
             }
             else if (type.StartsWith("banner"))
@@ -333,7 +334,7 @@ namespace SqlOper
                 {
                     return "{ \"statusCode\":\"300\",\"message\":\"文件不能超过5兆\"}";
                 }
-                String filepath = HttpContext.Current.Server.MapPath("~") + @"image\detail\";
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"images\detail\";
                 if (!Directory.Exists(filepath))
                 {
                     Directory.CreateDirectory(filepath);
@@ -344,7 +345,7 @@ namespace SqlOper
                     file.SaveAs(filepath + fileName);
                     // return "{ \"statusCode\":\"200\",\"message\":\"上传成功\",\"src\":\""+fileName+"\"}";
                     // Utils.SetPicDescription(filepath + fileName, font: 30, pointX: 0.25f, pointY: 0.5f);
-                    return "{ \"error\":0,\"url\":\"/image/detail/" + fileName + "\"}";
+                    return "{ \"error\":0,\"url\":\"/images/detail/" + fileName + "\"}";
                 }
                 catch
                 {
@@ -423,10 +424,27 @@ namespace SqlOper
 
         }
 
-        public static void setSession(DonghuiComplex.Models.Users user)
+        private static string _sessionName;
+        public static string SessionName
         {
-            //  HttpSessionState sess =  new HttpSessionState() ;
-            // sess["UserInfo"] = user;
+            get
+            {
+                return _sessionName ?? "UserInfo";
+            }
+
+            set
+            {
+                _sessionName = value;
+            }
+        }
+        public static void setSession(Users user)
+        {
+            HttpContext.Current.Session[_sessionName] = user;
+        }
+
+        public static Users getSession(string key = null)
+        {
+            return HttpContext.Current.Session[key ?? _sessionName] as Users;
         }
     }
 }

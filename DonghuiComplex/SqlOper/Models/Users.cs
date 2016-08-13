@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace DonghuiComplex.Models
+namespace SQLOper.Models
 {
     public class Users
     {
