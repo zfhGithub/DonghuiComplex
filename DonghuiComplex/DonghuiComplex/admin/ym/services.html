@@ -1,29 +1,24 @@
 ﻿<script type="text/javascript">
+    var ymserviceslist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
 
-    var pageIndex = 1;
-    var pageSize = 10;
-    var MaxPage;
-    var TotalPage;//总条数
-
-    function ProductInfo() {
+    function ymserviceslistpage() {
         var customNo = $("#customNo").val();
         var customName = $("#customName").val();
         $.ajax({
             url: 'ajax.ashx?action=ymserviceslist',
                 data: {
-                    "pageIndex": pageIndex,
-                    "pageSize": pageSize,
+                    "pageIndex": ymserviceslist.pageIndex,
+                    "pageSize": ymserviceslist.pageSize,
                 },
                 type: "post",
                 success: function (result) {
                     var html = [];
                     var json = JSON.parse(result);
-                    console.log(json);
                     var count = json["count"];
                     count = JSON.parse(count);
-                    TotalPage = json["count"];//总记录数
+                    ymserviceslist.TotalPage = json["count"];//总记录数
                     //求出最大页
-                    MaxPage = Math.ceil(TotalPage / pageSize);
+                    ymserviceslist.MaxPage = Math.ceil(ymserviceslist.TotalPage / ymserviceslist.pageSize);
 
                     var da = json["data"];
                     da = JSON.parse(da);
@@ -36,126 +31,114 @@
                     $("#ym_services_list tbody").empty().append(html.join(''));
                     html = [];
 
-                    $("#total").html(TotalPage);//共..条数据
+                    $("#ymserviceslist_total").html(ymserviceslist.TotalPage);//共..条数据
                     html.push("<ul class='pagination'>");
-                    html.push("<li class='j-first'><a href='javascript:' onclick='first()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
-                    html.push("<li class='j-prev'><a href='javascript:' onclick='Prepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
+                    html.push("<li class='j-first'><a href='javascript:' onclick='ymserviceslistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
+                    html.push("<li class='j-prev'><a href='javascript:' onclick='ymserviceslistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
 
-                    for (var i = 1; i <= MaxPage; i++) {
+                    for (var i = 1; i <= ymserviceslist.MaxPage; i++) {
                         var c = "j-num";
-                        if (i == pageIndex) {
+                        if (i == ymserviceslist.pageIndex) {
                             c = "selected " + c;
                         }
-                        html.push("<li class='"+c+"'><a href='javascript:' '> "+i+"</a></li>");
+                        html.push("<li class='" + c + "'><a href='javascript:' onclick='ymserviceslist_page_click(this)'> " + i + "</a></li>");
                     }
-                    html.push("<li class='j-next'><a href='javascript:' onclick='next()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
-                    html.push("<li class='j-last'><a href='javascript:' onclick='weiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
-                    html.push("<li class='jumpto'><span class='p-input'><input  id='putvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='Letgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
+                    html.push("<li class='j-next'><a href='javascript:' onclick='ymserviceslistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
+                    html.push("<li class='j-last'><a href='javascript:' onclick='ymserviceslistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
+                    html.push("<li class='jumpto'><span class='p-input'><input  id='ymserviceslistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='ymserviceslistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
                     html.push("<ul>");
-                    $("#ination").empty().append(html.join(''));
+                    $("#ymserviceslistination").empty().append(html.join(''));
                     //如果当前页等于1就让首页、上一页不可点击
-                    if (pageIndex == 1) {
-                        $(".j-first").addClass("disabled");
-                        $(".j-prev").addClass("disabled");
+                    if (ymserviceslist.pageIndex == 1) {
+                        $("#ymserviceslistination .j-first").addClass("disabled");
+                        $("#ymserviceslistination .j-prev").addClass("disabled");
 
                     }
-                    if (pageIndex == MaxPage)
+                    if (ymserviceslist.pageIndex == ymserviceslist.MaxPage)
                     {
-                        $(".j-next").addClass("disabled");
-                        $(".j-last").addClass("disabled");
-                        return MaxPage;
+                        $("#ymserviceslistination .j-next").addClass("disabled");
+                        $("#ymserviceslistination .j-last").addClass("disabled");
                     }
             }
         });
     }
     //下一页
-    function next() {
-        pageIndex++;
-        if (pageIndex>MaxPage) {
-            pageIndex = MaxPage;
+    function ymserviceslistnext() {
+        ymserviceslist.pageIndex++;
+        if (ymserviceslist.pageIndex > ymserviceslist.MaxPage) {
+            ymserviceslist.pageIndex = ymserviceslist.MaxPage;
         }
-        ProductInfo();
+        ymserviceslistpage();
     }
     //上一页
-    function Prepage () {
-        pageIndex--;
-        if (pageIndex<1) {
-            pageIndex = 1;
+    function ymserviceslistPrepage () {
+        ymserviceslist.pageIndex--;
+        if (ymserviceslist.pageIndex < 1) {
+            ymserviceslist.pageIndex = 1;
         }
-        ProductInfo();
+        ymserviceslistpage();
     }
     //首页
-    function first() {
-        pageIndex = 1;
-        ProductInfo();
+    function ymserviceslistfirst() {
+        ymserviceslist.pageIndex = 1;
+        ymserviceslistpage();
     }
 
     //尾页
-    function weiye() {
+    function ymserviceslistweiye() {
 
-        pageIndex = MaxPage;
-        ProductInfo();
+        ymserviceslist.pageIndex = ymserviceslist.MaxPage;
+        ymserviceslistpage();
 
     }
-    function Letgo() {
-        var InputValue = $("#putvalue").val();
-        if (InputValue > MaxPage) {
-            $(this).alertmsg('warn', '你输入的数字超过页面范围');
+    function ymserviceslistLetgo() {
+        var InputValue = $("#ymserviceslistputvalue").val();
+        if (InputValue > ymserviceslist.MaxPage) {
+            $(this).alertmsg('info', '你输入的数字超过页面范围');
             return;
         }
         if (InputValue < 1) {
-            $(this).alertmsg('warn', '请输入大于第一页的数字');
+            $(this).alertmsg('info', '请输入大于第一页的数字');
             return;
         }
         if (isNaN(Number(InputValue)) || InputValue == "") {
-            $(this).alertmsg('warn', '请输入数字');
+            $(this).alertmsg('info', '请输入数字');
             return;
         }
-        //console.log(InputValue);
-        pageIndex = InputValue;
-        ProductInfo();
+        ymserviceslist.pageIndex = InputValue;
+        ymserviceslistpage();
+    }
+    function ymserviceslist_page_size_change(_this) {
+        var checkText = $(_this).find("option:selected").text();
+        ymserviceslist.pageIndex = 1;
+        ymserviceslist.pageSize = checkText;
+        ymserviceslistpage();
+    }
+    function ymserviceslist_page_click(_this) {
+        $(_this).attr("class", "selected");
+        var Sum = $(_this).text();
+        ymserviceslist.pageIndex = Sum;
+        ymserviceslistpage();
     }
 
     $(function () {
-
-        ProductInfo();
-        //点击跳转相应页面
-        $(".j-num").live("click", function () {
-            $(".j-num").removeClass("selected");
-            $(this).attr("class", "selected");
-            var Sum = $(this).text();
-            pageIndex = Sum;
-            ProductInfo();
-        })
-
-
-        // 设置option选项 .选中每页显示多少条数据
-        $("#sl").live("change", function () {
-            var checkText = $("#sel").find("option:selected").text();
-            if (checkText>TotalPage) {
-                pageIndex = 1;
-            }
-            pageSize = checkText;
-            ProductInfo();
-            search();
-        });
-
+        ymserviceslistpage();
     });
     function search() {
-        pageIndex = 1;
-        ProductInfo();
+        ymserviceslist.pageIndex = 1;
+        ymserviceslistpage();
     }
     var ym_services_editid;
     function edit_ym_services(_this, id, name) {
         ym_services_editid = id;
-        $(_this).dialog({ id: 'dialog_addym_services', url: '/admin/ym/addservices.html',width:860,height:500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog' ,onClose: "dialog_before_close" });
+        $(_this).dialog({ id: 'dialog_addym_services', url: '/admin/ym/addservices.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_ymserviceslist_before_close" });
     }
-    function dialog_before_close($dialog) {
+    function dialog_ymserviceslist_before_close($dialog) {
         ym_services_editid = undefined;
         $("body").navtab("refresh", "ym_services");
         return true;
     }
-</script>
+</script> 
 <div class="bjui-pageHeader">
     <div class="pull-right">
 
@@ -226,17 +209,17 @@
 <div class="bjui-pageFooter">
     <div class="pages">
         <span>每页&nbsp;</span>
-        <div class="selectPagesize" id="s_advantage">
-            <select data-toggle="selectpicker" id="s_advantage_select">
+        <div class="selectPagesize" onchange="ymserviceslist_page_size_change(this)">
+            <select data-toggle="selectpicker">
                 <option value="10" id="three">10</option>
                 <option value="20" id="six">20</option>
                 <option value="30">30</option>
 
             </select>
         </div>
-        <span>&nbsp;条, 共&nbsp;<span id="total"> </span> 条</span>
+        <span>&nbsp;条, 共&nbsp;<span id="ymserviceslist_total"> </span> 条</span>
     </div>
-    <div class="pagination-box" id="ination" data-total="10" data-page-size="2" data-page-current="1">
+    <div class="pagination-box" id="ymserviceslistination" data-total="10" data-page-size="2" data-page-current="1">
     </div>
 
 </div>

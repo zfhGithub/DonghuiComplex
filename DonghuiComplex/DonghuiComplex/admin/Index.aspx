@@ -183,8 +183,7 @@ function MainMenuClick(event, treeId, treeNode) {
         
         zTree.expandNode(treeNode, !treeNode.open, false, true, true)
         return
-    }
-    console.log(treeNode.tabid);
+    } 
     if (treeNode.target && treeNode.target == 'dialog')
         $(event.target).dialog({id:treeNode.tabid, url:treeNode.url, title:treeNode.name})
     else
