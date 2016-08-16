@@ -621,6 +621,11 @@
     <Content Include="admin\js\js\syntaxhighlighter-2.1.382\styles\shThemeMidnight.css" />
     <Content Include="admin\js\js\syntaxhighlighter-2.1.382\styles\shThemeRDark.css" />
     <Content Include="admin\login.aspx" />
+    <Content Include="admin\ly\aboutus.html" />
+    <Content Include="admin\ly\addjingdian.html" />
+    <Content Include="admin\ly\addlive.html" />
+    <Content Include="admin\ly\addservices.html" />
+    <Content Include="admin\ly\jingdianlist.html" />
     <Content Include="admin\ly\live.html" />
     <Content Include="admin\ly\message.html" />
     <Content Include="admin\ly\services.html" />
@@ -1150,6 +1155,10 @@
     <Compile Include="com\case.cs" />
     <Compile Include="com\home\message.cs" />
     <Compile Include="com\home\sanbandao.cs" />
+    <Compile Include="com\ly\aboutinfo.cs" />
+    <Compile Include="com\ly\jingdian.cs" />
+    <Compile Include="com\ly\live.cs" />
+    <Compile Include="com\ly\services.cs" />
     <Compile Include="com\message.cs" />
     <Compile Include="com\price.cs" />
     <Compile Include="com\settings.cs" />

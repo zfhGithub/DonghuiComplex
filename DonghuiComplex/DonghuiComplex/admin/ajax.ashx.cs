@@ -178,8 +178,113 @@ namespace DonghuiComplex.admin
                     id = req.Params["id"];
                     res.Write(Utils.DataTableToJSON(com.ym.services.getServicesDetailById(id)));
                     break;
-                    #endregion
                 #endregion
+                #endregion
+
+                #region 旅游
+                #region 关于
+                case "getlyaboutinfo":
+                    res.Write(Utils.DataTableToJSON(com.ly.aboutinfo.getAboutInfo()));
+                    break;
+                case "setlyaboutus":
+                    title = req.Form["ly_aboutus_title"];
+                    content = req.Form["ly_aboutus_content"];
+                    status = com.ly.aboutinfo.setAboutInfo(title,content);
+                    context.Response.Write(Utils.GetReulst(200, "设置成功", "设置失败", status));
+                    break;
+                #endregion
+            
+                    #region 服务
+                case "addlyservices":
+                    status = com.ly.services.addServices(req.Form["ly_services_title"], req.Form["ly_services_subtitle"], req.Form["ly_services_photo"], req.Form["ly_services_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatelyservices":
+                    status = com.ly.services.updateServices(req.Params["id"], req.Form["ly_services_title"], req.Form["ly_services_subtitle"], req.Form["ly_services_photo"], req.Form["ly_services_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "lyserviceslist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.ly.services.getServicesList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.ly.services.getServicesCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletelyservices":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ly.services.deleteServicesById(id)));
+                    break;
+                case "getlyservicesdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.ly.services.getServicesDetailById(id)));
+                    break;
+                #endregion
+
+                #region 现场
+                case "addlylive":
+                    status = com.ly.live.addLive(req.Form["ly_live_title"], req.Form["ly_live_subtitle"], req.Form["ly_live_photo"], req.Form["ly_live_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatelylive":
+                    status = com.ly.live.updateLive(req.Params["id"], req.Form["ly_live_title"], req.Form["ly_live_subtitle"], req.Form["ly_live_photo"], req.Form["ly_live_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "lylivelist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.ly.live.getLiveList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.ly.live.getLiveCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletelylive":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ly.live.deleteLiveById(id)));
+                    break;
+                case "getlylivedetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.ly.live.getLiveDetailById(id)));
+                    break;
+                #endregion
+                     
+                #region 景点管理
+                case "addlyjingdian":
+                    status = com.ly.jingdian.addJingdian(req.Form["ly_jingdian_title"], req.Form["ly_jingdian_subtitle"], req.Form["ly_jingdian_photo"], req.Form["ly_jingdian_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatelyjingdian":
+                    status = com.ly.jingdian.updateJingdian(req.Params["id"], req.Form["ly_jingdian_title"], req.Form["ly_jingdian_subtitle"], req.Form["ly_jingdian_photo"], req.Form["ly_jingdian_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "lyjingdianlist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.ly.jingdian.getJingdianList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.ly.jingdian.getJingdianCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletelyjingdian":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ly.jingdian.deleteJingdianById(id)));
+                    break;
+                case "getlyjingdiandetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.ly.jingdian.getJingdianDetailById(id)));
+                    break;
+
+                    #endregion
+                    #endregion
             }
         }
 

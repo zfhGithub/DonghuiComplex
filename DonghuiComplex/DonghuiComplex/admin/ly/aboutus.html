@@ -1,0 +1,69 @@
+﻿
+<div class="bjui-pageContent">
+    <form action="ajax.ashx?action=setlyaboutus" id="ly_aboutus_form" data-toggle="validate" data-alertmsg="false">
+        <input type="hidden" name="custom.id" value="edce142bc2ed4ec6b623aacaf602a4de">
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="ly_aboutus_title"class="control-label x85">标题：</label>
+                        <input type="text" id="ly_aboutus_title" name="ly_aboutus_title" data-rule="required" size="35" />
+                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="ly_aboutus_content" class="control-label x85">关于我们：</label>
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <textarea name="ly_aboutus_content" id="ly_aboutus_content" class="j-content" style="width: 700px;" data-upload-json="ajax.ashx?action=kindeditor&type=kindeditor"
+                                      data-after-upload="kindeditor_upload_success" data-file-manager-json="ajax.ashx?action=fileManagerJson"
+                                      data-toggle="kindeditor" data-minheight="100"></textarea>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="submit" class="btn-default"data-icon="save">保存</button></li>
+    </ul>
+</div>
+
+<script> 
+    $(function () {
+        $.ajax({
+            url: "ajax.ashx?action=getlyaboutinfo",
+            data: {   },
+            success: function (r) {
+                var d = JSON.parse(r)["d"][0];
+
+                $("#ly_aboutus_title").val(d.title);
+                $("#ly_aboutus_content").html(d.content); 
+                KindEditor.html('#ly_aboutus_content', d.content); 
+            }, error: function () {
+                console.log("error");
+            }
+        });
+
+        KindEditor.ready(function (K) {
+            var editor = K.editor({
+                allowFileManager: true
+            }); 
+            editor.plugin.multiImageDialog({
+                clickFn: function (urlList) { 
+                    //var div = K('#J_imageView');
+                    // div.html('');
+                    K.each(urlList, function (i, data) {
+                        //  div.append('<img src="' + data.url + '">');
+                    });
+                    editor.hideDialog();
+                }
+            });
+
+
+        });
+    });
+</script>

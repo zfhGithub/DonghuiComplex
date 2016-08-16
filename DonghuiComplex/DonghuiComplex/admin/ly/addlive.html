@@ -1,0 +1,96 @@
+﻿
+<div class="bjui-pageContent">
+    <form action="ajax.ashx?action=addlylive" id="j_addlylive_form" data-toggle="validate" data-alertmsg="false">
+        <input type="hidden" name="custom.id" value="edce142bc2ed4ec6b623aacaf602a4de">
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="ly_live_title" class="control-label x85"> 标题：</label>
+                        <input type="text" name="ly_live_title" id="ly_live_title" value="" data-rule="required" size="25">
+                    </td>
+
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <label for="ly_live_subtitle" class="control-label x85">二级标题：</label>
+                        <textarea name="ly_live_subtitle" id="ly_live_subtitle" data-toggle="autoheight" cols="60" rows="1" data-rule="required"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="ly_live_photo_up" class="control-label x85">图片：</label>
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <div>推荐大小(600X434)</div>
+                            <div id="ly_live_photo_up" data-toggle="upload" data-uploader="ajax.ashx?action=kindeditor&type=head"
+                                 data-file-size-limit="2097152"
+                                 data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
+                                 data-multi="true"
+                                 data-drag-drop="true"
+                                 data-on-upload-success="head_upload_success"
+                                 data-icon="cloud-upload"></div>
+                            <input type="hidden" name="ly_live_photo" value="" id="ly_live_photo" data-rule="图片:required">
+                            <span id="ly_live_photo_show"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="ly_live_content" class="control-label x85">内容：</label>
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <textarea name="ly_live_content" id="ly_live_content" class="j-content" style="width: 700px;" data-upload-json="ajax.ashx?action=kindeditor&type=kindeditor"
+                                      data-after-upload="kindeditor_upload_success" data-file-manager-json="ajax.ashx?action=fileManagerJson"
+                                      data-toggle="kindeditor" data-minheight="200"></textarea>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="addlvlive()">保存</button></li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        if (ly_live_editid) {
+            $.ajax({
+                url: "ajax.ashx?action=getlylivedetailbyid",
+                data: { id: ly_live_editid },
+                type: "post",
+                success: function (r) {
+                    var d = JSON.parse(r)["d"][0];
+                    $("#ly_live_title").val(d.title);
+                    $("#ly_live_subtitle").val(d.subtitle);
+                    $("#ly_live_photo").val(d.photo);
+                    $('#ly_live_photo_show').html('已上传图片：<img src="' + d.photo + '" width="100">');
+                    $("#ly_live_content").html(d.content);
+                    KindEditor.html('#ly_live_content', d.content);
+                }, error: function () {
+                    console.log("error");
+                }
+            });
+        }
+    });
+    function head_upload_success(file, data) {
+        var json = JSON.parse(data);
+        if (json.statusCode == 200)
+        {
+            $("#ly_live_photo").val(json.url);
+            $('#ly_live_photo_show').html('已上传图片：<img src="' + json.url + '" width="100">')
+        }
+
+    }
+    function addlvlive() {
+        if (ly_live_editid) {
+            $("#j_addlylive_form").attr("action", "ajax.ashx?action=updatelylive&id=" + ly_live_editid);
+        }
+        $("#j_addlylive_form").submit();
+    }
+</script>

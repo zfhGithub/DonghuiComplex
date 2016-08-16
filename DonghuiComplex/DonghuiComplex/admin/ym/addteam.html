@@ -55,7 +55,7 @@
 <div class="bjui-pageFooter">
     <ul>
         <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
-        <li><button type="button" class="btn-default" data-icon="save" onclick="addadvantagesave()">保存</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="addymmyteam()">保存</button></li>
     </ul>
 </div>
 <script type="text/javascript">
@@ -88,7 +88,7 @@
         }
 
     }
-    function addadvantagesave() {
+    function addymmyteam() {
         if (ym_myteam_editid) {
             $("#j_addymteam_form").attr("action", "ajax.ashx?action=updatemyteam&id=" + ym_myteam_editid);
         }

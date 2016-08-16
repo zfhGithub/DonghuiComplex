@@ -35,11 +35,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage">Vegetable Farm</a>
+          <a class="navbar-brand" href="#myPage">旅游</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="active"><a href="#myPage">首页</a></li>
+                <li><a href="#scenicSpot">景点</a></li>
 				<li><a href="#about">关于</a></li>
 				<li><a href="#services">服务</a></li>
 				<li><a href="#portfolio">现场</a></li>
@@ -63,37 +64,55 @@
 <!-- /Banner -->
 <!-- About -->
 <section class="about-us" id="about">
-	<h3 class="text-center slideanim">关于我们</h3>
+	<h3 class="text-center slideanim"><%= aboutus.Rows[0]["title"].ToString() %></h3>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-lg-offset-2 slideanim">
+          <%--  <div class="col-lg-4 col-lg-offset-2 slideanim">
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
             </div>
             <div class="col-lg-4 slideanim">
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-            </div>
+            </div>--%>
+            <%= aboutus.Rows[0]["content"].ToString() %>
         </div>
     </div>
 </section>
-<div class="content-section-a">
+    <section id="scenicSpot">
+        <% for (int i = 0; i < jingdian.Rows.Count; i++)
+            {
+                string className = "content-section-a";
+                string cn = "",cn1="col-lg-5 col-lg-offset-2 col-sm-6 slideanim";
+                if (i == 0)
+                    cn = "col-lg-5 col-sm-6";
+                if (i == 1)
+                {
+                    cn = "col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6";
+                    cn1 = "col-lg-5 col-sm-pull-6 col-sm-6 slideanim";
+                }
+                if (i == 2) 
+                    cn = "col-lg-5 col-sm-6";
+                if (i % 2 != 0)
+                    className = "content-section-b";
+                %>
+        <div class="<%=className %>" >
 	<div class="container">
 		<div class="row">
-            <div class="col-lg-5 col-sm-6">
-				<div class="content1">
-					<h3 class="section-heading slideanim">Vegetable Farm Building a Better Tomorrow.</h3>
+            <div class="<%= cn %>">
+				<div class="content<%= i+1 %>">
+					<h3 class="section-heading slideanim"><%= jingdian.Rows[i]["title"] %></h3>
 					<hr class="section-heading-spacer slideanim">
 					<div class="clearfix"></div>
-					<p class="lead slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+					<p class="lead slideanim"> <%= jingdian.Rows[i]["subtitle"] %></p>
 				</div>
 			</div>
-            <div class="col-lg-5 col-lg-offset-2 col-sm-6 slideanim">
+            <div class="<%=cn1 %>">
                 <ul class="grid cs-style">
 					<li>
 						<figure>
-							<img src="images/farm1.jpg" alt="" class="img-responsive">
+							<img src="<%= jingdian.Rows[i]["photo"] %>" alt="" class="img-responsive">
 							<figcaption>
-								<h3>Vegetable Farm</h3>
-								<p>Building a Better Tomorrow.</p>
+								<h3></h3>
+								<p></p>
 							</figcaption>
 						</figure>
 					</li>
@@ -102,112 +121,41 @@
         </div>
 	</div>
 </div>
-<div class="content-section-b">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
-				<div class="content2">
-					<h3 class="section-heading slideanim">Something Special About The Vegetable Farm</h3>
-					<hr class="section-heading-spacer slideanim">
-					<div class="clearfix"></div>
-					<p class="lead slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-				</div>
-			</div>
-            <div class="col-lg-5 col-sm-pull-6 col-sm-6 slideanim">
-                <ul class="grid cs-style">
-					<li>
-						<figure>
-							<img src="images/farm2.jpg" alt="" class="img-responsive">
-							<figcaption>
-								<h3>Something Special</h3>
-								<p>About The Vegetable Farm</p>
-							</figcaption>
-						</figure>
-					</li>
-				</ul>
-            </div>
-        </div>
-	</div>
-</div>
-<div class="content-section-a">
-	<div class="container">
-		<div class="row">
-            <div class="col-lg-5 col-sm-6">
-				<div class="content3">
-					<h3 class="section-heading slideanim">Vegetable Farm The Fresh Maker!</h3>
-					<hr class="section-heading-spacer slideanim">
-					<div class="clearfix"></div>
-					<p class="lead slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-				</div>
-			</div>
-            <div class="col-lg-5 col-lg-offset-2 col-sm-6 slideanim">
-                <ul class="grid cs-style">
-					<li>
-						<figure>
-							<img src="images/farm3.jpg" alt="" class="img-responsive">
-							<figcaption>
-								<h3>Vegetable Farm</h3>
-								<p>The Fresh Maker!</p>
-							</figcaption>
-						</figure>
-					</li>
-				</ul>
-            </div>
-        </div>
-	</div>
-</div>
+            <%} %>
+         
+</section>
+
 <!-- /About -->
 <!-- /Services -->
 <section class="our-services" id="services">
-    <h3 class="text-center slideanim">Our Services</h3>
+    <h3 class="text-center slideanim">我们的服务</h3>
 	<ul class="ch-grid">
-		<li>
-			<div class="ch-item ch-img-1 slideanim">				
+        <%
+            for (int i = 0; i < services.Rows.Count; i++)
+            {
+                %>
+        	<li>
+			<div class="ch-item slideanim" style="background-image: url(<%=services.Rows[i]["photo"] %>)">				
 				<div class="ch-info-wrap">
 					<div class="ch-info">
-						<div class="ch-info-front ch-img-1"></div>
+						<div class="ch-info-front ch-img-1" style="background-image: url(<%=services.Rows[i]["photo"] %>)"></div>
 						<div class="ch-info-back">
-							<h5>Vegetative Propagation</h5>
-							<p>Using Advanced Scientific Techniques</p>
+							<h5>  <%=services.Rows[i]["title"] %></h5>
+							<p><%=services.Rows[i]["subtitle"] %></p>
 						</div>	
 					</div>
 				</div>
 			</div>
-			<h4 class="slideanim">Vegetative Propagation</h4>
-			<p class="slideanim">Using Advanced Scientific Techniques</p>
+			<h4 class="slideanim" style="white-space:nowrap;"> <%=services.Rows[i]["title"] %> </h4>
+			<p class="slideanim"> <%=services.Rows[i]["subtitle"] %></p>
 		</li>
-		<li>
-			<div class="ch-item ch-img-2 slideanim">
-				<div class="ch-info-wrap">
-					<div class="ch-info">
-						<div class="ch-info-front ch-img-2"></div>
-						<div class="ch-info-back">
-							<h5>Irrigation</h5>
-							<p>Advanced Irrigation Techniques</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<h4 class="slideanim">Irrigation</h4>
-			<p class="slideanim">Using Advanced Irrigation Techniques</p>
-		</li>
-		<li>
-			<div class="ch-item ch-img-3 slideanim">
-				<div class="ch-info-wrap">
-					<div class="ch-info">
-						<div class="ch-info-front ch-img-3"></div>
-						<div class="ch-info-back">
-							<h5>Tools-Machinery</h5>
-							<p>Using Advanced Tools & Machinery</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<h4 class="slideanim">Tools-Machinery</h4>
-			<p class="slideanim">Using Advanced Tools & Machinery</p>
-		</li>
-		<li>
-			<div class="ch-item ch-img-4 slideanim">
+         <%
+            }
+            %>
+	
+	  
+	<%--	<li>
+			<div class="ch-item slideanim" style="background-image: url(images/service4.jpg)">
 				<div class="ch-info-wrap">
 					<div class="ch-info">
 						<div class="ch-info-front ch-img-4"></div>
@@ -220,81 +168,41 @@
 			</div>
 			<h4 class="slideanim">End Of Harvest</h4>
 			<p class="slideanim">Using Advanced Harvesting Techniques</p>
-		</li>
+		</li>--%>
 	</ul>
 </section>
 <!-- /Services -->
 <!-- Portfolio Grid Section -->
 <section id="portfolio">
-	<h3 class="text-center slideanim">Our Portfolio</h3>
+	<h3 class="text-center slideanim">现场</h3>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item slideanim">
-                <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-					<div class="caption">
-						<div class="caption-content">
-							<i class="fa fa-paper-plane-o"></i>
-						</div>
-					</div>
-					<img src="images/port1.jpg" class="img-responsive" alt="">
-				</a>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item slideanim">
-                <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-					<div class="caption">
-                        <div class="caption-content">
-							<i class="fa fa-paper-plane-o"></i>
-                        </div>
-					</div>
-                    <img src="images/port2.jpg" class="img-responsive" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item slideanim">
-                <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-paper-plane-o"></i>
-                        </div>
+            <%for (int i = 0; i < live.Rows.Count; i++)
+                {
+                    %>
+                    <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item slideanim">
+                        <a href="#portfolioModal<%= i %>" class="portfolio-link" data-toggle="modal">
+					        <div class="caption">
+						        <div class="caption-content">
+							        <i class="fa fa-paper-plane-o"></i>
+						        </div>
+					        </div>
+					        <img src="<%= live.Rows[i]["photo"].ToString() %>" class="img-responsive" alt="" >
+				        </a>
                     </div>
-                    <img src="images/port3.jpg" class="img-responsive" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item slideanim">
-                <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-paper-plane-o"></i>
-                        </div>
-                    </div>
-                    <img src="images/port4.jpg" class="img-responsive" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item slideanim">
-				<a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-paper-plane-o"></i>
-                        </div>
-                    </div>
-                    <img src="images/port5.jpg" class="img-responsive" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item slideanim">
-                <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-paper-plane-o"></i>
-                        </div>
-                    </div>
-					<img src="images/port6.jpg" class="img-responsive" alt="">
-                </a>
-            </div>
+                <%}
+                 %>
+        
         </div>
     </div>
 </section>
 <!-- /Portfolio Grid Section -->
 <!-- Portfolio Modals -->
-<div class="portfolio-modal modal fade slideanim" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <%for (int i = 0; i < live.Rows.Count; i++)
+        {
+            %>
+    
+<div class="portfolio-modal modal fade slideanim" id="portfolioModal<%=i %>" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-content">
         <div class="close-modal" data-dismiss="modal">
             <div class="lr">
@@ -305,130 +213,21 @@
 			<div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="modal-body">
-                        <h3>Vegetable Farm</h3>
+                        <h3><%= live.Rows[i]["title"] %></h3>
 						<hr>
                         <img src="images/port1.jpg" class="img-responsive img-centered" alt="">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        <p><%= live.Rows[i]["content"] %></p>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>关闭</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="portfolio-modal modal fade slideanim" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl"></div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h3>Vegetable Farm</h3>
-                        <hr>
-                        <img src="images/port2.jpg" class="img-responsive img-centered" alt="">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-<div class="portfolio-modal modal fade slideanim" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl"></div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h3>Vegetable Farm</h3>
-                        <hr>
-                        <img src="images/port3.jpg" class="img-responsive img-centered" alt="">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="portfolio-modal modal fade slideanim" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl"></div>
-            </div>
-        </div>
-        <div class="container">
-			<div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h3>Vegetable Farm</h3>
-                        <hr>
-                        <img src="images/port4.jpg" class="img-responsive img-centered" alt="">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-						<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="portfolio-modal modal fade slideanim" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl"></div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h3>Vegetable Farm</h3>
-                        <hr>
-                        <img src="images/port5.jpg" class="img-responsive img-centered" alt="">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="portfolio-modal modal fade slideanim" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl"></div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h3>Vegetable Farm</h3>
-                        <hr>
-                        <img src="images/port6.jpg" class="img-responsive img-centered" alt="">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        <%} %> 
 <!-- /Portfolio Modals -->
 <!-- Blog -->
-<section class="our-blog" id="blog">
+<%--<section class="our-blog" id="blog">
 	<h3 class="text-center slideanim">Our Blog</h3>
     <div class="container">
 		<div class="row">
@@ -494,10 +293,10 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section>--%>
 <!-- /Blog -->
 <!-- Contact-Us -->
-<section class="contact-us" id="contact">
+<%--<section class="contact-us" id="contact">
 	<h3 class="text-center slideanim">Contact Us</h2>
 	<div class="container">
 		<div class="row">
@@ -513,36 +312,36 @@
             <div class="clearfix"></div>
         </div>
     </div>
-</section>
+</section>--%>
 <!-- /Contact-Us -->
 <!-- Contact-Form -->	
-<section class="contact-form" id="contact-info">
-	<h3 class="text-center slideanim">Contact Form</h3>
-	<p class="text-center slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+<section class="contact-form" id="contact">
+	<h3 class="text-center slideanim">留言</h3>
+	<p class="text-center slideanim">电话：123.13.123 <br />Email：123.13.123<br />地址：广东省四会市</p>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 slideanim">
-				<form role="form">
+				<form role="form" action="index.aspx" method="post">
 					<div class="row">
 						<div class="form-group col-lg-4">
-							<label>Name</label>
-							<input type="text" class="form-control">
+							<label>姓名</label>
+							<input type="text" class="form-control" name="name">
 						</div>
 						<div class="form-group col-lg-4">
-							<label>Email Address</label>
-							<input type="email" class="form-control">
+							<label>Email</label>
+							<input type="email" class="form-control" name="email">
 						</div>
 						<div class="form-group col-lg-4">
-							<label>Phone Number</label>
-							<input type="tel" class="form-control">
+							<label>电话</label>
+							<input type="tel" class="form-control" name="phone">
 						</div>
 						<div class="clearfix"></div>
 						<div class="form-group col-lg-12">
-							<label>Message</label>
-							<textarea class="form-control" rows="6"></textarea>
+							<label>内容</label>
+							<textarea class="form-control" rows="6" name="content"></textarea>
 						</div>
 						<div class="form-group col-lg-12">
-							<button type="submit" href="#" class="btn btn-lg btn-outline">Submit</button>
+							<button type="submit" class="btn btn-lg btn-outline">提交</button>
 						</div>
 					</div>
 				</form>

@@ -24,6 +24,7 @@
                     <td colspan="4">
                         <label for="j_custom_note" class="control-label x85">图片：</label>
                         <div style="display: inline-block; vertical-align: middle;">
+                            <div>推荐大小(240X150)</div>
                             <div id="ym_services_photo_up" data-toggle="upload" data-uploader="ajax.ashx?action=kindeditor&type=head"
                                  data-file-size-limit="2097152"
                                  data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
@@ -53,7 +54,7 @@
 <div class="bjui-pageFooter">
     <ul>
         <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
-        <li><button type="button" class="btn-default" data-icon="save" onclick="addadvantagesave()">保存</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="addymservices()">保存</button></li>
     </ul>
 </div>
 <script type="text/javascript">
@@ -86,7 +87,7 @@
         }
 
     }
-    function addadvantagesave() {
+    function addymservices() {
         if (ym_services_editid) {
             $("#j_addymservices_form").attr("action", "ajax.ashx?action=updateservices&id=" + ym_services_editid);
         }

@@ -257,16 +257,17 @@ $(function(){
  
                                  
                                 <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">移民模块</li> 
-                                <li data-id="22" data-pid="2" data-url="ym/setbackground.html"data-tabid="ym_setbackground" >设置背景</li>  
-                                <li data-id="23" data-pid="2" data-url="ym/myteam.html"data-tabid="ym_myteam" >我的团队</li>  
-                                <li data-id="24" data-pid="2" data-url="ym/aboutus.html"data-tabid="ym_aboutus" >关于我们</li>  
-                                <li data-id="25" data-pid="2" data-url="ym/services.html"data-tabid="ym_services" >服务</li> 
+                                <li data-id="22" data-pid="2" data-url="ym/setbackground.html" data-tabid="ym_setbackground" >设置背景</li>  
+                                <li data-id="23" data-pid="2" data-url="ym/myteam.html" data-tabid="ym_myteam" >我的团队</li>  
+                                <li data-id="24" data-pid="2" data-url="ym/aboutus.html" data-tabid="ym_aboutus" >关于我们</li>  
+                                <li data-id="25" data-pid="2" data-url="ym/services.html" data-tabid="ym_services" >服务</li> 
 
                                 <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">旅游模块</li> 
-                                <li data-id="32" data-pid="3" data-url="lv/setbanner.html"data-tabid="lv_setbanner" >轮播图</li> 
-                                <li data-id="31" data-pid="3" data-url="lv/live.html"data-tabid="lv_live" >服务</li>  
-                                <li data-id="33" data-pid="3" data-url="lv/message.html"data-tabid="lv_message" >留言</li>  
-                                <li data-id="33" data-pid="3" data-url="lv/services.html"data-tabid="lv_services" >服务</li>  
+                                <li data-id="32" data-pid="3" data-url="ly/setbanner.html" data-tabid="ly_setbanner" >轮播图</li> 
+                                <li data-id="31" data-pid="3" data-url="ly/jingdianlist.html" data-tabid="ly_jingdianlist" >景点</li>
+                                <li data-id="31" data-pid="3" data-url="ly/live.html" data-tabid="ly_live">现场</li>
+                                <li data-id="34" data-pid="3" data-url="ly/aboutus.html" data-tabid="ly_aboutus">关于我们</li>
+                                <li data-id="33" data-pid="3" data-url="ly/services.html" data-tabid="ly_services" >服务</li>  
 
                                 <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">农业模块</li> 
                                 <li data-id="42" data-pid="4" data-url="ny/aboutus.html"data-tabid="ny_aboutus" >关于我们</li> 
@@ -328,7 +329,7 @@ $(function(){
             </div>
         </div>
     </div>
-    <footer id="bjui-footer">Copyright &copy; 2013 - 2015　<a href="../index.aspx" target="_blank">返回主页</a>　
+    <footer id="bjui-footer">Copyright &copy; 2013 - 2016　<a href="../index.aspx" target="_blank">返回主页</a>　
         <!--  
         <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1252983288'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D1252983288%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
         -->

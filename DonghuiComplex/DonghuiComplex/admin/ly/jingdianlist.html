@@ -1,14 +1,14 @@
 ﻿<script type="text/javascript">
-    var lyserviceslist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
+    var lyjingdianlist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
 
-    function lyserviceslistpage() {
+    function lyjingdianlistpage() {
         var customNo = $("#customNo").val();
         var customName = $("#customName").val();
         $.ajax({
-            url: 'ajax.ashx?action=lyserviceslist',
+            url: 'ajax.ashx?action=lyjingdianlist',
                 data: {
-                    "pageIndex": lyserviceslist.pageIndex,
-                    "pageSize": lyserviceslist.pageSize,
+                    "pageIndex": lyjingdianlist.pageIndex,
+                    "pageSize": lyjingdianlist.pageSize,
                 },
                 type: "post",
                 success: function (result) {
@@ -16,84 +16,84 @@
                     var json = JSON.parse(result);
                     var count = json["count"];
                     count = JSON.parse(count);
-                    lyserviceslist.TotalPage = json["count"];//总记录数
+                    lyjingdianlist.TotalPage = json["count"];//总记录数
                     //求出最大页
-                    lyserviceslist.MaxPage = Math.ceil(lyserviceslist.TotalPage / lyserviceslist.pageSize);
+                    lyjingdianlist.MaxPage = Math.ceil(lyjingdianlist.TotalPage / lyjingdianlist.pageSize);
 
                     var da = json["data"];
                     da = JSON.parse(da);
                     var data = da["d"];
                     $.each(data, function (k, v) {
                         html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.title + "</td><td>" + v.subtitle + "</td><td>" + v.created + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
-                        html.push(" <td><a href='#' onclick='edit_ly_services(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
-                        html.push(" <a href='ajax.ashx?action=deletelyservices&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
+                        html.push(" <td><a href='#' onclick='edit_ly_jingdian(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
+                        html.push(" <a href='ajax.ashx?action=deletelyjingdian&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
                     });
-                    $("#ly_services_list tbody").empty().append(html.join(''));
+                    $("#ly_jingdian_list tbody").empty().append(html.join(''));
                     html = [];
 
-                    $("#lyserviceslist_total").html(lyserviceslist.TotalPage);//共..条数据
+                    $("#lyjingdianlist_total").html(lyjingdianlist.TotalPage);//共..条数据
                     html.push("<ul class='pagination'>");
-                    html.push("<li class='j-first'><a href='javascript:' onclick='lyserviceslistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
-                    html.push("<li class='j-prev'><a href='javascript:' onclick='lyserviceslistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
+                    html.push("<li class='j-first'><a href='javascript:' onclick='lyjingdianlistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
+                    html.push("<li class='j-prev'><a href='javascript:' onclick='lyjingdianlistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
 
-                    for (var i = 1; i <= lyserviceslist.MaxPage; i++) {
+                    for (var i = 1; i <= lyjingdianlist.MaxPage; i++) {
                         var c = "j-num";
-                        if (i == lyserviceslist.pageIndex) {
+                        if (i == lyjingdianlist.pageIndex) {
                             c = "selected " + c;
                         }
-                        html.push("<li class='" + c + "'><a href='javascript:' onclick='lyserviceslist_page_click(this)'> " + i + "</a></li>");
+                        html.push("<li class='" + c + "'><a href='javascript:' onclick='lyjingdianlist_page_click(this)'> " + i + "</a></li>");
                     }
-                    html.push("<li class='j-next'><a href='javascript:' onclick='lyserviceslistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
-                    html.push("<li class='j-last'><a href='javascript:' onclick='lyserviceslistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
-                    html.push("<li class='jumpto'><span class='p-input'><input  id='lyserviceslistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='lyserviceslistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
+                    html.push("<li class='j-next'><a href='javascript:' onclick='lyjingdianlistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
+                    html.push("<li class='j-last'><a href='javascript:' onclick='lyjingdianlistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
+                    html.push("<li class='jumpto'><span class='p-input'><input  id='lyjingdianlistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='lyjingdianlistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
                     html.push("<ul>");
-                    $("#lyserviceslistination").empty().append(html.join(''));
+                    $("#lyjingdianlistination").empty().append(html.join(''));
                     //如果当前页等于1就让首页、上一页不可点击
-                    if (lyserviceslist.pageIndex == 1) {
-                        $("#lyserviceslistination .j-first").addClass("disabled");
-                        $("#lyserviceslistination .j-prev").addClass("disabled");
+                    if (lyjingdianlist.pageIndex == 1) {
+                        $("#lyjingdianlistination .j-first").addClass("disabled");
+                        $("#lyjingdianlistination .j-prev").addClass("disabled");
 
                     }
-                    if (lyserviceslist.pageIndex == lyserviceslist.MaxPage)
+                    if (lyjingdianlist.pageIndex == lyjingdianlist.MaxPage)
                     {
-                        $("#lyserviceslistination .j-next").addClass("disabled");
-                        $("#lyserviceslistination .j-last").addClass("disabled");
+                        $("#lyjingdianlistination .j-next").addClass("disabled");
+                        $("#lyjingdianlistination .j-last").addClass("disabled");
                     }
             }
         });
     }
     //下一页
-    function lyserviceslistnext() {
-        lyserviceslist.pageIndex++;
-        if (lyserviceslist.pageIndex > lyserviceslist.MaxPage) {
-            lyserviceslist.pageIndex = lyserviceslist.MaxPage;
+    function lyjingdianlistnext() {
+        lyjingdianlist.pageIndex++;
+        if (lyjingdianlist.pageIndex > lyjingdianlist.MaxPage) {
+            lyjingdianlist.pageIndex = lyjingdianlist.MaxPage;
         }
-        lyserviceslistpage();
+        lyjingdianlistpage();
     }
     //上一页
-    function lyserviceslistPrepage () {
-        lyserviceslist.pageIndex--;
-        if (lyserviceslist.pageIndex < 1) {
-            lyserviceslist.pageIndex = 1;
+    function lyjingdianlistPrepage () {
+        lyjingdianlist.pageIndex--;
+        if (lyjingdianlist.pageIndex < 1) {
+            lyjingdianlist.pageIndex = 1;
         }
-        lyserviceslistpage();
+        lyjingdianlistpage();
     }
     //首页
-    function lyserviceslistfirst() {
-        lyserviceslist.pageIndex = 1;
-        lyserviceslistpage();
+    function lyjingdianlistfirst() {
+        lyjingdianlist.pageIndex = 1;
+        lyjingdianlistpage();
     }
 
     //尾页
-    function lyserviceslistweiye() {
+    function lyjingdianlistweiye() {
 
-        lyserviceslist.pageIndex = lyserviceslist.MaxPage;
-        lyserviceslistpage();
+        lyjingdianlist.pageIndex = lyjingdianlist.MaxPage;
+        lyjingdianlistpage();
 
     }
-    function lyserviceslistLetgo() {
-        var InputValue = $("#lyserviceslistputvalue").val();
-        if (InputValue > lyserviceslist.MaxPage) {
+    function lyjingdianlistLetgo() {
+        var InputValue = $("#lyjingdianlistputvalue").val();
+        if (InputValue > lyjingdianlist.MaxPage) {
             $(this).alertmsg('info', '你输入的数字超过页面范围');
             return;
         }
@@ -105,37 +105,37 @@
             $(this).alertmsg('info', '请输入数字');
             return;
         }
-        lyserviceslist.pageIndex = InputValue;
-        lyserviceslistpage();
+        lyjingdianlist.pageIndex = InputValue;
+        lyjingdianlistpage();
     }
-    function lyserviceslist_page_size_change(_this) {
+    function lyjingdianlist_page_size_change(_this) {
         var checkText = $(_this).find("option:selected").text();
-        lyserviceslist.pageIndex = 1;
-        lyserviceslist.pageSize = checkText;
-        lyserviceslistpage();
+        lyjingdianlist.pageIndex = 1;
+        lyjingdianlist.pageSize = checkText;
+        lyjingdianlistpage();
     }
-    function lyserviceslist_page_click(_this) {
+    function lyjingdianlist_page_click(_this) {
         $(_this).attr("class", "selected");
         var Sum = $(_this).text();
-        lyserviceslist.pageIndex = Sum;
-        lyserviceslistpage();
+        lyjingdianlist.pageIndex = Sum;
+        lyjingdianlistpage();
     }
 
     $(function () {
-        lyserviceslistpage();
+        lyjingdianlistpage();
     });
     function search() {
-        lyserviceslist.pageIndex = 1;
-        lyserviceslistpage();
+        lyjingdianlist.pageIndex = 1;
+        lyjingdianlistpage();
     }
-    var ly_services_editid;
-    function edit_ly_services(_this, id, name) {
-        ly_services_editid = id;
-        $(_this).dialog({ id: 'dialog_addly_services', url: '/admin/ly/addservices.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_lyserviceslist_before_close" });
+    var ly_jingdian_editid;
+    function edit_ly_jingdian(_this, id, name) {
+        ly_jingdian_editid = id;
+        $(_this).dialog({ id: 'dialog_addly_jingdian', url: '/admin/ly/addjingdian.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_lyjingdianlist_before_close" });
     }
-    function dialog_lyserviceslist_before_close($dialog) {
-        ly_services_editid = undefined;
-        $("body").navtab("refresh", "ly_services");
+    function dialog_lyjingdianlist_before_close($dialog) {
+        ly_jingdian_editid = undefined;
+        $("body").navtab("refresh", "ly_jingdian");
         return true;
     }
 </script>
@@ -163,7 +163,7 @@
          <button type="submit" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
          <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo" onclick="Clear()">清空查询</a>-->
         <div class="pull-right">
-            <button type="button" class="btn-blue" data-url="ly/addservices.html" data-id="dialog_addly_services" data-width="860" data-height="500"
+            <button type="button" class="btn-blue" data-url="ly/addjingdian.html" data-id="dialog_addly_jingdian" data-width="860" data-height="500"
                     data-toggle="dialog">
                 添加
             </button>
@@ -192,7 +192,7 @@
     </div>-->
 </div>
 <div class="bjui-pageContent tableContent">
-    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="ly_services_list">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="ly_jingdian_list">
         <thead>
             <tr>
                 <th data-order-field="rowid">序号</th>
@@ -209,7 +209,7 @@
 <div class="bjui-pageFooter">
     <div class="pages">
         <span>每页&nbsp;</span>
-        <div class="selectPagesize" onchange="lyserviceslist_page_size_change(this)">
+        <div class="selectPagesize" onchange="lyjingdianlist_page_size_change(this)">
             <select data-toggle="selectpicker">
                 <option value="10" id="three">10</option>
                 <option value="20" id="six">20</option>
@@ -217,9 +217,9 @@
 
             </select>
         </div>
-        <span>&nbsp;条, 共&nbsp;<span id="lyserviceslist_total"> </span> 条</span>
+        <span>&nbsp;条, 共&nbsp;<span id="lyjingdianlist_total"> </span> 条</span>
     </div>
-    <div class="pagination-box" id="lyserviceslistination" data-total="10" data-page-size="2" data-page-current="1">
+    <div class="pagination-box" id="lyjingdianlistination" data-total="10" data-page-size="2" data-page-current="1">
     </div>
 
 </div>

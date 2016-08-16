@@ -260,14 +260,14 @@
 										</div>
 										<div class="field half">
 											<label for="email">Email</label>
-											<input type="text" name="email" id="email"  placeholder="请输入Email"/>
+											<input type="email" name="email" id="email"  placeholder="请输入Email"/>
 										</div>
 										<div class="field" style="border:0px solid red;">
 											<label for="message" style="margin-left:-170px;">内容</label>
 											<textarea name="message" id="message" rows="5" placeholder="请输入内容"></textarea>
 										</div>
 										<ul class="actions">
-											<li><a href="" class="button submit">提交</a></li>
+											<li> <input type="submit" class="button" value="提交" /></li>
 										</ul>
 									</form>
 								</section>
@@ -394,5 +394,5 @@ $(function() {
 });
 </script>
 
-	</body>
+</body>
 </html>
