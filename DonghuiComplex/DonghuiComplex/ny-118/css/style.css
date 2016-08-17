@@ -964,7 +964,7 @@ ul#filters {
 .contact p.para span{
 	display:block;
 	}
-.contact input[type="text"],.contact textarea{
+.contact input[type="text"],input[type="email"],.contact textarea{
 	outline:none;
 	border:1px solid #adadad;
 	padding:10px 20px;
@@ -978,11 +978,11 @@ ul#filters {
 	-o-border-radius:5px;
 	-ms-border-radius:5px;
 	}
-.contact input[type="text"]:nth-child(2){
+.contact input[type="text"],input[type="email"]:nth-child(2){
 	margin:1.5em auto;
 	display:block;
 	}
-.contact input[type="text"]{
+.contact input[type="text"],input[type="email"]{
 	float:left;
 	width:45%;
 	}
@@ -995,7 +995,7 @@ ul#filters {
 .contact-contact {
 	text-align:center;
 	}
-.contact-contact input[type="text"],.contact-contact textarea{
+.contact-contact input[type="text"],input[type="email"],.contact-contact textarea{
 	outline:none;
 	border:1px solid #adadad;
 	background:none;
@@ -1004,7 +1004,7 @@ ul#filters {
 	width:31%;
 	display: block;
 	}
-.contact-contact input[type="text"]:nth-child(2) {
+.contact-contact input[type="text"],input[type="email"]:nth-child(2) {
 	margin: 0 2.65em 2em;
 	display: block;
 	}

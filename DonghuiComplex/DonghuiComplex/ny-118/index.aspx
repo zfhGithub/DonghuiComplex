@@ -43,7 +43,8 @@
 	<div class="container">
 		<div class="navi">
 				<div class="head-logo">
-					<a href="index.aspx"><img src="images/logo.png" alt=" "></a>
+				<%--	<a href="index.aspx"><img src="images/logo.png" alt=" "></a>--%>
+                  
 				</div>
 				<div class="banner-nav">
 					<span class="menu"><img src="images/menu.png" alt=" "/></span>
@@ -74,7 +75,7 @@
 				<h3>我们的使命是让您  <span>吃到放心的农产品</span></h3>
 				<p><%--Donec rutrum congue leo eget malesuada--%><span><%--Curabitur non nulla sit amet.--%></span></p>
 				<div class="start">
-					<a href="#">Learn More...</a>
+					<a href="#about">查看更多...</a>
 				</div>
 			</div>
 			<div class="banner-info-right">
@@ -180,7 +181,7 @@
 					<li>
 						<div class="banner-bottom-info">
 							<h3>OUR BEGINING</h3>
-							<p>Donec rutrum congue leo eget malesuada.Curabitur non nulla sit amet
+							<p> <img src="images/2.jpg" /> Donec rutrum congue leo eget malesuada.Curabitur non nulla sit amet
 								nisl tempus convallis quis ac lactus.Sed porttitor lactus nibh.Proin
 								eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
 								porttitoraccumsan tincidunt.
@@ -213,6 +214,12 @@
 								eget tortor risus.Nulla porttitor accumsan tincidunt.</p>
 						</div>
 					</li>
+                    <li>
+                        <div class="banner-bottom-info">
+                            <h3>asdfasdfasdf</h3>
+                            <p>asdfadsfasdfffffffadfssssssssssssss</p>
+                        </div>
+                    </li>
 				</ul>
 			</div>
 			<div class="port">
@@ -578,12 +585,12 @@
 					porttitor accumsan tincidunt.</span></p>
 				<div class="strip"> </div>
 			</div>
-					<ul id="filters" class="clearfix">
+					<%--<ul id="filters" class="clearfix">
 							<li><span class="filter active" data-filter="app card icon web">ALL</span></li>
 							<li><span class="filter" data-filter="app">SEEDS</span></li>
 							<li><span class="filter" data-filter="card">CROPING</span></li>
 							<li><span class="filter" data-filter="icon">DEVELOPMENT</span></li>
-					</ul>
+					</ul>--%>
 		
 					<div id="portfoliolist">
 						<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
@@ -705,18 +712,19 @@
 	<div id="contact" class="contact">
 	<div class="container">
 		<h3>留言</h3>
-		<p class="para">Curabitur aliquet quam id dui posuere blandit.
-			<span>Nulla Quis lorum nisl tempus convallis quis ac lactus
-			porttitor accumsan tincidunt.</span></p>
+		<p class="para">电话:011-123456789
+			<span>Email:464654@163.com</span>
+            <span>地址:广东省四会市</span>
+		</p>
 		<%--<div class="map">
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d315198.42131784896!2d5.849972999999987!3d51.888564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c7a7e5143e7afb%3A0xb21ce1ae282c4483!2sBarenbrug+Holland+B.V.!5e0!3m2!1sen!2sin!4v1427362466033" frameborder="0" style="border:0"></iframe>
 		</div>--%>
 		<div class="contact-contact">
-			<form>
-				<input type="text" placeholder="Name" required>
-				<input type="text" placeholder="E-mail" required>
-				<input type="text" placeholder="Subject" required>
-				<textarea placeholder="Message" required></textarea>
+			<form method="post" action="index.aspx">
+				<input type="text" name="name" placeholder="姓名" required>
+				<input type="email" name="email" placeholder="E-mail" required>
+				<input type="text" name="phone" placeholder="电话" required>
+				<textarea placeholder="内容" name="content" required></textarea>
 				<input type="submit" value="提交留言">
 			</form>
 		</div>

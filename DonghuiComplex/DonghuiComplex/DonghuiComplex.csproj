@@ -632,6 +632,7 @@
     <Content Include="admin\ly\setbanner.html" />
     <Content Include="admin\message\messagelist.html" />
     <Content Include="admin\ny\aboutus.html" />
+    <Content Include="admin\ny\addprducts.html" />
     <Content Include="admin\ny\message.html" />
     <Content Include="admin\ny\prducts.html" />
     <Content Include="admin\ym\aboutus.html" />

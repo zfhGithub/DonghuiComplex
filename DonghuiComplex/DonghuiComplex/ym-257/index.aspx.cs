@@ -30,7 +30,7 @@ namespace DonghuiComplex.ym_257
                 string phone = Request.Form["phone"];
                 string email = Request.Form["email"];
                 string message = Request.Form["message"];
-                int s = com.home.message.addMessage(name, email, phone, message, "home");
+                int s = com.home.message.addMessage(name, email, phone, message, "yimin");
                 if (s > 0)
                 {
                     Response.Write("<script>alert('我们已经收到你的留言！');</script>");

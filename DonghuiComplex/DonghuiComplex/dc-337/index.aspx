@@ -53,7 +53,7 @@
      <div class="container">
       <div class="header-top">
 	       	<div class="logo">
-                    <a href="index.html"><h1>地产</h1> </a>
+                    <a href="index.aspx"><h1>地产</h1> </a>
 			 </div>	
 				    <div class="top-menu">
 					    <span class="menu"> </span>
@@ -62,7 +62,8 @@
 								<%--<li><a class="scroll" href="#latest">Latest Hats</a></li>--%>
 								<li><a class="scroll" href="#services">服务</a></li>
 								<li><a class="scroll" href="#gallery">楼盘</a></li>
-								<li><a class="scroll" href="#news">新闻</a></li>
+                                <li><a class="scroll" href="#team">团队</a></li>
+								<li><a class="scroll" href="#team">新闻</a></li>
 								<li><a class="scroll" href="#contact">留言</a></li>
 							</ul>
 				</div>
@@ -247,7 +248,7 @@
  <!--team-starts-->
 	<div class="staff" id="team">
       <div class="container">
-	      <h3 class="tittle">Our Experts</h3>
+	      <h3 class="tittle">我们的团队</h3>
 		  <div class="team">
            <div class="col-md-3 staff2">
         	<div class="view view-fifth">
@@ -454,6 +455,7 @@
 	 </div>
 </div>
   <!--team-starts-->
+   <!--
 	<div class="testimonials" id="testimonial">
 	   <div class="col-md-6 test-text">
 	       <h3 class="tittle con">Testimonial</h3>
@@ -504,7 +506,8 @@
 		    </div>
 			<div class="clearfix"></div>
 	   </div>
- <!--//news-->
+ -->
+    <!--//news-->
 	   <div class="news" id="news">
 	       <div class="container">
 		   <h3 class="tittle">Our News</h3>
@@ -567,13 +570,13 @@
 		<div class="container">
 			 <div class="contact-inner">
 				  <div class="col-md-7 contact-text">
-				      <h3 class="tittle con">Contact Us</h3>
+				      <h3 class="tittle con">联系我们</h3>
 					   <div class="contact-text-inner">
 					          <address>
-								  <strong>Twitter, Inc.</strong><br>
-								  795 Folsom Ave, Suite 600<br>
-								  San Francisco, CA 94107<br>
-								  <abbr title="Phone">P :</abbr> (123) 456-7890
+								  <strong>我们的联系方式.</strong><br>
+								  <abbr title="Phone">电话:</abbr> 123456789<br>
+								  邮箱:1321354@qq.com<br>
+								  地址;广东省四会市
 								</address>
 								<img src="images/contact.jpg" alt="img20"/>
 								 <div class="lost-para">
@@ -581,7 +584,7 @@
 								  <p>Mobile : 0123345456</p>
 								</div>
                       </div>
-					   <div class="contact-text-inner">
+					 <%--  <div class="contact-text-inner">
 					          <address>
 								  <strong>Full Name</strong><br>
 								  795 Folsom Ave, Suite 600<br>
@@ -593,19 +596,21 @@
 							      <p>Fax : 123345456</p>
 								  <p>Mobile : 0123345456</p>
 								</div>
-					   </div>
+					   </div>--%>
 					   <div class="clearfix"></div>
 				  </div>
 				  <div class="col-md-5 con-form">
-				     <form>
-						<p class="your-para">Your Name:</p>
-						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-						<p class="your-para">Your Mail:</p>
-						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-						<p class="your-para">Your Message:</p>
-						<textarea cols="77" rows="6" value=" " onfocus="this.value='';" onblur="if (this.value == '') {this.value = '';}"></textarea>
+				     <form action="index.aspx" method="post">
+						<p class="your-para">姓名:</p>
+						<input type="text" value="" name="name" placeholder="姓名" />
+						<p class="your-para">Email:</p>
+						<input type="email" value="" name="email" placeholder="Email" />
+                         <p class="your-para">电话:</p>
+						<input type="text" value="" name="phone" placeholder="电话" />
+						<p class="your-para">内容:</p>
+						<textarea cols="77" rows="6" name="content" placeholder="内容"></textarea>
 						<div class="send">
-							<input type="submit" value="Send" >
+							<input type="submit" value="提交" >
 						</div>
 					</form>
 
