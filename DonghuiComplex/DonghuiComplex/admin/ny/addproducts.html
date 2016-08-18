@@ -1,0 +1,95 @@
+﻿
+<div class="bjui-pageContent">
+    <form action="ajax.ashx?action=addnyproducts" id="j_addnyproducts_form" data-toggle="validate" data-alertmsg="false">
+        <input type="hidden" name="custom.id" value="edce142bc2ed4ec6b623aacaf602a4de">
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="ny_products_title" class="control-label x85"> 标题：</label>
+                        <input type="text" name="ny_products_title" id="ny_products_title" value="" data-rule="required" size="25">
+                    </td>
+
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <label for="ny_products_subtitle" class="control-label x85">二级标题：</label>
+                        <textarea name="ny_products_subtitle" id="ny_products_subtitle" data-toggle="autoheight" cols="60" rows="1" data-rule="required"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="j_custom_note" class="control-label x85">图片：</label>
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <div>推荐大小(400X300)</div>
+                            <div id="ny_products_photo_up" data-toggle="upload" data-uploader="ajax.ashx?action=kindeditor&type=head"
+                                 data-file-size-limit="2097152"
+                                 data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
+                                 data-multi="true"
+                                 data-drag-drop="true"
+                                 data-on-upload-success="head_upload_success"
+                                 data-icon="cloud-upload"></div>
+                            <input type="hidden" name="ny_products_photo" value="" id="ny_products_photo" data-rule="图片:required">
+                            <span id="ny_products_photo_show"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="ny_products_content" class="control-label x85">内容：</label>
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <textarea name="ny_products_content" id="ny_products_content" class="j-content" style="width: 700px;" data-upload-json="ajax.ashx?action=kindeditor&type=kindeditor"
+                                      data-after-upload="kindeditor_upload_success" data-file-manager-json="ajax.ashx?action=fileManagerJson"
+                                      data-toggle="kindeditor" data-minheight="200"></textarea>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="addlvjingyan()">保存</button></li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        if (ny_products_editid) {
+            $.ajax({
+                url: "ajax.ashx?action=getnyproductsdetailbyid",
+                data: { id: ny_products_editid },
+                type: "post",
+                success: function (r) {
+                    var d = JSON.parse(r)["d"][0];
+                    $("#ny_products_title").val(d.title);
+                    $("#ny_products_subtitle").val(d.subtitle);
+                    $("#ny_products_photo").val(d.photo);
+                    $('#ny_products_photo_show').html('已上传图片：<img src="' + d.photo + '" width="100">');
+                    $("#ny_products_content").html(d.content);
+                    KindEditor.html('#ny_products_content', d.content);
+                }, error: function () {
+                    console.log("error");
+                }
+            });
+        }
+    });
+    function head_upload_success(file, data) {
+        var json = JSON.parse(data);
+        if (json.statusCode == 200)
+        {
+            $("#ny_products_photo").val(json.url);
+            $('#ny_products_photo_show').html('已上传图片：<img src="' + json.url + '" width="100">')
+        }
+    }
+    function addlvjingyan() {
+        if (ny_products_editid) {
+            $("#j_addnyproducts_form").attr("action", "ajax.ashx?action=updatenyproducts&id=" + ny_products_editid);
+        }
+        $("#j_addnyproducts_form").submit();
+    }
+</script>

@@ -176,7 +176,7 @@
 				  </script>
 			<!--//End-slider-script -->
 			<div  id="top" class="callbacks_container">
-                	<h3>新闻</h3>
+                	<h3>最新资讯</h3>
 				<ul class="rslides" id="slider3">
 					<li>
 						<div class="banner-bottom-info">
@@ -579,10 +579,9 @@
 <!-- Portfolio Starts Here -->
 	<div class="portfolios entertain_box  wow fadeInUp" data-wow-delay="0.4s" id="project">
 			<div class="portfolio-info">
-				<h3>GALLERY</h3>
-				<p class="para">Curabitur aliquet quam id dui posuere blandit.
-					<span>Nulla Quis lorum nisl tempus convallis quis ac lactus
-					porttitor accumsan tincidunt.</span></p>
+				<h3>农产品</h3>
+				<p class="para"> 
+					<span>这里有非常丰富，绿色的农产品.</span></p>
 				<div class="strip"> </div>
 			</div>
 					<%--<ul id="filters" class="clearfix">
@@ -593,72 +592,23 @@
 					</ul>--%>
 		
 					<div id="portfoliolist">
-						<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
-							<div class="portfolio-wrapper">		
-								<a href="images/s-1.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-								<img class="img-responsive" src="images/s-11.jpg" />
-								<div class="b-wrapper">
-								<h2 class="b-animate b-from-left    b-delay03 ">
-									<img class="img-responsive" src="images/plus.png" class="zoom" alt=""/>
-								</h2>
-								</div></a>
+                        <%
+                            for (int i = 0; i < productsList.Rows.Count; i++)
+                            {%>
+                        	<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
+							<div class="portfolio-wrapper">	
+                                
+						<%--		<a href="<%= productsList.Rows[i]["photo"].ToString() %>" class="b-link-stripe b-animate-go swipebox"  title="">   --%>
+                                <img class="img-responsive" onclick="window.location.href='/News.aspx'" src="<%=productsList.Rows[i]["photo"].ToString()  %>" />
+                              
+                                     <strong><%= productsList.Rows[i]["title"].ToString() %></strong> 
+                                
+								<%--</a>--%>
 							</div>
-						</div>				
-						<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
-							<div class="portfolio-wrapper">		
-								<a href="images/s-2.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-								<img class="img-responsive" src="images/s-22.jpg" />
-								<div class="b-wrapper">
-									<h2 class="b-animate b-from-left    b-delay03 ">
-										<img class="img-responsive" src="images/plus.png" class="zoom" alt=""/>
-									</h2>
-								</div></a>
-							</div>
-						</div>		
-						<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
-							<div class="portfolio-wrapper">		
-								<a href="images/s-3.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-								<img class="img-responsive" src="images/s-33.jpg" />
-								<div class="b-wrapper">
-								<h2 class="b-animate b-from-left    b-delay03 ">
-									<img class="img-responsive" src="images/plus.png" class="zoom" alt=""/>
-								</h2>
-								</div></a>
-							</div>
-						</div>				
-						<div class="portfolio icon mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
-							<div class="portfolio-wrapper">		
-								<a href="images/s-4.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-								<img class="img-responsive" src="images/s-44.jpg" />
-								<div class="b-wrapper">
-								<h2 class="b-animate b-from-left    b-delay03 ">
-									<img class="img-responsive" src="images/plus.png" class="zoom" alt=""/>
-								</h2>					
-								</div></a>
-							</div>
-						</div>	
-						<div class="portfolio web mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
-							<div class="portfolio-wrapper">		
-								<a href="images/s-5.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-								<img class="img-responsive" src="images/s-55.jpg" />
-								<div class="b-wrapper">
-								<h2 class="b-animate b-from-left    b-delay03 ">
-									<img class="img-responsive" src="images/plus.png" class="zoom" alt=""/>
-								</h2>						
-								</div></a>
-							</div>
-						</div>			
-						<div class="portfolio web mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
-							<div class="portfolio-wrapper">		
-								<a href="images/s-6.jpg" class="b-link-stripe b-animate-go  swipebox"  title="">
-								<img class="img-responsive" src="images/s-66.jpg" />
-								<div class="b-wrapper">
-									<h2 class="b-animate b-from-left    b-delay03 ">
-										<img class="img-responsive" src="images/plus.png" class="zoom" alt=""/>
-									</h2>					
-								</div></a>							
-							</div>
-						</div>
+                           
+                        </div>			
+                            <%}
+                             %> 
 					<div class="clearfix"></div>
 					</div>
 		
@@ -810,7 +760,7 @@
 	        $('#lanrenzhijia_m').delay(3000).slideDown();
 	        $('a[name=close]').click(function () {
 	            $('#lanrenzhijia_m').slideUp();
-	            $('#lanrenzhijia_m').delay(5000).slideDown();
+	            $('#lanrenzhijia_m').delay(10000).slideDown();
 	        });
 
 	        var flag = 0;

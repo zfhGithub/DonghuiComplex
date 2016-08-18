@@ -271,7 +271,7 @@ $(function(){
 
                                 <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">农业模块</li> 
                                 <li data-id="42" data-pid="4" data-url="ny/aboutus.html"data-tabid="ny_aboutus" >关于我们</li> 
-                                <li data-id="42" data-pid="4" data-url="ny/prducts.html"data-tabid="ny_prducts" >产品</li> 
+                                <li data-id="42" data-pid="4" data-url="ny/products.html"data-tabid="ny_products" >产品</li> 
                                 <li data-id="43" data-pid="4" data-url="ny/message.html"data-tabid="ny_message" >留言</li>  
 
                                 <li data-id="5" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">地产模块</li> 

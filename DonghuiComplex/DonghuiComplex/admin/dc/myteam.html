@@ -1,14 +1,14 @@
 ﻿<script type="text/javascript">
-    var dcpropertylist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
+    var dcmyteam  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
 
-    function dcpropertylistpage() {
+    function dcmyteampage() {
         var customNo = $("#customNo").val();
         var customName = $("#customName").val();
         $.ajax({
-            url: 'ajax.ashx?action=dcpropertylist',
+            url: 'ajax.ashx?action=dcmyteamlist',
                 data: {
-                    "pageIndex": dcpropertylist.pageIndex,
-                    "pageSize": dcpropertylist.pageSize,
+                    "pageIndex": dcmyteam.pageIndex,
+                    "pageSize": dcmyteam.pageSize,
                 },
                 type: "post",
                 success: function (result) {
@@ -16,84 +16,84 @@
                     var json = JSON.parse(result);
                     var count = json["count"];
                     count = JSON.parse(count);
-                    dcpropertylist.TotalPage = json["count"];//总记录数
+                    dcmyteam.TotalPage = json["count"];//总记录数
                     //求出最大页
-                    dcpropertylist.MaxPage = Math.ceil(dcpropertylist.TotalPage / dcpropertylist.pageSize);
+                    dcmyteam.MaxPage = Math.ceil(dcmyteam.TotalPage / dcmyteam.pageSize);
 
                     var da = json["data"];
                     da = JSON.parse(da);
                     var data = da["d"];
                     $.each(data, function (k, v) {
                         html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.title + "</td><td>" + v.subtitle + "</td><td>" + v.created + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
-                        html.push(" <td><a href='#' onclick='edit_dc_property(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
-                        html.push(" <a href='ajax.ashx?action=deletedcproperty&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
+                        html.push(" <td><a href='#' onclick='edit_dc_myteam(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
+                        html.push(" <a href='ajax.ashx?action=deletedcmyteam&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
                     });
-                    $("#dc_property_list tbody").empty().append(html.join(''));
+                    $("#dc_myteam_list tbody").empty().append(html.join(''));
                     html = [];
 
-                    $("#dcpropertylist_total").html(dcpropertylist.TotalPage);//共..条数据
+                    $("#dcmyteam_total").html(dcmyteam.TotalPage);//共..条数据
                     html.push("<ul class='pagination'>");
-                    html.push("<li class='j-first'><a href='javascript:' onclick='dcpropertylistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
-                    html.push("<li class='j-prev'><a href='javascript:' onclick='dcpropertylistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
+                    html.push("<li class='j-first'><a href='javascript:' onclick='dcmyteamfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
+                    html.push("<li class='j-prev'><a href='javascript:' onclick='dcmyteamPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
 
-                    for (var i = 1; i <= dcpropertylist.MaxPage; i++) {
+                    for (var i = 1; i <= dcmyteam.MaxPage; i++) {
                         var c = "j-num";
-                        if (i == dcpropertylist.pageIndex) {
+                        if (i == dcmyteam.pageIndex) {
                             c = "selected " + c;
                         }
-                        html.push("<li class='" + c + "'><a href='javascript:' onclick='dcpropertylist_page_click(this)'> " + i + "</a></li>");
+                        html.push("<li class='" + c + "'><a href='javascript:' onclick='dcmyteam_page_click(this)'> " + i + "</a></li>");
                     }
-                    html.push("<li class='j-next'><a href='javascript:' onclick='dcpropertylistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
-                    html.push("<li class='j-last'><a href='javascript:' onclick='dcpropertylistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
-                    html.push("<li class='jumpto'><span class='p-input'><input  id='dcpropertylistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='dcpropertylistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
+                    html.push("<li class='j-next'><a href='javascript:' onclick='dcmyteamnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
+                    html.push("<li class='j-last'><a href='javascript:' onclick='dcmyteamweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
+                    html.push("<li class='jumpto'><span class='p-input'><input  id='dcmyteamputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='dcmyteamLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
                     html.push("<ul>");
-                    $("#dcpropertylistination").empty().append(html.join(''));
+                    $("#dcmyteamination").empty().append(html.join(''));
                     //如果当前页等于1就让首页、上一页不可点击
-                    if (dcpropertylist.pageIndex == 1) {
-                        $("#dcpropertylistination .j-first").addClass("disabled");
-                        $("#dcpropertylistination .j-prev").addClass("disabled");
+                    if (dcmyteam.pageIndex == 1) {
+                        $("#dcmyteamination .j-first").addClass("disabled");
+                        $("#dcmyteamination .j-prev").addClass("disabled");
 
                     }
-                    if (dcpropertylist.pageIndex == dcpropertylist.MaxPage)
+                    if (dcmyteam.pageIndex == dcmyteam.MaxPage)
                     {
-                        $("#dcpropertylistination .j-next").addClass("disabled");
-                        $("#dcpropertylistination .j-last").addClass("disabled");
+                        $("#dcmyteamination .j-next").addClass("disabled");
+                        $("#dcmyteamination .j-last").addClass("disabled");
                     }
             }
         });
     }
     //下一页
-    function dcpropertylistnext() {
-        dcpropertylist.pageIndex++;
-        if (dcpropertylist.pageIndex > dcpropertylist.MaxPage) {
-            dcpropertylist.pageIndex = dcpropertylist.MaxPage;
+    function dcmyteamnext() {
+        dcmyteam.pageIndex++;
+        if (dcmyteam.pageIndex > dcmyteam.MaxPage) {
+            dcmyteam.pageIndex = dcmyteam.MaxPage;
         }
-        dcpropertylistpage();
+        dcmyteampage();
     }
     //上一页
-    function dcpropertylistPrepage () {
-        dcpropertylist.pageIndex--;
-        if (dcpropertylist.pageIndex < 1) {
-            dcpropertylist.pageIndex = 1;
+    function dcmyteamPrepage () {
+        dcmyteam.pageIndex--;
+        if (dcmyteam.pageIndex < 1) {
+            dcmyteam.pageIndex = 1;
         }
-        dcpropertylistpage();
+        dcmyteampage();
     }
     //首页
-    function dcpropertylistfirst() {
-        dcpropertylist.pageIndex = 1;
-        dcpropertylistpage();
+    function dcmyteamfirst() {
+        dcmyteam.pageIndex = 1;
+        dcmyteampage();
     }
 
     //尾页
-    function dcpropertylistweiye() {
+    function dcmyteamweiye() {
 
-        dcpropertylist.pageIndex = dcpropertylist.MaxPage;
-        dcpropertylistpage();
+        dcmyteam.pageIndex = dcmyteam.MaxPage;
+        dcmyteampage();
 
     }
-    function dcpropertylistLetgo() {
-        var InputValue = $("#dcpropertylistputvalue").val();
-        if (InputValue > dcpropertylist.MaxPage) {
+    function dcmyteamLetgo() {
+        var InputValue = $("#dcmyteamputvalue").val();
+        if (InputValue > dcmyteam.MaxPage) {
             $(this).alertmsg('info', '你输入的数字超过页面范围');
             return;
         }
@@ -105,37 +105,37 @@
             $(this).alertmsg('info', '请输入数字');
             return;
         }
-        dcpropertylist.pageIndex = InputValue;
-        dcpropertylistpage();
+        dcmyteam.pageIndex = InputValue;
+        dcmyteampage();
     }
-    function dcpropertylist_page_size_change(_this) {
+    function dcmyteam_page_size_change(_this) {
         var checkText = $(_this).find("option:selected").text();
-        dcpropertylist.pageIndex = 1;
-        dcpropertylist.pageSize = checkText;
-        dcpropertylistpage();
+        dcmyteam.pageIndex = 1;
+        dcmyteam.pageSize = checkText;
+        dcmyteampage();
     }
-    function dcpropertylist_page_click(_this) {
+    function dcmyteam_page_click(_this) {
         $(_this).attr("class", "selected");
         var Sum = $(_this).text();
-        dcpropertylist.pageIndex = Sum;
-        dcpropertylistpage();
+        dcmyteam.pageIndex = Sum;
+        dcmyteampage();
     }
 
     $(function () {
-        dcpropertylistpage();
+        dcmyteampage();
     });
     function search() {
-        dcpropertylist.pageIndex = 1;
-        dcpropertylistpage();
+        dcmyteam.pageIndex = 1;
+        dcmyteampage();
     }
-    var dc_property_editid;
-    function edit_dc_property(_this, id, name) {
-        dc_property_editid = id;
-        $(_this).dialog({ id: 'dialog_adddc_property', url: '/admin/dc/addproperty.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_dcpropertylist_before_close" });
+    var dc_myteam_editid;
+    function edit_dc_myteam(_this, id, name) {
+        dc_myteam_editid = id;
+        $(_this).dialog({ id: 'dialog_adddc_myteam', url: '/admin/dc/addmyteam.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_dcmyteam_before_close" });
     }
-    function dialog_dcpropertylist_before_close($dialog) {
-        dc_property_editid = undefined;
-        $("body").navtab("refresh", "dc_property");
+    function dialog_dcmyteam_before_close($dialog) {
+        dc_myteam_editid = undefined;
+        $("body").navtab("refresh", "dc_myteam");
         return true;
     }
 </script>
@@ -163,7 +163,7 @@
          <button type="submit" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
          <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo" onclick="Clear()">清空查询</a>-->
         <div class="pull-right">
-            <button type="button" class="btn-blue" data-url="dc/addproperty.html" data-id="dialog_adddc_property" data-width="860" data-height="500"
+            <button type="button" class="btn-blue" data-url="dc/addmyteam.html" data-id="dialog_adddc_myteam" data-width="860" data-height="500"
                     data-toggle="dialog">
                 添加
             </button>
@@ -192,7 +192,7 @@
     </div>-->
 </div>
 <div class="bjui-pageContent tableContent">
-    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="dc_property_list">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="dc_myteam_list">
         <thead>
             <tr>
                 <th data-order-field="rowid">序号</th>
@@ -209,7 +209,7 @@
 <div class="bjui-pageFooter">
     <div class="pages">
         <span>每页&nbsp;</span>
-        <div class="selectPagesize" onchange="dcpropertylist_page_size_change(this)">
+        <div class="selectPagesize" onchange="dcmyteam_page_size_change(this)">
             <select data-toggle="selectpicker">
                 <option value="10" id="three">10</option>
                 <option value="20" id="six">20</option>
@@ -217,9 +217,9 @@
 
             </select>
         </div>
-        <span>&nbsp;条, 共&nbsp;<span id="dcpropertylist_total"> </span> 条</span>
+        <span>&nbsp;条, 共&nbsp;<span id="dcmyteam_total"> </span> 条</span>
     </div>
-    <div class="pagination-box" id="dcpropertylistination" data-total="10" data-page-size="2" data-page-current="1">
+    <div class="pagination-box" id="dcmyteamination" data-total="10" data-page-size="2" data-page-current="1">
     </div>
 
 </div>

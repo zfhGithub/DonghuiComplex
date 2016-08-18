@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,10 +12,13 @@ namespace DonghuiComplex.ny_118
     {
         public List<string> phoneList = new List<string>();
         public Dictionary<string, string> qqList = new Dictionary<string, string>();
+        public DataTable productsList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             qqList = com.settings.getQQs();
             phoneList = com.settings.getPhones();
+            productsList = com.ny.products.getProductsList("1", "6");
+
             if (Request.HttpMethod == "POST")
             {
                 string name = Request.Form["name"];

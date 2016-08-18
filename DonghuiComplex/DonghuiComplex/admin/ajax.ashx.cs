@@ -283,8 +283,134 @@ namespace DonghuiComplex.admin
                     res.Write(Utils.DataTableToJSON(com.ly.jingdian.getJingdianDetailById(id)));
                     break;
 
+                #endregion
+                #endregion
+
+                #region 农业
+                #region 产品
+                case "addnyproducts":
+                    status = com.ny.products.addProducts(req.Form["ny_products_title"], req.Form["ny_products_subtitle"], req.Form["ny_products_photo"], req.Form["ny_products_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatenyproducts":
+                    status = com.ny.products.updateProducts(req.Params["id"], req.Form["ny_products_title"], req.Form["ny_products_subtitle"], req.Form["ny_products_photo"], req.Form["ny_products_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "nyproductslist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.ny.products.getProductsList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.ny.products.getProductsCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletenyproducts":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ny.products.deleteProductsById(id)));
+                    break;
+                case "getnyproductsdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.ny.products.getProductsDetailById(id)));
+                    break;
+
+                #endregion
+                #endregion
+
+
+                #region 地产
+                #region 服务
+                case "adddcservices":
+                    status = com.dc.services.addServices(req.Form["dc_services_title"], req.Form["dc_services_subtitle"], req.Form["dc_services_photo"], req.Form["dc_services_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatedcservices":
+                    status = com.dc.services.updateServices(req.Params["id"], req.Form["dc_services_title"], req.Form["dc_services_subtitle"], req.Form["dc_services_photo"], req.Form["dc_services_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "dcserviceslist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.dc.services.getServicesList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.dc.services.getServicesCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletedcservices":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.dc.services.deleteServicesById(id)));
+                    break;
+                case "getdcservicesdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.dc.services.getServicesDetailById(id)));
+                    break;
+                    #endregion
+
+                 #region 楼盘
+                    case "adddcproperty":
+                    status = com.dc.property.addProperty(req.Form["dc_property_title"], req.Form["dc_property_subtitle"], req.Form["dc_property_photo"], req.Form["dc_property_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatedcproperty":
+                    status = com.dc.property.updateProperty(req.Params["id"], req.Form["dc_property_title"], req.Form["dc_property_subtitle"], req.Form["dc_property_photo"], req.Form["dc_property_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "dcpropertylist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.dc.property.getPropertyList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.dc.services.getServicesCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletedcproperty":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.dc.property.deletePropertyById(id)));
+                    break;
+                case "getdcpropertydetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.dc.property.getPropertyDetailById(id)));
+                    break;
+                #endregion
+                #region 团队
+                case "adddcmyteam":
+                    status = com.dc.myteam.addMyteam(req.Form["dc_myteam_title"], req.Form["dc_myteam_subtitle"], req.Form["dc_myteam_photo"], req.Form["dc_myteam_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatedcmyteam":
+                    status = com.dc.myteam.updateMyteam(req.Params["id"], req.Form["dc_myteam_title"], req.Form["dc_myteam_subtitle"], req.Form["dc_myteam_photo"], req.Form["dc_myteam_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "dcmyteamlist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.dc.myteam.getMyteamList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.dc.services.getServicesCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletedcmyteam":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.dc.myteam.deleteMyteamById(id)));
+                    break;
+                case "getdcmyteamdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.dc.myteam.getMyteamDetailById(id)));
+                    break;
                     #endregion
                     #endregion
+
             }
         }
 
