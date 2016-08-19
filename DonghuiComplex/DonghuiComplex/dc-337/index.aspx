@@ -177,72 +177,35 @@
 	  <div class="services" id="services">
 	      <div class="container">
 		   <h3 class="tittle">我们的服务</h3>
-		      <div class="serve-top">
-				 <div class="col-md-6 serve-icons">
-					<div class="s-sub">
-						<div class="col-md-2 icon">
-						  <i class="glyphicon glyphicon-globe"></i>
-						</div>
-						<div class="col-md-10 serve-text">
-						 <h4> Duis quis risus </h4>
-						 <p> Duis quis risus a nunc ultricies varius. Aenean aliquam pellentesque magna consectetur hendrerit. Cum sociis natoque penatibus. </p>
-						</div>
-					     <div class="clearfix"> </div>	
-					 </div>
-					 <div class="s-sub">
-						<div class="col-md-2 icon">
-						  <i class="glyphicon glyphicon-send"></i>
-						</div>
-						<div class="col-md-10 serve-text">
-					     <h4> Duis quis risus </h4>
-						 <p> Duis quis risus a nunc ultricies varius. Aenean aliquam pellentesque magna consectetur hendrerit. Cum sociis natoque penatibus.</p>
-						</div>
-					     <div class="clearfix"> </div>	
-					 </div>
-					 <div class="s-sub">
-						<div class="col-md-2 icon">
-						  <i class="glyphicon glyphicon-briefcase"></i>
-						</div>
-						<div class="col-md-10 serve-text">
-						 <h4> Duis quis risus </h4>
-						 <p> Duis quis risus a nunc ultricies varius. Aenean aliquam pellentesque magna consectetur hendrerit. Cum sociis natoque penatibus.</p>
-						</div>
-					     <div class="clearfix"> </div>	
-					 </div>
-				 </div>
-				 <div class="col-md-6 serve-icons">
-					<div class="s-sub">
-						<div class="col-md-2 icon">
-						  <i class="glyphicon glyphicon-screenshot"></i>
-						</div>
-						<div class="col-md-10 serve-text">
-						  <h4>Lorem ipsum dolor</h4>
-						 <p> Duis quis risus a nunc ultricies varius. Aenean aliquam pellentesque magna consectetur hendrerit. Cum sociis natoque penatibus. </p>
-						</div>
-					     <div class="clearfix"> </div>	
-					 </div>
-					 <div class="s-sub">
-						<div class="col-md-2 icon">
-						  <i class="glyphicon glyphicon-edit"></i>
-						</div>
-						<div class="col-md-10 serve-text">
-						  <h4>Lorem ipsum dolor</h4>
-						 <p> Duis quis risus a nunc ultricies varius. Aenean aliquam pellentesque magna consectetur hendrerit. Cum sociis natoque penatibus.</p>
-						</div>
-					     <div class="clearfix"> </div>	
-					 </div><div class="s-sub">
-						<div class="col-md-2 icon">
-						  <i class="glyphicon glyphicon-certificate"></i>
-						</div>
-						<div class="col-md-10 serve-text">
-						  <h4>Lorem ipsum dolor</h4>
-						 <p> Duis quis risus a nunc ultricies varius. Aenean aliquam pellentesque magna consectetur hendrerit. Cum sociis natoque penatibus.</p>
-						</div>
-					     <div class="clearfix"> </div>	
-					 </div>
-				 </div>
-				 <div class="clearfix"> </div>		
-	          </div>	
+              <div class="serve-top">
+                  <%
+                      decimal count = Math.Ceiling(Convert.ToDecimal(servicesList.Rows.Count) / 3);
+                      for (int i = 0; i < count; i++)
+                      {
+                          int jj = ((i + 1) * 3) > servicesList.Rows.Count ? servicesList.Rows.Count :((i + 1) * 3);
+                         %>
+                        <div class="col-md-6 serve-icons">
+                            <% for (int j = i*3; j < jj; j++)
+                                {%>
+                            <div class="s-sub">
+                                <div class="col-md-2 icon">
+                                    <img src="<%= servicesList.Rows[j]["photo"] %>" style="width: 100px; height: 80px; margin-left: -25px;" />
+                                </div>
+                                <div class="col-md-10 serve-text">
+                                    <h4><%= servicesList.Rows[j]["title"] %> </h4>
+                                    <p> <%= servicesList.Rows[j]["subtitle"] %> </p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                                <%} %>
+                        </div>
+                       <%
+                      }
+
+                  %>
+               
+                  <div class="clearfix"></div>
+              </div>	
 	      </div>	
 	  </div>
  <!--team-starts-->
@@ -350,112 +313,31 @@
  <!--gallery-section-->
   <div class="gallery-section" id="gallery">
       <div class="container">
-	    <h3 class="tittle">Our Gallery</h3>
+	    <h3 class="tittle">我们的资源</h3>
          <div class="categorie-grids cs-style-1">
-				 <div class="col-md-4 cate-grid grid">
+             <%
+                 for (int i = 0; i < propertyList.Rows.Count; i++)
+                 {%>
+             	 <div class="col-md-4 cate-grid grid">
 					<figure>
-						<img src="images/s1.jpg" alt="">
+						<img src="<%= propertyList.Rows[i]["photo"] %>" alt="">
 						<figcaption>
-							<h3>My hat</h3>
-							<span>Accusantium Dolor</span>
-							<a class="example-image-link" href="images/s1.jpg" data-lightbox="example-1" data-title="Interior Design">VIEW</a>
+							<h3><%= propertyList.Rows[i]["title"] %></h3>
+							<span><%= propertyList.Rows[i]["subtitle"] %></span>
+							<a title="点击查看详情" class="example-image-link" href="<%= propertyList.Rows[i]["photo"] %>" data-lightbox="example-1" data-title="Interior Design">查看</a>
 						</figcaption>
 					</figure>
 				 </div>
-				 <div class="col-md-4 cate-grid grid">
-					 <figure>
-						<img src="images/s2.jpg" alt="">
-						<figcaption>
-							<h3>My hat</h3>
-							<span>Accusantium Dolor</span>
-							<a class="example-image-link" href="images/s2.jpg" data-lightbox="example-1" data-title="Interior Design">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-
-
-				 <div class="col-md-4 cate-grid grid">
-					 <figure>
-						<img src="images/s3.jpg" alt="">
-						<figcaption>
-							<h3>My hat</h3>
-							<span>Accusantium Dolor</span>
-							<a class="example-image-link" href="images/s3.jpg" data-lightbox="example-1" data-title="Interior Design">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-
-				 <div class="col-md-4 cate-grid grid">
-					<figure>
-						<img src="images/s4.jpg" alt="">
-						<figcaption>
-							<h3>My hat</h3>
-							<span>Accusantium Dolor</span>
-							<a class="example-image-link" href="images/s4.jpg" data-lightbox="example-1" data-title="Interior Design">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-
-				 <div class="col-md-4 cate-grid grid">
-					<figure>
-						<img src="images/s5.jpg" alt="">
-						<figcaption>
-							<h3>My hat</h3>
-							<span>Accusantium Dolor</span>
-							<a class="example-image-link" href="images/s5.jpg" data-lightbox="example-1" data-title="Interior Design">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-
-				 <div class="col-md-4 cate-grid grid">
-					 <figure>
-						<img src="images/s6.jpg" alt="">
-						<figcaption>
-							<h3>My hat</h3>
-							<span>Accusantium Dolor</span>
-							<a class="example-image-link" href="images/s6.jpg" data-lightbox="example-1" data-title="Interior Design">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-				 	<div class="col-md-4 cate-grid grid">
-					<figure>
-						<img src="images/time1.jpg" alt="">
-						<figcaption>
-							<h3>My hat</h3>
-							<span>Accusantium Dolor</span>
-							<a class="example-image-link" href="images/time1.jpg" data-lightbox="example-1" data-title="Interior Design">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-				 <div class="col-md-4 cate-grid grid">
-					 <figure>
-						<img src="images/s7.jpg" alt="">
-						<figcaption>
-							<h3>My hat</h3>
-							<span>Accusantium Dolor</span>
-							<a class="example-image-link" href="images/s7.jpg" data-lightbox="example-1" data-title="Interior Design">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-
-
-				 <div class="col-md-4 cate-grid grid">
-					 <figure>
-						<img src="images/time.jpg" alt="">
-						<figcaption>
-							<h3>My hat</h3>
-							<span>Accusantium Dolor</span>
-							<a class="example-image-link" href="images/time.jpg" data-lightbox="example-1" data-title="Interior Design">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-               <script src="js/lightbox.js"></script>
+			
+                 <%}
+                  %>
+	         <script src="js/lightbox.js"></script>
 			 <div class="clearfix"></div>
 		 </div>
 	 </div>
 </div>
   <!--team-starts-->
-   <!--
+   
 	<div class="testimonials" id="testimonial">
 	   <div class="col-md-6 test-text">
 	       <h3 class="tittle con">Testimonial</h3>
@@ -506,7 +388,7 @@
 		    </div>
 			<div class="clearfix"></div>
 	   </div>
- -->
+ 
     <!--//news-->
 	   <div class="news" id="news">
 	       <div class="container">
