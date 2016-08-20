@@ -67,9 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\changepwd.html" />
+    <Content Include="admin\dc\addbanner.html" />
     <Content Include="admin\dc\addmyteam.html" />
     <Content Include="admin\dc\addproperty.html" />
     <Content Include="admin\dc\addservices.html" />
+    <Content Include="admin\dc\banner.html" />
     <Content Include="admin\dc\message.html" />
     <Content Include="admin\dc\myteam.html" />
     <Content Include="admin\dc\property.html" />
@@ -1159,6 +1161,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="com\case.cs" />
+    <Compile Include="com\dc\banner.cs" />
     <Compile Include="com\dc\myteam.cs" />
     <Compile Include="com\dc\property.cs" />
     <Compile Include="com\dc\services.cs" />

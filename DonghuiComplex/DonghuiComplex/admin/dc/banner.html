@@ -1,0 +1,225 @@
+﻿<script type="text/javascript">
+    var dcbannerlist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
+
+    function dcbannerlistpage() {
+        var customNo = $("#customNo").val();
+        var customName = $("#customName").val();
+        $.ajax({
+            url: 'ajax.ashx?action=dcbannerlist',
+                data: {
+                    "pageIndex": dcbannerlist.pageIndex,
+                    "pageSize": dcbannerlist.pageSize,
+                },
+                type: "post",
+                success: function (result) {
+                    var html = [];
+                    var json = JSON.parse(result);
+                    var count = json["count"];
+                    count = JSON.parse(count);
+                    dcbannerlist.TotalPage = json["count"];//总记录数
+                    //求出最大页
+                    dcbannerlist.MaxPage = Math.ceil(dcbannerlist.TotalPage / dcbannerlist.pageSize);
+
+                    var da = json["data"];
+                    da = JSON.parse(da);
+                    var data = da["d"];
+                    $.each(data, function (k, v) {
+                        html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.title + "</td><td>" + v.subtitle + "</td><td>" + v.created + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
+                        html.push(" <td><a href='#' onclick='edit_dc_banner(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
+                        html.push(" <a href='ajax.ashx?action=deletedcbanner&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
+                    });
+                    $("#dc_banner_list tbody").empty().append(html.join(''));
+                    html = [];
+
+                    $("#dcbannerlist_total").html(dcbannerlist.TotalPage);//共..条数据
+                    html.push("<ul class='pagination'>");
+                    html.push("<li class='j-first'><a href='javascript:' onclick='dcbannerlistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
+                    html.push("<li class='j-prev'><a href='javascript:' onclick='dcbannerlistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
+
+                    for (var i = 1; i <= dcbannerlist.MaxPage; i++) {
+                        var c = "j-num";
+                        if (i == dcbannerlist.pageIndex) {
+                            c = "selected " + c;
+                        }
+                        html.push("<li class='" + c + "'><a href='javascript:' onclick='dcbannerlist_page_click(this)'> " + i + "</a></li>");
+                    }
+                    html.push("<li class='j-next'><a href='javascript:' onclick='dcbannerlistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
+                    html.push("<li class='j-last'><a href='javascript:' onclick='dcbannerlistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
+                    html.push("<li class='jumpto'><span class='p-input'><input  id='dcbannerlistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='dcbannerlistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
+                    html.push("<ul>");
+                    $("#dcbannerlistination").empty().append(html.join(''));
+                    //如果当前页等于1就让首页、上一页不可点击
+                    if (dcbannerlist.pageIndex == 1) {
+                        $("#dcbannerlistination .j-first").addClass("disabled");
+                        $("#dcbannerlistination .j-prev").addClass("disabled");
+
+                    }
+                    if (dcbannerlist.pageIndex == dcbannerlist.MaxPage)
+                    {
+                        $("#dcbannerlistination .j-next").addClass("disabled");
+                        $("#dcbannerlistination .j-last").addClass("disabled");
+                    }
+            }
+        });
+    }
+    //下一页
+    function dcbannerlistnext() {
+        dcbannerlist.pageIndex++;
+        if (dcbannerlist.pageIndex > dcbannerlist.MaxPage) {
+            dcbannerlist.pageIndex = dcbannerlist.MaxPage;
+        }
+        dcbannerlistpage();
+    }
+    //上一页
+    function dcbannerlistPrepage () {
+        dcbannerlist.pageIndex--;
+        if (dcbannerlist.pageIndex < 1) {
+            dcbannerlist.pageIndex = 1;
+        }
+        dcbannerlistpage();
+    }
+    //首页
+    function dcbannerlistfirst() {
+        dcbannerlist.pageIndex = 1;
+        dcbannerlistpage();
+    }
+
+    //尾页
+    function dcbannerlistweiye() {
+
+        dcbannerlist.pageIndex = dcbannerlist.MaxPage;
+        dcbannerlistpage();
+
+    }
+    function dcbannerlistLetgo() {
+        var InputValue = $("#dcbannerlistputvalue").val();
+        if (InputValue > dcbannerlist.MaxPage) {
+            $(this).alertmsg('info', '你输入的数字超过页面范围');
+            return;
+        }
+        if (InputValue < 1) {
+            $(this).alertmsg('info', '请输入大于第一页的数字');
+            return;
+        }
+        if (isNaN(Number(InputValue)) || InputValue == "") {
+            $(this).alertmsg('info', '请输入数字');
+            return;
+        }
+        dcbannerlist.pageIndex = InputValue;
+        dcbannerlistpage();
+    }
+    function dcbannerlist_page_size_change(_this) {
+        var checkText = $(_this).find("option:selected").text();
+        dcbannerlist.pageIndex = 1;
+        dcbannerlist.pageSize = checkText;
+        dcbannerlistpage();
+    }
+    function dcbannerlist_page_click(_this) {
+        $(_this).attr("class", "selected");
+        var Sum = $(_this).text();
+        dcbannerlist.pageIndex = Sum;
+        dcbannerlistpage();
+    }
+
+    $(function () {
+        dcbannerlistpage();
+    });
+    function search() {
+        dcbannerlist.pageIndex = 1;
+        dcbannerlistpage();
+    }
+    var dc_banner_editid;
+    function edit_dc_banner(_this, id, name) {
+        dc_banner_editid = id;
+        $(_this).dialog({ id: 'dialog_adddc_banner', url: '/admin/dc/addbanner.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_dcbannerlist_before_close" });
+    }
+    function dialog_dcbannerlist_before_close($dialog) {
+        dc_banner_editid = undefined;
+        $("body").navtab("refresh", "dc_banner");
+        return true;
+    }
+</script>
+<div class="bjui-pageHeader">
+    <div class="pull-right">
+
+        <!--<div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy"> 复选框-批量操作<span class="caret"></span></button>
+            <ul class="dropdown-menu right" role="menu" style="min-width: 153px;">
+                <li><a href="ajax.ashx?action=ProductDels" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="del" data-group="ids">删除选中</a></li>
+            </ul>
+        </div>-->
+    </div>
+    <!--<input type="hidden" name="pageSize" value="${model.pageSize}">
+     <input type="hidden" name="pageCurrent" value="${model.pageCurrent}">
+     <input type="hidden" name="orderField" value="${param.orderField}">
+     <input type="hidden" name="orderDirection" value="${param.orderDirection}">-->
+    <div class="bjui-searchBar">
+        &nbsp;
+
+
+        <!--<label>商品名称：</label><input type="text" value="" id="customName" name="name" class="form-control" size="8">&nbsp;
+
+        <button type="button" class="showMoreSearch" data-toggle="moresearch" data-name="custom"><i class="fa fa-angle-double-down"></i></button>
+         <button type="submit" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
+         <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo" onclick="Clear()">清空查询</a>-->
+        <div class="pull-right">
+            <button type="button" class="btn-blue" data-url="dc/addbanner.html" data-id="dialog_adddc_banner" data-width="860" data-height="500"
+                    data-toggle="dialog">
+                添加
+            </button>
+            <!--  <button type="button" class="btn-blue" data-url="/B-JUI/ajaxDone2.html?id={#bjui-selected}" data-toggle="doajax" data-confirm-msg="确定要删除选中项吗？" data-icon="remove" title="可以在控制台(network)查看被删除ID">删除选中行</button>&nbsp;
+            <div class="btn-group">
+                <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">复选框-批量操作<span class="caret"></span></button>
+                 <ul class="dropdown-menu right" role="menu">
+                     <li><a href="book1.xlsx" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出<span style="color: green;">全部</span></a></li>
+                     <li><a href="book1.xlsx" data-toggle="doexportchecked" data-confirm-msg="确定要导出选中项吗？" data-idname="expids" data-group="ids">导出<span style="color: red;">选中</span></a></li>
+                     <li class="divider"></li>
+                     <li><a href="/B-JUI/ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>
+                 </ul>
+             </div>-->
+        </div>
+    </div>
+    <!--<div class="bjui-moreSearch">
+        <label>职业：</label><input type="text" value="" name="profession" size="15" />
+        <label>&nbsp;性别:</label>
+        <select name="sex" data-toggle="selectpicker">
+            <option value="">全部</option>
+            <option value="true">男</option>
+            <option value="false">女</option>
+        </select>
+        <label>&nbsp;手机:</label>
+        <input type="text" value="" name="mobile" size="10">
+    </div>-->
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="dc_banner_list">
+        <thead>
+            <tr>
+                <th data-order-field="rowid">序号</th>
+                <th data-order-field="id">标题</th>
+                <th data-order-field="name">二级标题</th>
+                <th data-order-field="created">创建时间</th>
+                <th data-order-field="birthplace">图片</th>
+                <th data-order-field="#">操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize" onchange="dcbannerlist_page_size_change(this)">
+            <select data-toggle="selectpicker">
+                <option value="10" id="three">10</option>
+                <option value="20" id="six">20</option>
+                <option value="30">30</option>
+
+            </select>
+        </div>
+        <span>&nbsp;条, 共&nbsp;<span id="dcbannerlist_total"> </span> 条</span>
+    </div>
+    <div class="pagination-box" id="dcbannerlistination" data-total="10" data-page-size="2" data-page-current="1">
+    </div>
+
+</div>

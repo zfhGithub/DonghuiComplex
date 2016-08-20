@@ -49,92 +49,85 @@
 </head>
 <body>
 <!--start-home-->
-   <div class="header" id="home">
-     <div class="container">
-      <div class="header-top">
-	       	<div class="logo">
-                    <a href="index.aspx"><h1>地产</h1> </a>
-			 </div>	
-				    <div class="top-menu">
-					    <span class="menu"> </span>
-						<ul class="cl-effect-7">
-								<li><a class="scroll" class="active" href="index.aspx">首页</a></li>
-								<%--<li><a class="scroll" href="#latest">Latest Hats</a></li>--%>
-								<li><a class="scroll" href="#services">服务</a></li>
-								<li><a class="scroll" href="#gallery">楼盘</a></li>
-                                <li><a class="scroll" href="#team">团队</a></li>
-								<li><a class="scroll" href="#team">新闻</a></li>
-								<li><a class="scroll" href="#contact">留言</a></li>
-							</ul>
-				</div>
+    <div class="header" id="home">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <a href="index.aspx">
+                        <h1>地产</h1>
+                    </a>
+                </div>
+                <div class="top-menu">
+                    <span class="menu"></span>
+                    <ul class="cl-effect-7">
+                        <li><a class="scroll" class="active" href="index.aspx">首页</a></li>
+                        <%--<li><a class="scroll" href="#latest">Latest Hats</a></li>--%>
+                        <li><a class="scroll" href="#services">服务</a></li>
+                        <li><a class="scroll" href="#gallery">楼盘</a></li>
+                        <li><a class="scroll" href="#team">团队</a></li>
+                        <li><a class="scroll" href="#team">新闻</a></li>
+                        <li><a class="scroll" href="#contact">留言</a></li>
+                    </ul>
+                </div>
                 <!-- script-for-menu -->
-								<script>
-									$("span.menu").click(function(){
-										$(".top-menu ul").slideToggle("slow" , function(){
-										});
-									});
-								</script>
+                <script>
+                    $("span.menu").click(function () {
+                        $(".top-menu ul").slideToggle("slow", function () {
+                        });
+                    });
+                </script>
 
-			<div class="clearfix"></div>
-	<!--End-top-nav-script-->
-	 </div>
-	 </div>
-<!--/start-banner-->
-     <div class="banner">
-	       <div class="banner-inner">
-						<div class="callbacks_container">
-						<ul class="rslides callbacks callbacks1" id="slider4">
-							 <li>
-							   
-								<div class="banner-info hexagon_box">
-								<h3>Stay in <span>Fashion</span></h3>
-								<p>Lorem ipsum dolor sit amet</p>
-								</div>	
-								
-							</li>
-							<li>
-							   
-								<div class="banner-info hexagon_box">
-								<h3>lives in <span>Fashion</span></h3>
-								<p>Lorem ipsum dolor sit amet</p>
-								</div>	
-								
-							</li>
-							<li>
-							   
-								<div class="banner-info hexagon_box">
-								<h3>Stay in <span>Fashion</span></h3>
-								<p>Lorem ipsum dolor sit amet</p>
-								</div>	
-								
-							</li>
-						   </ul>
-						</div>
-						<!--banner-Slider-->
-						<script src="js/responsiveslides.min.js"></script>
-						 <script>
-						// You can also use "$(window).load(function() {"
-						$(function () {
-						  // Slideshow 4
-						  $("#slider4").responsiveSlides({
-						auto: true,
-						pager: true,
-						nav:false,
-						speed: 500,
-						namespace: "callbacks",
-						before: function () {
-						  $('.events').append("<li>before event fired.</li>");
-						},
-						after: function () {
-						  $('.events').append("<li>after event fired.</li>");
-						}
-						  });
+                <div class="clearfix"></div>
+                <!--End-top-nav-script-->
+            </div>
+        </div>
+        <!--/start-banner-->
+        <div class="banner">
+            <div class="banner-inner">
+                <div class="callbacks_container">
+                    <ul class="rslides callbacks callbacks1" id="slider4">
+                        <%
+                            for (int i = 0; i < bannerList.Rows.Count; i++)
+                            {%>
+                        <li>
+                            <div class="banner-info hexagon_box">
+                                <h3><%= bannerList.Rows[i]["title"] %></h3>
+                                <p><%= bannerList.Rows[i]["subtitle"] %> </p>
+                                <img src="<%= bannerList.Rows[i]["photo"] %>" style="visibility: hidden" />
+                            </div>
+                        </li>
+                        <%}
+                        %>
+                    </ul>
+                </div>
+                <!--banner-Slider-->
+                <script src="js/responsiveslides.min.js"></script>
+                <script>
+                    // You can also use "$(window).load(function() {"
+                    $(function () {
+                        // Slideshow 4
+                        $("#slider4").responsiveSlides({
+                            auto: true,
+                            pager: true,
+                            nav: false,
+                            speed: 1000,
+                            namespace: "callbacks",
+                            before: function () {
+                                $('.events').append("<li>before event fired.</li>");
+                               var isrc = $(".banner-inner .callbacks li.callbacks1_on img").attr("src");
+                               $(".header").css("background", "url(" + isrc + ")no-repeat 0px 0px"); 
+                            },
+                            after: function () {
+                                //alert("1");
+                                 $('.events').append("<li>after event fired.</li>");
+                            }
+                        });
 
-						});
-						  </script>
-				</div>
-	</div>
- </div>
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
     <!--//end-banner-->
   <!--/latest-->
    <!-- 
@@ -212,101 +205,36 @@
 	<div class="staff" id="team">
       <div class="container">
 	      <h3 class="tittle">我们的团队</h3>
-		  <div class="team">
-           <div class="col-md-3 staff2">
-        	<div class="view view-fifth">
-                <div class="mask1"><img src="images/t3.jpg" alt="image" class="img-responsive zoom-img" /></div>
-                    <div class="mask">
-                       <a class="popup-with-zoom-anim" href="#small-dialog2"> <div class="info"><i class="glyphicon glyphicon-zoom-in"></i></div></a>
-		                  <div id="small-dialog2" class="mfp-hide">
-							   <div class="pop_up2">
-							   	  <img src="images/t3.jpg" class="img-responsive" alt=""/>
-								     <h3>About</h3>
-							   	   <p class="popup_desc">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </p>
-							   </div>
-						  </div>
-					</div>
-        	  <h3><a href="#">Jessi</a></h3>
-        	      <p>Lorem ipsum dolor sit amet. Integer gravida velit quis dolor tristiqumsan.</p>
-        			<ul class="s_social">
-						<li><a href=""> <i class="fb1"> </i> </a></li>
-						<li><a href=""><i class="tw1"> </i> </a></li>
-					    <li><a href=""><i class="linked1"> </i> </a></li>
-						<li><a href=""><i class="google1"> </i> </a></li>
-		 			</ul>
+          <div class="team">
+              <% for (int i = 0; i < myteamList.Rows.Count; i++)
+                  {%>
+              <div class="col-md-3 staff2">
+                  <div class="view view-fifth">
+                      <div class="mask1">
+                          <img src="<%= myteamList.Rows[i]["photo"] %>" alt="image" class="img-responsive zoom-img" />
+                      </div>
+                      <div class="mask">
+                          <a class="popup-with-zoom-anim" href="#small-dialog2">
+                              <div class="info"><i class="glyphicon glyphicon-zoom-in"></i></div>
+                          </a>
+                          <div id="small-dialog2" class="mfp-hide">
+                              <div class="pop_up2">
+                                  <img src="<%= myteamList.Rows[i]["photo"] %>" class="img-responsive" alt="" />
+                                  <h3><%= myteamList.Rows[i]["title"] %> </h3>
+                                  <p class="popup_desc"><%= myteamList.Rows[i]["subtitle"] %></p>
+                              </div>
+                          </div>
+                      </div>
+                      <h3><a href="#"> <%= myteamList.Rows[i]["title"] %> </a></h3>
+                      <p><%= myteamList.Rows[i]["subtitle"] %></p>
+
+                  </div>
+              </div>
+              <%} %>
+
+           
+              <div class="clearfix"></div>
           </div>
-        </div>
-        <div class="col-md-3 staff2">
-        	<div class="view view-fifth">
-                <div class="mask1"><img src="images/t1.jpg" alt="image" class="img-responsive zoom-img" /></div>
-                    <div class="mask">
-                       <a class="popup-with-zoom-anim" href="#small-dialog1"> <div class="info"><i class="glyphicon glyphicon-zoom-in"></i></div></a>
-		                  <div id="small-dialog1" class="mfp-hide">
-							   <div class="pop_up2">
-							   	  <img src="images/t1.jpg" class="img-responsive" alt=""/>
-								     <h3>About</h3>
-							   	  <p class="popup_desc">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </p>
-							   </div>
-							 </div>
-					</div>
-        	 <h3><a href="#">Amanda Doe</a></h3>
-        	      <p>Lorem ipsum dolor sit amet Integer gravida velit quis dolor tristiqumsan.</p>
-        			<ul class="s_social">
-						<li><a href=""> <i class="fb1"> </i> </a></li>
-						<li><a href=""><i class="tw1"> </i> </a></li>
-					    <li><a href=""><i class="linked1"> </i> </a></li>
-						<li><a href=""><i class="google1"> </i> </a></li>
-		 			</ul>
-          </div>
-        </div>
-        <div class="col-md-3 staff2">
-        	<div class="view view-fifth">
-                <div class="mask1"><img src="images/t2.jpg" alt="image" class="img-responsive zoom-img" /></div>
-                    <div class="mask">
-                       <a class="popup-with-zoom-anim" href="#small-dialog2"> <div class="info"><i class="glyphicon glyphicon-zoom-in"></i></div></a>
-		                  <div id="small-dialog2" class="mfp-hide">
-							   <div class="pop_up2">
-							   	  <img src="images/t2.jpg" class="img-responsive" alt=""/>
-								     <h3>About</h3>
-							   	   <p class="popup_desc">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </p>
-							   </div>
-						  </div>
-					</div>
-        	  <h3><a href="#">Jenny</a></h3>
-        	      <p>Lorem ipsum dolor sit amet Integer gravida velit quis dolor tristiqumsan.</p>
-        			<ul class="s_social">
-						<li><a href=""> <i class="fb1"> </i> </a></li>
-						<li><a href=""><i class="tw1"> </i> </a></li>
-					    <li><a href=""><i class="linked1"> </i> </a></li>
-						<li><a href=""><i class="google1"> </i> </a></li>
-		 			</ul>
-          </div>
-        </div>
-        <div class="col-md-3 staff2">
-        	<div class="view view-fifth">
-                <div class="mask1"><img src="images/t4.jpg" alt="image" class="img-responsive zoom-img" /></div>
-                    <div class="mask">
-                       <a class="popup-with-zoom-anim" href="#small-dialog3"> <div class="info"><i class="glyphicon glyphicon-zoom-in"></i></div></a>
-		                  <div id="small-dialog3" class="mfp-hide">
-							   <div class="pop_up2">
-							   	  <img src="images/t4.jpg" class="img-responsive" alt=""/>
-								   <h3>About</h3>
-							   	   <p class="popup_desc">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </p>
-							   </div>
-						  </div>
-					</div>
-        	       <h3><a href="#">Lilly</a></h3>
-        	      <p>Lorem ipsum dolor sit amet Integer gravida velit quis dolor tristiqumsan.</p>
-        			<ul class="s_social">
-						<li><a href=""> <i class="fb1"> </i> </a></li>
-						<li><a href=""><i class="tw1"> </i> </a></li>
-					    <li><a href=""><i class="linked1"> </i> </a></li>
-						<li><a href=""><i class="google1"> </i> </a></li>
-		 			</ul>
-             </div>
-        </div>
-        <div class="clearfix"></div>
-      </div>
     </div>
 </div>
  <!--//team-->
@@ -324,7 +252,7 @@
 						<figcaption>
 							<h3><%= propertyList.Rows[i]["title"] %></h3>
 							<span><%= propertyList.Rows[i]["subtitle"] %></span>
-							<a title="点击查看详情" class="example-image-link" href="<%= propertyList.Rows[i]["photo"] %>" data-lightbox="example-1" data-title="Interior Design">查看</a>
+							<a title="点击查看详情" class="example-image-link" href="<%= propertyList.Rows[i]["photo"] %>" data-lightbox="example-1" data-title="<%= propertyList.Rows[i]["title"] %>">查看</a>
 						</figcaption>
 					</figure>
 				 </div>
@@ -340,9 +268,11 @@
    
 	<div class="testimonials" id="testimonial">
 	   <div class="col-md-6 test-text">
-	       <h3 class="tittle con">Testimonial</h3>
+	     <%--  <h3 class="tittle con">Testimonial</h3>
 			<h4>Hat Lovers says</h4>
 			<p>Nulla et finibus libero.Nulla et finibus libero. Suspendisse vitae ex facilisis, ultricies est sed, porta ante. Vivamus tristique luctus lorem, eget dignissim lacus sodales tristique. Suspendisse vitae ex facilisis, ultricies est sed, porta ante. Vivamus tristique luctus lorem, eget dignissim lacus sodales tristique.</p>
+             --%>
+           <
 	   </div>
 	   <div class="col-md-6 test-slide">
 	      <div class="testimonial-content">
@@ -390,61 +320,49 @@
 	   </div>
  
     <!--//news-->
-	   <div class="news" id="news">
-	       <div class="container">
-		   <h3 class="tittle">Our News</h3>
-		   <section id="cd-timeline" class="cd-container">
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-picture">
-				<i class="glyphicon glyphicon-picture"></i>
-			</div>
+    <div class="news" id="news">
+        <div class="container">
+            <h3 class="tittle">Our News</h3>
+            <section id="cd-timeline" class="cd-container">
+              
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie">
+                        <i class="glyphicon glyphicon-map-marker"></i>
+                    </div>
+                    <!-- cd-timeline-img -->
 
-			<div class="cd-timeline-content">
-				 <a href="#"> <img src="images/time1.jpg" alt=""/></a>
-				<span class="cd-date">Sep 14 2015</span>
-			</div> <!-- cd-time-line-content -->
-		</div> 
+                    <div class="cd-timeline-content">
+                        <h4><a href="#">Lorem ipsum dolor</a> </h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
+                        <a href="#0" class="hvr-outline-out even">Read More</a>
+                        <span class="cd-date">Oct 18 2015</span>
+                    </div>
+                    <!-- cd-timeline-content -->
+                </div>
+                <!-- cd-timeline-block -->
 
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-movie">
-				<i class="glyphicon glyphicon-bullhorn"></i>
-			</div> <!-- cd-timeline-img -->
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie">
+                        <i class="glyphicon glyphicon-map-marker"></i>
+                    </div>
+                    <!-- cd-timeline-img -->
 
-			<div class="cd-timeline-content">
-				<h4><a href="#">Lorem ipsum dolor</a> </h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
-				<a href="#0" class="hvr-outline-out even">Read More</a>
-				<span class="cd-date">Oct 18 2015</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
+                    <div class="cd-timeline-content">
+                        <h4><a href="#">Lorem ipsum dolor</a> </h4>
+                        <p>Lorem ipsum dolor sit ameteriores voluptatibus dolorem ipsam quae rerum quis.rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
+                        <a href="#0" class="hvr-outline-out">Read More</a>
+                        <span class="cd-date">Jan 24</span>
+                    </div>
+                    <!-- cd-timeline-content -->
+                </div>
+                <!-- cd-timeline-block -->
+               
 
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-picture">
-					<i class="glyphicon glyphicon-map-marker"></i>
-			</div> <!-- cd-timeline-img -->
+            </section>
+            <!-- cd-timeline -->
 
-			<div class="cd-timeline-content">
-				<h4><a href="#">Lorem ipsum dolor</a> </h4>
-				<p>Lorem ipsum dolor sit ameteriores voluptatibus dolorem ipsam quae rerum quis.rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
-				<a href="#0" class="hvr-outline-out">Read More</a>
-				<span class="cd-date">Jan 24</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-location">
-					<i class="glyphicon glyphicon-picture"></i>
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<a href="#"><img src="images/time.jpg" alt=""/></a>
-				<span class="cd-date">Dec 02 2015</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-
-	</section> <!-- cd-timeline -->
-		  
-			</div>
-	  </div>
+        </div>
+    </div>
 	<!--//news-->
 	   
  <!--team-starts-->

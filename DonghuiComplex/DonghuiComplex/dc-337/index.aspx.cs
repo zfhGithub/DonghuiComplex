@@ -14,12 +14,16 @@ namespace DonghuiComplex.dc_337
         public Dictionary<string, string> qqList = new Dictionary<string, string>();
         public DataTable servicesList = new DataTable();
         public DataTable propertyList = new DataTable();
+        public DataTable myteamList = new DataTable();
+        public DataTable bannerList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             qqList = com.settings.getQQs();
             phoneList = com.settings.getPhones();
             servicesList = com.dc.services.getServicesList("1","6");
             propertyList = com.dc.property.getPropertyList("1","9");
+            myteamList = com.dc.myteam.getMyteamList("1","4");
+            bannerList = com.dc.banner.getBannerList("1","7");
             if (Request.HttpMethod == "POST")
             {
                 string name = Request.Form["name"];

@@ -380,7 +380,8 @@ namespace DonghuiComplex.admin
                     res.Write(Utils.DataTableToJSON(com.dc.property.getPropertyDetailById(id)));
                     break;
                 #endregion
-                #region 团队
+               
+                    #region 团队
                 case "adddcmyteam":
                     status = com.dc.myteam.addMyteam(req.Form["dc_myteam_title"], req.Form["dc_myteam_subtitle"], req.Form["dc_myteam_photo"], req.Form["dc_myteam_content"]);
                     reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
@@ -408,8 +409,40 @@ namespace DonghuiComplex.admin
                     id = req.Params["id"];
                     res.Write(Utils.DataTableToJSON(com.dc.myteam.getMyteamDetailById(id)));
                     break;
+                #endregion
+            
+                    #region 轮播图 
+                case "adddcbanner":
+                    status = com.dc.banner.addBanner(req.Form["dc_banner_title"], req.Form["dc_banner_subtitle"], req.Form["dc_banner_photo"], req.Form["dc_banner_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatedcbanner":
+                    status = com.dc.banner.updateBanner(req.Params["id"], req.Form["dc_banner_title"], req.Form["dc_banner_subtitle"], req.Form["dc_banner_photo"], req.Form["dc_banner_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "dcbannerlist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.dc.banner.getBannerList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.dc.banner.getBannerCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletedcbanner":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.dc.banner.deleteBannerById(id)));
+                    break;
+                case "getdcbannerdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.dc.banner.getBannerDetailById(id)));
+                    break;
+
                     #endregion
                     #endregion
+
 
             }
         }
