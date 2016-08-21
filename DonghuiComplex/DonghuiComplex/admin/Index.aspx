@@ -261,6 +261,7 @@ $(function(){
                                 <li data-id="23" data-pid="2" data-url="ym/myteam.html" data-tabid="ym_myteam" >我的团队</li>  
                                 <li data-id="24" data-pid="2" data-url="ym/aboutus.html" data-tabid="ym_aboutus" >关于我们</li>  
                                 <li data-id="25" data-pid="2" data-url="ym/services.html" data-tabid="ym_services" >服务</li> 
+                                <li data-id="26" data-pid="2" data-url="ym/news.html" data-tabid="ym_news" >新闻</li> 
 
                                 <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">旅游模块</li> 
                                 <li data-id="32" data-pid="3" data-url="ly/setbanner.html" data-tabid="ly_setbanner" >轮播图</li> 
@@ -278,7 +279,8 @@ $(function(){
                                 <li data-id="52" data-pid="5" data-url="dc/services.html"data-tabid="dc_services" >服务</li> 
                                 <li data-id="53" data-pid="5" data-url="dc/property.html"data-tabid="dc_property" >楼盘</li>
                                 <li data-id="54" data-pid="5" data-url="dc/myteam.html"data-tabid="dc_myteam">团队</li>
-                                <li data-id="55" data-pid="5" data-url="dc/banner.html"data-tabid="dc_banner" >轮播图</li>  
+                                <li data-id="55" data-pid="5" data-url="dc/banner.html"data-tabid="dc_banner" >轮播图</li> 
+                                <li data-id="56" data-pid="5" data-url="dc/news.html"data-tabid="dc_news" >新闻</li> 
 
                                 <li data-id="6" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">文章管理</li> 
                                 <li data-id="62" data-pid="6" data-url="article/articlelist.html" data-tabid="setBanner1" >文章列表</li> 

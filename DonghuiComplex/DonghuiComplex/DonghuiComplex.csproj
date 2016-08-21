@@ -69,11 +69,13 @@
     <Content Include="admin\changepwd.html" />
     <Content Include="admin\dc\addbanner.html" />
     <Content Include="admin\dc\addmyteam.html" />
+    <Content Include="admin\dc\addnews.html" />
     <Content Include="admin\dc\addproperty.html" />
     <Content Include="admin\dc\addservices.html" />
     <Content Include="admin\dc\banner.html" />
     <Content Include="admin\dc\message.html" />
     <Content Include="admin\dc\myteam.html" />
+    <Content Include="admin\dc\news.html" />
     <Content Include="admin\dc\property.html" />
     <Content Include="admin\dc\services.html" />
     <Content Include="admin\home\agriculture.html" />
@@ -638,11 +640,13 @@
     <Content Include="admin\ly\setbanner.html" />
     <Content Include="admin\message\messagelist.html" />
     <Content Include="admin\ny\aboutus.html" />
+    <Content Include="admin\ny\addaboutus.html" />
     <Content Include="admin\ny\addproducts.html" />
     <Content Include="admin\ny\message.html" />
     <Content Include="admin\ny\products.html" />
     <Content Include="admin\ym\aboutus.html" />
     <Content Include="admin\ym\addaboutus.html" />
+    <Content Include="admin\ym\addnews.html" />
     <Content Include="admin\ym\addservices.html" />
     <Content Include="admin\ym\addteam.html" />
     <Content Include="admin\ym\myteam.html" />
@@ -1163,6 +1167,7 @@
     <Compile Include="com\case.cs" />
     <Compile Include="com\dc\banner.cs" />
     <Compile Include="com\dc\myteam.cs" />
+    <Compile Include="com\dc\news.cs" />
     <Compile Include="com\dc\property.cs" />
     <Compile Include="com\dc\services.cs" />
     <Compile Include="com\home\message.cs" />
@@ -1172,11 +1177,13 @@
     <Compile Include="com\ly\live.cs" />
     <Compile Include="com\ly\services.cs" />
     <Compile Include="com\message.cs" />
+    <Compile Include="com\ny\aboutus.cs" />
     <Compile Include="com\ny\products.cs" />
     <Compile Include="com\price.cs" />
     <Compile Include="com\settings.cs" />
     <Compile Include="com\ym\aboutus.cs" />
     <Compile Include="com\ym\myteam.cs" />
+    <Compile Include="com\ym\news.cs" />
     <Compile Include="com\ym\services.cs" />
     <Compile Include="dc-337\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

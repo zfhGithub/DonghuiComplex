@@ -1,14 +1,14 @@
 ﻿<script type="text/javascript">
-    var nyaboutuslist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
+    var dcnewslist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
 
-    function nyaboutuslistpage() {
+    function dcnewslistpage() {
         var customNo = $("#customNo").val();
         var customName = $("#customName").val();
         $.ajax({
-            url: 'ajax.ashx?action=nyaboutsuslist',
+            url: 'ajax.ashx?action=dcnewslist',
                 data: {
-                    "pageIndex": nyaboutuslist.pageIndex,
-                    "pageSize": nyaboutuslist.pageSize,
+                    "pageIndex": dcnewslist.pageIndex,
+                    "pageSize": dcnewslist.pageSize,
                 },
                 type: "post",
                 success: function (result) {
@@ -16,84 +16,84 @@
                     var json = JSON.parse(result);
                     var count = json["count"];
                     count = JSON.parse(count);
-                    nyaboutuslist.TotalPage = json["count"];//总记录数
+                    dcnewslist.TotalPage = json["count"];//总记录数
                     //求出最大页
-                    nyaboutuslist.MaxPage = Math.ceil(nyaboutuslist.TotalPage / nyaboutuslist.pageSize);
+                    dcnewslist.MaxPage = Math.ceil(dcnewslist.TotalPage / dcnewslist.pageSize);
 
                     var da = json["data"];
                     da = JSON.parse(da);
                     var data = da["d"];
                     $.each(data, function (k, v) {
                         html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.title + "</td><td>" + v.subtitle + "</td><td>" + v.created + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
-                        html.push(" <td><a href='#' onclick='edit_ny_aboutus(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
-                        html.push(" <a href='ajax.ashx?action=deletenyaboutus&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
+                        html.push(" <td><a href='#' onclick='edit_dc_news(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
+                        html.push(" <a href='ajax.ashx?action=deletedcnews&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
                     });
-                    $("#ny_aboutus_list tbody").empty().append(html.join(''));
+                    $("#dc_news_list tbody").empty().append(html.join(''));
                     html = [];
 
-                    $("#nyaboutuslist_total").html(nyaboutuslist.TotalPage);//共..条数据
+                    $("#dcnewslist_total").html(dcnewslist.TotalPage);//共..条数据
                     html.push("<ul class='pagination'>");
-                    html.push("<li class='j-first'><a href='javascript:' onclick='nyaboutuslistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
-                    html.push("<li class='j-prev'><a href='javascript:' onclick='nyaboutuslistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
+                    html.push("<li class='j-first'><a href='javascript:' onclick='dcnewslistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
+                    html.push("<li class='j-prev'><a href='javascript:' onclick='dcnewslistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
 
-                    for (var i = 1; i <= nyaboutuslist.MaxPage; i++) {
+                    for (var i = 1; i <= dcnewslist.MaxPage; i++) {
                         var c = "j-num";
-                        if (i == nyaboutuslist.pageIndex) {
+                        if (i == dcnewslist.pageIndex) {
                             c = "selected " + c;
                         }
-                        html.push("<li class='" + c + "'><a href='javascript:' onclick='nyaboutuslist_page_click(this)'> " + i + "</a></li>");
+                        html.push("<li class='" + c + "'><a href='javascript:' onclick='dcnewslist_page_click(this)'> " + i + "</a></li>");
                     }
-                    html.push("<li class='j-next'><a href='javascript:' onclick='nyaboutuslistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
-                    html.push("<li class='j-last'><a href='javascript:' onclick='nyaboutuslistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
-                    html.push("<li class='jumpto'><span class='p-input'><input  id='nyaboutuslistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='nyaboutuslistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
+                    html.push("<li class='j-next'><a href='javascript:' onclick='dcnewslistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
+                    html.push("<li class='j-last'><a href='javascript:' onclick='dcnewslistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
+                    html.push("<li class='jumpto'><span class='p-input'><input  id='dcnewslistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='dcnewslistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
                     html.push("<ul>");
-                    $("#nyaboutuslistination").empty().append(html.join(''));
+                    $("#dcnewslistination").empty().append(html.join(''));
                     //如果当前页等于1就让首页、上一页不可点击
-                    if (nyaboutuslist.pageIndex == 1) {
-                        $("#nyaboutuslistination .j-first").addClass("disabled");
-                        $("#nyaboutuslistination .j-prev").addClass("disabled");
+                    if (dcnewslist.pageIndex == 1) {
+                        $("#dcnewslistination .j-first").addClass("disabled");
+                        $("#dcnewslistination .j-prev").addClass("disabled");
 
                     }
-                    if (nyaboutuslist.pageIndex == nyaboutuslist.MaxPage)
+                    if (dcnewslist.pageIndex == dcnewslist.MaxPage)
                     {
-                        $("#nyaboutuslistination .j-next").addClass("disabled");
-                        $("#nyaboutuslistination .j-last").addClass("disabled");
+                        $("#dcnewslistination .j-next").addClass("disabled");
+                        $("#dcnewslistination .j-last").addClass("disabled");
                     }
             }
         });
     }
     //下一页
-    function nyaboutuslistnext() {
-        nyaboutuslist.pageIndex++;
-        if (nyaboutuslist.pageIndex > nyaboutuslist.MaxPage) {
-            nyaboutuslist.pageIndex = nyaboutuslist.MaxPage;
+    function dcnewslistnext() {
+        dcnewslist.pageIndex++;
+        if (dcnewslist.pageIndex > dcnewslist.MaxPage) {
+            dcnewslist.pageIndex = dcnewslist.MaxPage;
         }
-        nyaboutuslistpage();
+        dcnewslistpage();
     }
     //上一页
-    function nyaboutuslistPrepage () {
-        nyaboutuslist.pageIndex--;
-        if (nyaboutuslist.pageIndex < 1) {
-            nyaboutuslist.pageIndex = 1;
+    function dcnewslistPrepage () {
+        dcnewslist.pageIndex--;
+        if (dcnewslist.pageIndex < 1) {
+            dcnewslist.pageIndex = 1;
         }
-        nyaboutuslistpage();
+        dcnewslistpage();
     }
     //首页
-    function nyaboutuslistfirst() {
-        nyaboutuslist.pageIndex = 1;
-        nyaboutuslistpage();
+    function dcnewslistfirst() {
+        dcnewslist.pageIndex = 1;
+        dcnewslistpage();
     }
 
     //尾页
-    function nyaboutuslistweiye() {
+    function dcnewslistweiye() {
 
-        nyaboutuslist.pageIndex = nyaboutuslist.MaxPage;
-        nyaboutuslistpage();
+        dcnewslist.pageIndex = dcnewslist.MaxPage;
+        dcnewslistpage();
 
     }
-    function nyaboutuslistLetgo() {
-        var InputValue = $("#nyaboutuslistputvalue").val();
-        if (InputValue > nyaboutuslist.MaxPage) {
+    function dcnewslistLetgo() {
+        var InputValue = $("#dcnewslistputvalue").val();
+        if (InputValue > dcnewslist.MaxPage) {
             $(this).alertmsg('info', '你输入的数字超过页面范围');
             return;
         }
@@ -105,41 +105,40 @@
             $(this).alertmsg('info', '请输入数字');
             return;
         }
-        nyaboutuslist.pageIndex = InputValue;
-        nyaboutuslistpage();
+        dcnewslist.pageIndex = InputValue;
+        dcnewslistpage();
     }
-    function nyaboutuslist_page_size_change(_this) {
+    function dcnewslist_page_size_change(_this) {
         var checkText = $(_this).find("option:selected").text();
-        nyaboutuslist.pageIndex = 1;
-        nyaboutuslist.pageSize = checkText;
-        nyaboutuslistpage();
+        dcnewslist.pageIndex = 1;
+        dcnewslist.pageSize = checkText;
+        dcnewslistpage();
     }
-    function nyaboutuslist_page_click(_this) {
+    function dcnewslist_page_click(_this) {
         $(_this).attr("class", "selected");
         var Sum = $(_this).text();
-        nyaboutuslist.pageIndex = Sum;
-        nyaboutuslistpage();
+        dcnewslist.pageIndex = Sum;
+        dcnewslistpage();
     }
 
     $(function () {
-        nyaboutuslistpage();
+        dcnewslistpage();
     });
     function search() {
-        nyaboutuslist.pageIndex = 1;
-        nyaboutuslistpage();
+        dcnewslist.pageIndex = 1;
+        dcnewslistpage();
     }
-    var ny_aboutus_editid;
-    function edit_ny_aboutus(_this, id, name) {
-        ny_aboutus_editid = id;
-        $(_this).dialog({ id: 'dialog_addny_aboutus', url: '/admin/ny/addaboutus.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_before_close" });
+    var dc_news_editid;
+    function edit_dc_news(_this, id, name) {
+        dc_news_editid = id;
+        $(_this).dialog({ id: 'dialog_adddc_news', url: '/admin/dc/addnews.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_dcnewslist_before_close" });
     }
-    function dialog_before_close($dialog) {
-        ny_aboutus_editid = undefined;
-        $("body").navtab("refresh", "ny_aboutus");
+    function dialog_dcnewslist_before_close($dialog) {
+        dc_news_editid = undefined;
+        $("body").navtab("refresh", "dc_news");
         return true;
     }
 </script>
-
 <div class="bjui-pageHeader">
     <div class="pull-right">
 
@@ -164,7 +163,7 @@
          <button type="submit" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
          <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo" onclick="Clear()">清空查询</a>-->
         <div class="pull-right">
-            <button type="button" class="btn-blue" data-url="ny/addaboutus.html" data-id="dialog_addny_aboutus" data-width="860" data-height="500"
+            <button type="button" class="btn-blue" data-url="dc/addnews.html" data-id="dialog_adddc_news" data-width="860" data-height="500"
                     data-toggle="dialog">
                 添加
             </button>
@@ -193,7 +192,7 @@
     </div>-->
 </div>
 <div class="bjui-pageContent tableContent">
-    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="ny_aboutus_list">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="dc_news_list">
         <thead>
             <tr>
                 <th data-order-field="rowid">序号</th>
@@ -210,7 +209,7 @@
 <div class="bjui-pageFooter">
     <div class="pages">
         <span>每页&nbsp;</span>
-        <div class="selectPagesize" onchange="nyaboutuslist_page_size_change(this)">
+        <div class="selectPagesize" onchange="dcnewslist_page_size_change(this)">
             <select data-toggle="selectpicker">
                 <option value="10" id="three">10</option>
                 <option value="20" id="six">20</option>
@@ -218,9 +217,9 @@
 
             </select>
         </div>
-        <span>&nbsp;条, 共&nbsp;<span id="nyaboutuslist_total"> </span> 条</span>
+        <span>&nbsp;条, 共&nbsp;<span id="dcnewslist_total"> </span> 条</span>
     </div>
-    <div class="pagination-box" id="nyaboutuslistination" data-total="10" data-page-size="2" data-page-current="1">
+    <div class="pagination-box" id="dcnewslistination" data-total="10" data-page-size="2" data-page-current="1">
     </div>
 
 </div>

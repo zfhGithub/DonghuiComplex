@@ -16,6 +16,7 @@ namespace DonghuiComplex.ym_257
         public DataTable aboutusList = new DataTable();
         public DataTable myteamList = new DataTable();
         public DataTable servicesList = new DataTable();
+        public DataTable newsList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             qqList = com.settings.getQQs();
@@ -23,6 +24,7 @@ namespace DonghuiComplex.ym_257
             myteamList = com.ym.myteam.getMyteamList("1", "8");
             aboutusList = com.ym.aboutus.getAboutusList("1", "10");
             servicesList = com.ym.services.getServicesList("1","5");
+            newsList = com.ym.news.getNewsList("1","20");
 
             if (Request.HttpMethod == "POST")
             {

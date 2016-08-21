@@ -150,6 +150,36 @@ namespace DonghuiComplex.admin
                     break;
                 #endregion
 
+                #region 新闻
+                case "addymnews":
+                    status = com.ym.news.addNews(req.Form["ym_news_title"], req.Form["ym_news_subtitle"], req.Form["ym_news_photo"], req.Form["ym_news_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updateymnews":
+                    status = com.ym.news.updateNews(req.Params["id"], req.Form["ym_news_title"], req.Form["ym_news_subtitle"], req.Form["ym_news_photo"], req.Form["ym_news_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "ymnewslist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.ym.news.getNewsList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.ym.news.getNewsCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deleteymnews":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ym.news.deleteNewsById(id)));
+                    break;
+                case "getymnewsdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.ym.news.getNewsDetailById(id)));
+                    break;
+                #endregion
+
                 #region 服务
                 case "addymservices":
                     status = com.ym.services.addServices(req.Form["ym_services_title"], req.Form["ym_services_subtitle"], req.Form["ym_services_photo"], req.Form["ym_services_content"]);
@@ -317,6 +347,37 @@ namespace DonghuiComplex.admin
                     break;
 
                 #endregion
+
+                #region 关于
+                case "addnyaboutus":
+                    status = com.ny.aboutus.addAboutus(req.Form["ny_aboutus_title"], req.Form["ny_aboutus_subtitle"], req.Form["ny_aboutus_photo"], req.Form["ny_aboutus_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatenyaboutus":
+                    status = com.ny.aboutus.updateAboutus(req.Params["id"], req.Form["ny_aboutus_title"], req.Form["ny_aboutus_subtitle"], req.Form["ny_aboutus_photo"], req.Form["ny_aboutus_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "nyaboutsuslist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.ny.aboutus.getAboutusList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.ny.aboutus.getAboutusCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletenyaboutus":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ny.aboutus.deleteAboutusById(id)));
+                    break;
+                case "getnyaboutusdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.ny.aboutus.getAboutusDetailById(id)));
+                    break;
+                #endregion
+
                 #endregion
 
 
@@ -367,7 +428,7 @@ namespace DonghuiComplex.admin
                     pageCount = req.Form["pageSize"];
                     jsonDic = new Dictionary<string, string>();
                     jsonDic.Add("data", Utils.DataTableToJSON(com.dc.property.getPropertyList(currentIndex, pageCount)));
-                    jsonDic.Add("count", com.dc.services.getServicesCount());
+                    jsonDic.Add("count", com.dc.property.getPropertyCount());
                     js = new JavaScriptSerializer();
                     res.Write(js.Serialize(jsonDic));
                     break;
@@ -397,7 +458,7 @@ namespace DonghuiComplex.admin
                     pageCount = req.Form["pageSize"];
                     jsonDic = new Dictionary<string, string>();
                     jsonDic.Add("data", Utils.DataTableToJSON(com.dc.myteam.getMyteamList(currentIndex, pageCount)));
-                    jsonDic.Add("count", com.dc.services.getServicesCount());
+                    jsonDic.Add("count", com.dc.myteam.getMyteamCount());
                     js = new JavaScriptSerializer();
                     res.Write(js.Serialize(jsonDic));
                     break;
@@ -440,7 +501,38 @@ namespace DonghuiComplex.admin
                     res.Write(Utils.DataTableToJSON(com.dc.banner.getBannerDetailById(id)));
                     break;
 
+                #endregion
+
+                #region 新闻
+                case "adddcnews":
+                    status = com.dc.news.addNews(req.Form["dc_news_title"], req.Form["dc_news_subtitle"], req.Form["dc_news_photo"], req.Form["dc_news_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatedcnews":
+                    status = com.dc.news.updateNews(req.Params["id"], req.Form["dc_news_title"], req.Form["dc_news_subtitle"], req.Form["dc_news_photo"], req.Form["dc_news_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "dcnewslist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.dc.news.getNewsList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.dc.news.getNewsCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletedcnews":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.dc.news.deleteNewsById(id)));
+                    break;
+                case "getdcnewsdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.dc.news.getNewsDetailById(id)));
+                    break;
                     #endregion
+
                     #endregion
 
 

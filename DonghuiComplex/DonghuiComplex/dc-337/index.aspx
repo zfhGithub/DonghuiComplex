@@ -65,7 +65,7 @@
                         <li><a class="scroll" href="#services">服务</a></li>
                         <li><a class="scroll" href="#gallery">楼盘</a></li>
                         <li><a class="scroll" href="#team">团队</a></li>
-                        <li><a class="scroll" href="#team">新闻</a></li>
+                        <li><a class="scroll" href="#news">新闻</a></li>
                         <li><a class="scroll" href="#contact">留言</a></li>
                     </ul>
                 </div>
@@ -184,8 +184,8 @@
                                 <div class="col-md-2 icon">
                                     <img src="<%= servicesList.Rows[j]["photo"] %>" style="width: 100px; height: 80px; margin-left: -25px;" />
                                 </div>
-                                <div class="col-md-10 serve-text">
-                                    <h4><%= servicesList.Rows[j]["title"] %> </h4>
+                                <div class="col-md-10 serve-text" style="cursor:pointer" onclick="window.location.href='../News.aspx?id=<%= servicesList.Rows[i]["id"] %>'">
+                                    <h4> <%= servicesList.Rows[j]["title"] %> </h4>
                                     <p> <%= servicesList.Rows[j]["subtitle"] %> </p>
                                 </div>
                                 <div class="clearfix"></div>
@@ -214,18 +214,18 @@
                           <img src="<%= myteamList.Rows[i]["photo"] %>" alt="image" class="img-responsive zoom-img" />
                       </div>
                       <div class="mask">
-                          <a class="popup-with-zoom-anim" href="#small-dialog2">
+                          <a class="popup-with-zoom-anim" href="#small-dialog<%=i+1 %>">
                               <div class="info"><i class="glyphicon glyphicon-zoom-in"></i></div>
                           </a>
-                          <div id="small-dialog2" class="mfp-hide">
+                          <div id="small-dialog<%=i+1 %>" class="mfp-hide">
                               <div class="pop_up2">
-                                  <img src="<%= myteamList.Rows[i]["photo"] %>" class="img-responsive" alt="" />
-                                  <h3><%= myteamList.Rows[i]["title"] %> </h3>
+                                  <img src="<%= myteamList.Rows[i]["photo"] %>" class="img-responsive" alt="1" />
+                                  <h3 onclick="window.location.href='../News.aspx?id=<%=myteamList.Rows[i]["id"] %>'"><%= myteamList.Rows[i]["title"] %> </h3>
                                   <p class="popup_desc"><%= myteamList.Rows[i]["subtitle"] %></p>
                               </div>
                           </div>
                       </div>
-                      <h3><a href="#"> <%= myteamList.Rows[i]["title"] %> </a></h3>
+                      <h3><a href="../News.aspx?id=<%= myteamList.Rows[i]["id"] %>"> <%= myteamList.Rows[i]["title"] %> </a></h3>
                       <p><%= myteamList.Rows[i]["subtitle"] %></p>
 
                   </div>
@@ -252,7 +252,7 @@
 						<figcaption>
 							<h3><%= propertyList.Rows[i]["title"] %></h3>
 							<span><%= propertyList.Rows[i]["subtitle"] %></span>
-							<a title="点击查看详情" class="example-image-link" href="<%= propertyList.Rows[i]["photo"] %>" data-lightbox="example-1" data-title="<%= propertyList.Rows[i]["title"] %>">查看</a>
+							<a title="点击查看详情" class="example-image-link" href="../News.aspx?id=<%= propertyList.Rows[i]["id"] %>" data-title="<%= propertyList.Rows[i]["title"] %>">查看</a>
 						</figcaption>
 					</figure>
 				 </div>
@@ -265,13 +265,13 @@
 	 </div>
 </div>
   <!--team-starts-->
-   
+   <!--
 	<div class="testimonials" id="testimonial">
 	   <div class="col-md-6 test-text">
-	     <%--  <h3 class="tittle con">Testimonial</h3>
+	     <h3 class="tittle con">Testimonial</h3>
 			<h4>Hat Lovers says</h4>
 			<p>Nulla et finibus libero.Nulla et finibus libero. Suspendisse vitae ex facilisis, ultricies est sed, porta ante. Vivamus tristique luctus lorem, eget dignissim lacus sodales tristique. Suspendisse vitae ex facilisis, ultricies est sed, porta ante. Vivamus tristique luctus lorem, eget dignissim lacus sodales tristique.</p>
-             --%>
+            
            <
 	   </div>
 	   <div class="col-md-6 test-slide">
@@ -319,45 +319,62 @@
 			<div class="clearfix"></div>
 	   </div>
  
+ 
     <!--//news-->
     <div class="news" id="news">
         <div class="container">
-            <h3 class="tittle">Our News</h3>
-            <section id="cd-timeline" class="cd-container">
-              
-                <div class="cd-timeline-block">
-                    <div class="cd-timeline-img cd-movie">
-                        <i class="glyphicon glyphicon-map-marker"></i>
-                    </div>
-                    <!-- cd-timeline-img -->
-
+            <h3 class="tittle">新闻</h3>
+            <section id="cd-timeline" class="cd-container" style="float: left;width:100%; height:auto; ">
+                <%--  <div>
                     <div class="cd-timeline-content">
                         <h4><a href="#">Lorem ipsum dolor</a> </h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
                         <a href="#0" class="hvr-outline-out even">Read More</a>
-                        <span class="cd-date">Oct 18 2015</span>
+                      
                     </div>
-                    <!-- cd-timeline-content -->
+                </div>--%>
+                <div style="width: 49%; height: auto; float: left; line-height: 0px;">
+
+                    <%for (int i = 0; i < newsList.Rows.Count; i = i + 2)
+                        {%>
+                    <div class="cd-timeline-block" style="width: 100%; margin-top: 0px;">
+                        <!-- cd-timeline-img -->
+                        <div class="cd-timeline-content" style="width: 100%; text-align: center;">
+                            <img src="<%= newsList.Rows[i]["photo"] %>" style="width: 100px; height: 100px; position: absolute; top: 30px; left: 20px;" />
+                            <h4 style="text-align: right"><a href="#"><%= newsList.Rows[i]["title"] %></a> </h4>
+                            <p style="margin-left: 95px;text-align:right">
+                                <%= newsList.Rows[i]["subtitle"] %>
+                            </p>
+                            <a href="../News.aspx?id=<%= newsList.Rows[i]["id"] %>" class="hvr-outline-out even">详情</a>
+                        </div>
+                        <!-- cd-timeline-content -->
+                    </div>
+
+                    <%}
+
+                    %>
                 </div>
-                <!-- cd-timeline-block -->
+                <div style="width: 49%; height: auto; float: right; line-height:0px; margin-right:0px;">
+                    <%  for (int i = 1; i < newsList.Rows.Count; i = i + 2)
+                        {%>
 
-                <div class="cd-timeline-block">
-                    <div class="cd-timeline-img cd-movie">
-                        <i class="glyphicon glyphicon-map-marker"></i>
+                    <div class="cd-timeline-block" style="width: 100%; margin-top: 0px;">
+                        <!-- cd-timeline-img -->
+                        <div class="cd-timeline-content" style="width: 100%; text-align: center;">
+                            <img src="<%= newsList.Rows[i]["photo"] %>" style="width: 100px; height: 100px; position: absolute; top: 30px; left: 20px;" />
+                            <h4 style="text-align: right"><a href="#"><%= newsList.Rows[i]["title"] %></a> </h4>
+                            <p style="margin-left: 95px;text-align:right">
+                                <%= newsList.Rows[i]["subtitle"] %>
+                            </p>
+                            <a href="../News.aspx?id=<%= newsList.Rows[i]["id"] %>" class="hvr-outline-out even">详情</a>
+                        </div>
+                        <!-- cd-timeline-content -->
                     </div>
-                    <!-- cd-timeline-img -->
 
-                    <div class="cd-timeline-content">
-                        <h4><a href="#">Lorem ipsum dolor</a> </h4>
-                        <p>Lorem ipsum dolor sit ameteriores voluptatibus dolorem ipsam quae rerum quis.rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
-                        <a href="#0" class="hvr-outline-out">Read More</a>
-                        <span class="cd-date">Jan 24</span>
-                    </div>
-                    <!-- cd-timeline-content -->
+                    <%}%>
                 </div>
-                <!-- cd-timeline-block -->
-               
 
+                 
             </section>
             <!-- cd-timeline -->
 

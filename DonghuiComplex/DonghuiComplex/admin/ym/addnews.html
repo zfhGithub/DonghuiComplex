@@ -1,13 +1,13 @@
 ﻿
 <div class="bjui-pageContent">
-    <form action="ajax.ashx?action=adddcmyteam" id="j_adddcmyteam_form" data-toggle="validate" data-alertmsg="false">
+    <form action="ajax.ashx?action=addymnews" id="j_addymnews_form" data-toggle="validate" data-alertmsg="false">
         <input type="hidden" name="custom.id" value="edce142bc2ed4ec6b623aacaf602a4de">
         <table class="table table-condensed table-hover" width="100%">
             <tbody>
                 <tr>
                     <td>
-                        <label for="dc_myteam_title" class="control-label x85"> 标题：</label>
-                        <input type="text" name="dc_myteam_title" id="dc_myteam_title" value="" data-rule="required" size="25">
+                        <label for="ym_news_title" class="control-label x85"> 标题：</label>
+                        <input type="text" name="ym_news_title" id="ym_news_title" value="" data-rule="required" size="25">
                     </td>
 
                     <td></td>
@@ -16,24 +16,24 @@
 
                 <tr>
                     <td colspan="4">
-                        <label for="dc_myteam_subtitle" class="control-label x85">二级标题：</label>
-                        <textarea name="dc_myteam_subtitle" id="dc_myteam_subtitle" data-toggle="autoheight" cols="60" rows="1" data-rule="required"></textarea>
+                        <label for="ym_news_subtitle" class="control-label x85">二级标题：</label>
+                        <textarea name="ym_news_subtitle" id="ym_news_subtitle" data-toggle="autoheight" cols="60" rows="1" data-rule="required"></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4">
                         <label for="j_custom_note" class="control-label x85">图片：</label>
                         <div style="display: inline-block; vertical-align: middle;">
-                            <div>推荐大小(255X255)</div>
-                            <div id="dc_myteam_photo_up" data-toggle="upload" data-uploader="ajax.ashx?action=kindeditor&type=head"
+
+                            <div id="ym_news_photo_up" data-toggle="upload" data-uploader="ajax.ashx?action=kindeditor&type=head"
                                  data-file-size-limit="2097152"
                                  data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
                                  data-multi="true"
                                  data-drag-drop="true"
                                  data-on-upload-success="head_upload_success"
                                  data-icon="cloud-upload"></div>
-                            <input type="hidden" name="dc_myteam_photo" value="" id="dc_myteam_photo" data-rule="图片:required">
-                            <span id="dc_myteam_photo_show"></span>
+                            <input type="hidden" name="ym_news_photo" value="" id="ym_news_photo" data-rule="图片:required">
+                            <span id="ym_news_photo_show"></span>
                         </div>
 
                     </td>
@@ -41,9 +41,9 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <label for="dc_myteam_content" class="control-label x85">内容：</label>
+                        <label for="ym_news_content" class="control-label x85">内容：</label>
                         <div style="display: inline-block; vertical-align: middle;">
-                            <textarea name="dc_myteam_content" id="dc_myteam_content" class="j-content" style="width: 700px;" data-upload-json="ajax.ashx?action=kindeditor&type=kindeditor"
+                            <textarea name="ym_news_content" id="ym_news_content" class="j-content" style="width: 700px;" data-upload-json="ajax.ashx?action=kindeditor&type=kindeditor"
                                       data-after-upload="kindeditor_upload_success" data-file-manager-json="ajax.ashx?action=fileManagerJson"
                                       data-toggle="kindeditor" data-minheight="200"></textarea>
                         </div>
@@ -56,24 +56,24 @@
 <div class="bjui-pageFooter">
     <ul>
         <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
-        <li><button type="button" class="btn-default" data-icon="save" onclick="adddcmyteam()">保存</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="addymnews()">保存</button></li>
     </ul>
 </div>
 <script type="text/javascript">
     $(function () {
-        if (dc_myteam_editid) {
+        if (ym_news_editid) {
             $.ajax({
-                url: "ajax.ashx?action=getdcmyteamdetailbyid",
-                data: { id: dc_myteam_editid },
+                url: "ajax.ashx?action=getymnewsdetailbyid",
+                data: { id: ym_news_editid },
                 type: "post",
                 success: function (r) {
                     var d = JSON.parse(r)["d"][0];
-                    $("#dc_myteam_title").val(d.title);
-                    $("#dc_myteam_subtitle").val(d.subtitle);
-                    $("#dc_myteam_photo").val(d.photo);
-                    $('#dc_myteam_photo_show').html('已上传图片：<img src="' + d.photo + '" width="100">');
-                    $("#dc_myteam_content").html(d.content);
-                    KindEditor.html('#dc_myteam_content', d.content);
+                    $("#ym_news_title").val(d.title);
+                    $("#ym_news_subtitle").val(d.subtitle);
+                    $("#ym_news_photo").val(d.photo);
+                    $('#ym_news_photo_show').html('已上传图片：<img src="' + d.photo + '" width="100">');
+                    $("#ym_news_content").html(d.content);
+                    KindEditor.html('#ym_news_content', d.content);
                 }, error: function () {
                     console.log("error");
                 }
@@ -84,15 +84,15 @@
         var json = JSON.parse(data);
         if (json.statusCode == 200)
         {
-            $("#dc_myteam_photo").val(json.url);
-            $('#dc_myteam_photo_show').html('已上传图片：<img src="' + json.url + '" width="100">')
+            $("#ym_news_photo").val(json.url);
+            $('#ym_news_photo_show').html('已上传图片：<img src="' + json.url + '" width="100">')
         }
 
     }
-    function adddcmyteam() {
-        if (dc_myteam_editid) {
-            $("#j_adddcmyteam_form").attr("action", "ajax.ashx?action=updatedcmyteam&id=" + dc_myteam_editid);
+    function addymnews() {
+        if (ym_news_editid) {
+            $("#j_addymnews_form").attr("action", "ajax.ashx?action=updateymnews&id=" + ym_news_editid);
         }
-        $("#j_adddcmyteam_form").submit();
+        $("#j_addymnews_form").submit();
     }
 </script>

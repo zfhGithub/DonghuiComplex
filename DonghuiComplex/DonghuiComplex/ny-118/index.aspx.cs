@@ -13,11 +13,13 @@ namespace DonghuiComplex.ny_118
         public List<string> phoneList = new List<string>();
         public Dictionary<string, string> qqList = new Dictionary<string, string>();
         public DataTable productsList = new DataTable();
+        public DataTable aboutusList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             qqList = com.settings.getQQs();
             phoneList = com.settings.getPhones();
             productsList = com.ny.products.getProductsList("1", "6");
+            aboutusList = com.ny.aboutus.getAboutusList("1","3");
 
             if (Request.HttpMethod == "POST")
             {

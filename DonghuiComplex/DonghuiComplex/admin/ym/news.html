@@ -1,11 +1,225 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>新闻</title>
-	<meta charset="utf-8" />
-</head>
-<body>
+﻿<script type="text/javascript">
+    var ymnewslist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
 
-</body>
-</html>
+    function ymnewslistpage() {
+        var customNo = $("#customNo").val();
+        var customName = $("#customName").val();
+        $.ajax({
+            url: 'ajax.ashx?action=ymnewslist',
+                data: {
+                    "pageIndex": ymnewslist.pageIndex,
+                    "pageSize": ymnewslist.pageSize,
+                },
+                type: "post",
+                success: function (result) {
+                    var html = [];
+                    var json = JSON.parse(result);
+                    var count = json["count"];
+                    count = JSON.parse(count);
+                    ymnewslist.TotalPage = json["count"];//总记录数
+                    //求出最大页
+                    ymnewslist.MaxPage = Math.ceil(ymnewslist.TotalPage / ymnewslist.pageSize);
+
+                    var da = json["data"];
+                    da = JSON.parse(da);
+                    var data = da["d"];
+                    $.each(data, function (k, v) {
+                        html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.title + "</td><td>" + v.subtitle + "</td><td>" + v.created + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
+                        html.push(" <td><a href='#' onclick='edit_ym_news(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
+                        html.push(" <a href='ajax.ashx?action=deleteymnews&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
+                    });
+                    $("#ym_news_list tbody").empty().append(html.join(''));
+                    html = [];
+
+                    $("#ymnewslist_total").html(ymnewslist.TotalPage);//共..条数据
+                    html.push("<ul class='pagination'>");
+                    html.push("<li class='j-first'><a href='javascript:' onclick='ymnewslistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
+                    html.push("<li class='j-prev'><a href='javascript:' onclick='ymnewslistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
+
+                    for (var i = 1; i <= ymnewslist.MaxPage; i++) {
+                        var c = "j-num";
+                        if (i == ymnewslist.pageIndex) {
+                            c = "selected " + c;
+                        }
+                        html.push("<li class='" + c + "'><a href='javascript:' onclick='ymnewslist_page_click(this)'> " + i + "</a></li>");
+                    }
+                    html.push("<li class='j-next'><a href='javascript:' onclick='ymnewslistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
+                    html.push("<li class='j-last'><a href='javascript:' onclick='ymnewslistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
+                    html.push("<li class='jumpto'><span class='p-input'><input  id='ymnewslistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='ymnewslistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
+                    html.push("<ul>");
+                    $("#ymnewslistination").empty().append(html.join(''));
+                    //如果当前页等于1就让首页、上一页不可点击
+                    if (ymnewslist.pageIndex == 1) {
+                        $("#ymnewslistination .j-first").addClass("disabled");
+                        $("#ymnewslistination .j-prev").addClass("disabled");
+
+                    }
+                    if (ymnewslist.pageIndex == ymnewslist.MaxPage)
+                    {
+                        $("#ymnewslistination .j-next").addClass("disabled");
+                        $("#ymnewslistination .j-last").addClass("disabled");
+                    }
+            }
+        });
+    }
+    //下一页
+    function ymnewslistnext() {
+        ymnewslist.pageIndex++;
+        if (ymnewslist.pageIndex > ymnewslist.MaxPage) {
+            ymnewslist.pageIndex = ymnewslist.MaxPage;
+        }
+        ymnewslistpage();
+    }
+    //上一页
+    function ymnewslistPrepage () {
+        ymnewslist.pageIndex--;
+        if (ymnewslist.pageIndex < 1) {
+            ymnewslist.pageIndex = 1;
+        }
+        ymnewslistpage();
+    }
+    //首页
+    function ymnewslistfirst() {
+        ymnewslist.pageIndex = 1;
+        ymnewslistpage();
+    }
+
+    //尾页
+    function ymnewslistweiye() {
+
+        ymnewslist.pageIndex = ymnewslist.MaxPage;
+        ymnewslistpage();
+
+    }
+    function ymnewslistLetgo() {
+        var InputValue = $("#ymnewslistputvalue").val();
+        if (InputValue > ymnewslist.MaxPage) {
+            $(this).alertmsg('info', '你输入的数字超过页面范围');
+            return;
+        }
+        if (InputValue < 1) {
+            $(this).alertmsg('info', '请输入大于第一页的数字');
+            return;
+        }
+        if (isNaN(Number(InputValue)) || InputValue == "") {
+            $(this).alertmsg('info', '请输入数字');
+            return;
+        }
+        ymnewslist.pageIndex = InputValue;
+        ymnewslistpage();
+    }
+    function ymnewslist_page_size_change(_this) {
+        var checkText = $(_this).find("option:selected").text();
+        ymnewslist.pageIndex = 1;
+        ymnewslist.pageSize = checkText;
+        ymnewslistpage();
+    }
+    function ymnewslist_page_click(_this) {
+        $(_this).attr("class", "selected");
+        var Sum = $(_this).text();
+        ymnewslist.pageIndex = Sum;
+        ymnewslistpage();
+    }
+
+    $(function () {
+        ymnewslistpage();
+    });
+    function search() {
+        ymnewslist.pageIndex = 1;
+        ymnewslistpage();
+    }
+    var ym_news_editid;
+    function edit_ym_news(_this, id, name) {
+        ym_news_editid = id;
+        $(_this).dialog({ id: 'dialog_addym_news', url: '/admin/ym/addnews.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_ymnewslist_before_close" });
+    }
+    function dialog_ymnewslist_before_close($dialog) {
+        ym_news_editid = undefined;
+        $("body").navtab("refresh", "ym_news");
+        return true;
+    }
+</script>
+<div class="bjui-pageHeader">
+    <div class="pull-right">
+
+        <!--<div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy"> 复选框-批量操作<span class="caret"></span></button>
+            <ul class="dropdown-menu right" role="menu" style="min-width: 153px;">
+                <li><a href="ajax.ashx?action=ProductDels" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="del" data-group="ids">删除选中</a></li>
+            </ul>
+        </div>-->
+    </div>
+    <!--<input type="hidden" name="pageSize" value="${model.pageSize}">
+     <input type="hidden" name="pageCurrent" value="${model.pageCurrent}">
+     <input type="hidden" name="orderField" value="${param.orderField}">
+     <input type="hidden" name="orderDirection" value="${param.orderDirection}">-->
+    <div class="bjui-searchBar">
+        &nbsp;
+
+
+        <!--<label>商品名称：</label><input type="text" value="" id="customName" name="name" class="form-control" size="8">&nbsp;
+
+        <button type="button" class="showMoreSearch" data-toggle="moresearch" data-name="custom"><i class="fa fa-angle-double-down"></i></button>
+         <button type="submit" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
+         <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo" onclick="Clear()">清空查询</a>-->
+        <div class="pull-right">
+            <button type="button" class="btn-blue" data-url="ym/addnews.html" data-id="dialog_addym_news" data-width="860" data-height="500"
+                    data-toggle="dialog">
+                添加
+            </button>
+            <!--  <button type="button" class="btn-blue" data-url="/B-JUI/ajaxDone2.html?id={#bjui-selected}" data-toggle="doajax" data-confirm-msg="确定要删除选中项吗？" data-icon="remove" title="可以在控制台(network)查看被删除ID">删除选中行</button>&nbsp;
+            <div class="btn-group">
+                <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">复选框-批量操作<span class="caret"></span></button>
+                 <ul class="dropdown-menu right" role="menu">
+                     <li><a href="book1.xlsx" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出<span style="color: green;">全部</span></a></li>
+                     <li><a href="book1.xlsx" data-toggle="doexportchecked" data-confirm-msg="确定要导出选中项吗？" data-idname="expids" data-group="ids">导出<span style="color: red;">选中</span></a></li>
+                     <li class="divider"></li>
+                     <li><a href="/B-JUI/ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>
+                 </ul>
+             </div>-->
+        </div>
+    </div>
+    <!--<div class="bjui-moreSearch">
+        <label>职业：</label><input type="text" value="" name="profession" size="15" />
+        <label>&nbsp;性别:</label>
+        <select name="sex" data-toggle="selectpicker">
+            <option value="">全部</option>
+            <option value="true">男</option>
+            <option value="false">女</option>
+        </select>
+        <label>&nbsp;手机:</label>
+        <input type="text" value="" name="mobile" size="10">
+    </div>-->
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="ym_news_list">
+        <thead>
+            <tr>
+                <th data-order-field="rowid">序号</th>
+                <th data-order-field="id">标题</th>
+                <th data-order-field="name">二级标题</th>
+                <th data-order-field="created">创建时间</th>
+                <th data-order-field="birthplace">图片</th>
+                <th data-order-field="#">操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize" onchange="ymnewslist_page_size_change(this)">
+            <select data-toggle="selectpicker">
+                <option value="10" id="three">10</option>
+                <option value="20" id="six">20</option>
+                <option value="30">30</option>
+
+            </select>
+        </div>
+        <span>&nbsp;条, 共&nbsp;<span id="ymnewslist_total"> </span> 条</span>
+    </div>
+    <div class="pagination-box" id="ymnewslistination" data-total="10" data-page-size="2" data-page-current="1">
+    </div>
+
+</div>

@@ -181,7 +181,7 @@
 					<li>
 						<div class="banner-bottom-info">
 							<h3>OUR BEGINING</h3>
-							<p> <img src="images/2.jpg" /> Donec rutrum congue leo eget malesuada.Curabitur non nulla sit amet
+							<p>   Donec rutrum congue leo eget malesuada.Curabitur non nulla sit amet
 								nisl tempus convallis quis ac lactus.Sed porttitor lactus nibh.Proin
 								eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
 								porttitoraccumsan tincidunt.
@@ -214,12 +214,7 @@
 								eget tortor risus.Nulla porttitor accumsan tincidunt.</p>
 						</div>
 					</li>
-                    <li>
-                        <div class="banner-bottom-info">
-                            <h3>asdfasdfasdf</h3>
-                            <p>asdfadsfasdfffffffadfssssssssssssss</p>
-                        </div>
-                    </li>
+                    
 				</ul>
 			</div>
 			<div class="port">
@@ -258,144 +253,49 @@
 				    });
 				  </script>
 			<!--//End-slider-script -->
-			<div  id="top" class="callbacks_container">
-				<ul class="rslides" id="slider2">
-					<li>
-						<div class="about-grids">
-							<div class="about-grid">
-								<a href="#small-dialog" class="b-link-stripe b-animate-go  thickbox play-icon popup-with-zoom-anim">
-									<img src="images/2.jpg" class="img-responsive" />
-									<h4>Tempus convallis quis lactus porttitor</h4>
-								</a>
-								
-									<p>Sed porttitor lactus nibh.Proin
-										eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-										porttitoraccumsan tincidunt.
-										Curabitur aliquet quam id dui posuere blandit.
-										Nulla Quis lorum nisl tempus convallis quis ac lactus porttitor accumsan tincidunt.</p>
-							</div>
-							<div class="about-grid">
-								<a href="#small-dialog1" class="b-link-stripe b-animate-go  thickbox play-icon popup-with-zoom-anim">
-									<img src="images/1.jpg" class="img-responsive" />
-									<h4>Tempus convallis quis lactus porttitor</h4>
-								</a>
-								
-									<p>Sed porttitor lactus nibh.Proin
-										eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-										porttitoraccumsan tincidunt.
-										Curabitur aliquet quam id dui posuere blandit.
-										Nulla Quis lorum nisl tempus convallis quis ac lactus porttitor accumsan tincidunt.</p>
-							</div>
-							<div class="about-grid">
-								<a href="#small-dialog2" class="b-link-stripe b-animate-go  thickbox play-icon popup-with-zoom-anim">
-									<img src="images/3.jpg" class="img-responsive" />
-									<h4>Tempus convallis quis lactus porttitor</h4>
-								</a>
-								
-									<p>Sed porttitor lactus nibh.Proin
-										eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-										porttitoraccumsan tincidunt.
-										Curabitur aliquet quam id dui posuere blandit.
-										Nulla Quis lorum nisl tempus convallis quis ac lactus porttitor accumsan tincidunt.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</li>
-					<li>
-						<div class="about-grids">
-							<div class="about-grid">
-								<a href="#small-dialog3" class="b-link-stripe b-animate-go  thickbox play-icon popup-with-zoom-anim">
-									<img src="images/3.jpg" class="img-responsive" />
-									<h4>Nulla convallis quis lactus porttitor</h4>
-								</a>
-								
-									<p>Quam porttitor lactus nibh.Proin
-										eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-										porttitoraccumsan tincidunt.
-										Curabitur aliquet quam id dui posuere blandit.
-										Nulla Quis lorum nisl tempus convallis quis ac lactus porttitor accumsan tincidunt.</p>
-							</div>
-							<div class="about-grid">
-								<a href="#small-dialog4" class="b-link-stripe b-animate-go  thickbox play-icon popup-with-zoom-anim">
-									<img src="images/2.jpg" class="img-responsive" />
-									<h4>Aliquet convallis quis lactus porttitor</h4>
-								</a>
-								
-									<p>Dui porttitor lactus nibh.Proin
-										eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-										porttitoraccumsan tincidunt.
-										Curabitur aliquet quam id dui posuere blandit.
-										Nulla Quis lorum nisl tempus convallis quis ac lactus porttitor accumsan tincidunt.</p>
-							</div>
-							<div class="about-grid">
-								<a href="#small-dialog5" class="b-link-stripe b-animate-go  thickbox play-icon popup-with-zoom-anim">
-									<img src="images/1.jpg" class="img-responsive" />
-									<h4>Posuere convallis quis lactus porttitor</h4>
-								</a>
-								
-									<p>Quis porttitor lactus nibh.Proin
-										eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-										porttitoraccumsan tincidunt.
-										Curabitur aliquet quam id dui posuere blandit.
-										Nulla Quis lorum nisl tempus convallis quis ac lactus porttitor accumsan tincidunt.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</li>
-					<li>
-						<div class="about-grids">
-							<div class="about-grid">
-								<a href="#small-dialog6" class="b-link-stripe b-animate-go  thickbox play-icon popup-with-zoom-anim">
-									<img src="images/1.jpg" class="img-responsive" />
-									<h4>Risus convallis quis lactus porttitor</h4>
-								</a>
-								
-									<p>Sed porttitor lactus nibh.Proin
-										eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-										porttitoraccumsan tincidunt.
-										Curabitur aliquet quam id dui posuere blandit.
-										Nulla Quis lorum nisl tempus convallis quis ac lactus porttitor accumsan tincidunt.</p>
-							</div>
-							<div class="about-grid">
-								<a href="#small-dialog7" class="b-link-stripe b-animate-go  thickbox play-icon popup-with-zoom-anim">
-									<img src="images/2.jpg" class="img-responsive" />
-									<h4>Tortor convallis quis lactus porttitor</h4>
-								</a>
-								
-									<p>Sed porttitor lactus nibh.Proin
-										eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-										porttitoraccumsan tincidunt.
-										Curabitur aliquet quam id dui posuere blandit.
-										Nulla Quis lorum nisl tempus convallis quis ac lactus porttitor accumsan tincidunt.</p>
-							</div>
-							<div class="about-grid">
-								<a href="#small-dialog8" class="b-link-stripe b-animate-go  thickbox play-icon popup-with-zoom-anim">
-									<img src="images/3.jpg" class="img-responsive" />
-									<h4>Porttitor convallis quis lactus porttitor</h4>
-								</a>
-								
-									<p>Sed porttitor lactus nibh.Proin
-										eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-										porttitoraccumsan tincidunt.
-										Curabitur aliquet quam id dui posuere blandit.
-										Nulla Quis lorum nisl tempus convallis quis ac lactus porttitor accumsan tincidunt.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</li>
-				</ul>
-			</div>
+            <div id="top1" class="callbacks_container">
+                <ul id="slider2">
+                    <li>
+                        <div class="about-grids">
+                            <%
+                                for (int i = 0; i < aboutusList.Rows.Count; i++)
+                                {%>
+                             
+                            <div class="about-grid">
+                                <a href="#small-dialog-about<%=i %>" class="b-link-stripe b-animate-go  thickbox play-icon popup-with-zoom-anim">
+                                    <img src="<%= aboutusList.Rows[i]["photo"] %>" class="img-responsive" />
+                                    <h4><%= aboutusList.Rows[i]["title"] %></h4>
+                                </a>
+
+                                <p>
+                                  <%= aboutusList.Rows[i]["subtitle"] %>
+                                </p>
+                            </div>
+                          
+                            <%} %>
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
 		<!-- pop-up-box -->
 					<!-- script for pop-up-box -->
 					<script type="text/javascript" src="js/modernizr.custom.min.js"></script>    
 					<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
 					<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 					<!-- //script for pop-up-box -->
-						<div id="small-dialog" class="mfp-hide">
+            <% for (int i = 0; i < aboutusList.Rows.Count; i++)
+                {
+                    %>
+            	<div id="small-dialog-about<%=i %>" class="mfp-hide">
 							<div class="image-top">
-								<img src="images/2-.jpg" alt="" />
+								<img src="<%= aboutusList.Rows[i]["photo"] %>" alt="" />
 							</div>
 						</div>
+            <%
+                } %>
+					
 						<div id="small-dialog1" class="mfp-hide">
 							<div class="image-top">
 								<img src="images/1-.jpg" alt="" />

@@ -57,7 +57,7 @@
 <div class="bjui-pageFooter">
     <ul>
         <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
-        <li><button type="button" class="btn-default" data-icon="save" onclick="addlvservices()">保存</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="adddcbanner()">保存</button></li>
     </ul>
 </div>
 <script type="text/javascript">
@@ -89,7 +89,7 @@
         }
 
     }
-    function addlvservices() {
+    function adddcbanner() {
         if (dc_banner_editid) {
             $("#j_adddcbanner_form").attr("action", "ajax.ashx?action=updatedcbanner&id=" + dc_banner_editid);
         }

@@ -56,7 +56,7 @@
 <div class="bjui-pageFooter">
     <ul>
         <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
-        <li><button type="button" class="btn-default" data-icon="save" onclick="addlvservices()">保存</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="adddcproperty()">保存</button></li>
     </ul>
 </div>
 <script type="text/javascript">
@@ -89,7 +89,7 @@
         }
 
     }
-    function addlvservices() {
+    function adddcproperty() {
         if (dc_property_editid) {
             $("#j_adddcproperty_form").attr("action", "ajax.ashx?action=updatedcproperty&id=" + dc_property_editid);
         }

@@ -97,7 +97,7 @@
                         <div class="intro-heading">见到你很高兴</div>
                     </div>
                     <a class="btn btn-1 btn-sm" href="#about">关于我们</a>
-                    <a class="btn btn-1 btn-sm" href="#team">我们的服务</a>
+                    <a class="btn btn-1 btn-sm" href="#services">我们的服务</a>
                 </div>
             </div>
         </div>
@@ -125,8 +125,8 @@
                         <div class="wrap-img">
                             <img src="<%= myteamList.Rows[i]["photo"].ToString() %>" />
                         </div>
-                        <h3 class="blue"><%= myteamList.Rows[i]["title"].ToString() %></h3>
-                        <p>
+                        <h3 class="blue" style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= myteamList.Rows[i]["id"] %>'"><%= myteamList.Rows[i]["title"].ToString() %></h3>
+                        <p style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= myteamList.Rows[i]["id"] %>'">
                            <%= myteamList.Rows[i]["subtitle"].ToString() %>
                         </p>
                         <!--<button type="submit" class="btn btn-2 ">More</button>-->
@@ -142,28 +142,30 @@
         <!-- ////////////Content Box 02 -->
         <section id="new" class="box-content box-2 box-style">
             <div class="container">
-              
-                <div style="width: 50%;float:left">
-                      <ul>
-                    <li><h5>1.移民大新闻</h5> </li>
-                    <li> <h5>1.移民政策</h5></li>
-                    <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
-                    <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
-                           <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
-                        <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
-                           <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
-                </ul>
-                    </div>
-                      <div style="width:50%;float:left">
-                             <ul style="font-size:30px;">
-                    <li>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</li>
-                   <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
-                                  <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
-                                  <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
-                                  <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
-                                  <li><h5>1.aaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5></li>
-                </ul>
-                   <%-- <blockquote>对于一个成功的技术，现实必须优先于公共关系，为自然不能被愚弄.</blockquote>--%>
+
+                <div style="width: 50%; float: left;line-height:30px;">
+                    <ul>
+                        <%
+                            for (int i = 0; i < newsList.Rows.Count; i=i+2)
+                            {%>
+                           <li>
+                            <h5 style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= newsList.Rows[i]["id"] %>'"><%= (i+1)+"、" + newsList.Rows[i]["title"] %></h5>
+                          </li>
+                            <%} %> 
+                    </ul>
+                </div>
+                <div style="width: 50%; float: left;line-height:30px;">
+                    <ul style="font-size: 30px;">
+                        <%
+                            for (int i = 1; i < newsList.Rows.Count; i=i+2)
+                            {%>
+                          <li>
+                            <h5 style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= newsList.Rows[i]["id"] %>'"><%= (i+1)+"、" + newsList.Rows[i]["title"] %></h5>
+                        </li>
+                            <%} %>
+                      
+                    </ul>
+                 
                 </div>
             </div>
         </section>
@@ -200,10 +202,10 @@
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading"> 
-                                        <h4 class="subheading"><%= aboutusList.Rows[i]["title"].ToString() %></h4>
+                                        <h4 class="subheading" style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= aboutusList.Rows[i]["id"] %>'"><%= aboutusList.Rows[i]["title"].ToString() %></h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p class="text-muted"><%= aboutusList.Rows[i]["subtitle"].ToString() %></p>
+                                        <p class="text-muted" style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= aboutusList.Rows[i]["id"] %>'"><%= aboutusList.Rows[i]["subtitle"].ToString() %></p>
                                     </div>
                                 </div>
                             </li>
@@ -247,11 +249,11 @@
                             <div class="cd-author">
                                 <img src="<%= servicesList.Rows[i]["photo"].ToString() %>" alt="Author image" style="width:150px;height:150px;">
                                 <ul class="cd-author-info">
-                                    <li><%= servicesList.Rows[i]["title"].ToString() %></li>
-                                    <li><%= servicesList.Rows[i]["subtitle"].ToString() %></li>
+                                    <li style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= servicesList.Rows[i]["id"] %>'"><%= servicesList.Rows[i]["title"].ToString() %></li>
+                                    <li style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= servicesList.Rows[i]["id"] %>'"><%= servicesList.Rows[i]["subtitle"].ToString() %></li>
                                 </ul>
                             </div>
-                            <p><%= servicesList.Rows[i]["content"].ToString() %></p>
+                         <%--   <p><%= servicesList.Rows[i]["content"].ToString() %></p>--%>
                         </li>
                            <%}
                             %>
@@ -259,8 +261,7 @@
                        
                     </ul>  <!-- cd-testimonials -->
                 </div> <!-- cd-testimonials-wrapper -->
-
-               <div class="cd-see-all"><a href="#0" class="btn btn-1">See all</a></div> 
+             <%--  <div class="cd-see-all"><a href="#0" class="btn btn-1">See all</a></div> --%>
 
                 <div class="cd-testimonials-all">
                     <div class="cd-testimonials-all-wrapper">
