@@ -156,69 +156,50 @@
 				<script src="js/responsiveslides.min.js"></script>
 				 <script>
 				    // You can also use "$(window).load(function() {"
-				    $(function () {
-				      // Slideshow 4
-				      $("#slider3").responsiveSlides({
-				        auto: true,
-				        pager: true,
-				        nav: false,
-				        speed: 500,
-				        namespace: "callbacks",
-				        before: function () {
-				          $('.events').append("<li>before event fired.</li>");
-				        },
-				        after: function () {
-				          $('.events').append("<li>after event fired.</li>");
-				        }
-				      });
-				
-				    });
+				     $(function () {
+
+				         //$("#viewNews").attr("href", "../News.aspx?id=" + $(".callbacks li.callbacks1_on input[name=newsid]").val());
+
+				         // Slideshow 4
+				         $("#slider3").responsiveSlides({
+				             auto: true,
+				             pager: true,
+				             nav: false,
+				             speed: 500,
+				             namespace: "callbacks",
+				             before: function () {
+
+				                 $('.events').append("<li>before event fired.</li>");
+				             },
+				             after: function () {
+				                 $("#viewNews").attr("href", "../News.aspx?id=" + $(".callbacks li.callbacks1_on input[name=newsid]").val());
+				                 $('.events').append("<li>after event fired.</li>");
+				             }
+				         });
+
+				     });
 				  </script>
 			<!--//End-slider-script -->
 			<div  id="top" class="callbacks_container">
                 	<h3>最新资讯</h3>
-				<ul class="rslides" id="slider3">
-					<li>
-						<div class="banner-bottom-info">
-							<h3>OUR BEGINING</h3>
-							<p>   Donec rutrum congue leo eget malesuada.Curabitur non nulla sit amet
-								nisl tempus convallis quis ac lactus.Sed porttitor lactus nibh.Proin
-								eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-								porttitoraccumsan tincidunt.
-								Curabitur aliquet quam id dui posuere blandit.
-								Nulla Quis lorum nisl tempus convallis quis ac lactus.Sed porttitorlactus nibh
-								eget tortor risus.Nulla porttitor accumsan tincidunt.</p>
+				<ul class="rslides" id="slider3" style="text-align:center;">
+					<%
+                        for (int i = 0; i < newsList.Rows.Count; i++)
+                        {%>
+                        <li style="text-align:center;width:100%;">
+						<div class="banner-bottom-info" style="text-align:center; width:100%">
+                            <input type="hidden" value="<%= newsList.Rows[i]["id"] %>" name="newsid" />
+							<h3><%= newsList.Rows[i]["title"] %></h3>
+							<p> <%= newsList.Rows[i]["subtitle"] %> </p>
 						</div>
 					</li>
-					<li>
-						<div class="banner-bottom-info">
-							<h3>OUR PROCESSING</h3>
-							<p>Nulla porttitor congue leo eget malesuada.Curabitur non nulla sit amet
-								nisl tempus convallis quis ac lactus.Sed porttitor lactus nibh.Proin
-								eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-								porttitoraccumsan tincidunt.
-								Curabitur aliquet quam id dui posuere blandit.
-								Nulla Quis lorum nisl tempus convallis quis ac lactus.Sed porttitorlactus nibh
-								eget tortor risus.Nulla porttitor accumsan tincidunt.</p>
-						</div>
-					</li>
-					<li>
-						<div class="banner-bottom-info">
-							<h3>OUR REQUIREMENT</h3>
-							<p>Curabitur rutrum congue leo eget malesuada.Curabitur non nulla sit amet
-								nisl tempus convallis quis ac lactus.Sed porttitor lactus nibh.Proin
-								eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-								porttitoraccumsan tincidunt.
-								Curabitur aliquet quam id dui posuere blandit.
-								Nulla Quis lorum nisl tempus convallis quis ac lactus.Sed porttitorlactus nibh
-								eget tortor risus.Nulla porttitor accumsan tincidunt.</p>
-						</div>
-					</li>
-                    
+                        <%}
+                         %>
+                 
 				</ul>
 			</div>
 			<div class="port">
-				<a href="#gallery" class="scroll">See Gallery</a>
+				<a href="#" id="viewNews">查看</a>
 			</div>
 	</div>
 	</div>
@@ -263,11 +244,11 @@
                              
                             <div class="about-grid">
                                 <a href="#small-dialog-about<%=i %>" class="b-link-stripe b-animate-go  thickbox play-icon popup-with-zoom-anim">
-                                    <img src="<%= aboutusList.Rows[i]["photo"] %>" class="img-responsive" />
-                                    <h4><%= aboutusList.Rows[i]["title"] %></h4>
+                                    <img src="<%= aboutusList.Rows[i]["photo"] %>" onclick="window.location.href='../News.aspx?id=<%= aboutusList.Rows[i]["id"] %>"/>
+                                    <h4 style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= aboutusList.Rows[i]["id"] %>'"><%= aboutusList.Rows[i]["title"] %></h4>
                                 </a>
 
-                                <p>
+                                <p style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= aboutusList.Rows[i]["id"] %>'">
                                   <%= aboutusList.Rows[i]["subtitle"] %>
                                 </p>
                             </div>
@@ -589,10 +570,18 @@
 		</div>
 		<div class="footer-icons">
 			<ul>
-				<li><a href="#" class="facebook"> </a></li>
-				<li><a href="#" class="twitter"> </a></li>
-				<li><a href="#" class="dribble"> </a></li>
-				<li><a href="#" class="g-plus"> </a></li>
+				<li>
+                    <img src="images/1-.jpg" alt="" style="width:100px;height:60px;"/> 
+				</li>
+				<li>
+                    <img src="images/2-.jpg" alt="" style="width:100px;height:60px;"/> 
+				</li>
+				<li>
+                    <img src="images/3-.jpg" alt="" style="width:100px;height:60px;"/> 
+				</li>
+				<li>
+                    <img src="images/4-.jpg" alt="" style="width:100px;height:60px;"/> 
+				</li>
 			</ul>
 		</div>
 		<div class="clearfix"> </div>

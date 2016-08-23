@@ -1,14 +1,14 @@
 ﻿<script type="text/javascript">
-    var lybanner  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
+    var nynewslist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
 
-    function lybannerpage() {
+    function nynewslistpage() {
         var customNo = $("#customNo").val();
         var customName = $("#customName").val();
         $.ajax({
-            url: 'ajax.ashx?action=lybannerlist',
+            url: 'ajax.ashx?action=nynewslist',
                 data: {
-                    "pageIndex": lybanner.pageIndex,
-                    "pageSize": lybanner.pageSize,
+                    "pageIndex": nynewslist.pageIndex,
+                    "pageSize": nynewslist.pageSize,
                 },
                 type: "post",
                 success: function (result) {
@@ -16,84 +16,84 @@
                     var json = JSON.parse(result);
                     var count = json["count"];
                     count = JSON.parse(count);
-                    lybanner.TotalPage = json["count"];//总记录数
+                    nynewslist.TotalPage = json["count"];//总记录数
                     //求出最大页
-                    lybanner.MaxPage = Math.ceil(lybanner.TotalPage / lybanner.pageSize);
+                    nynewslist.MaxPage = Math.ceil(nynewslist.TotalPage / nynewslist.pageSize);
 
                     var da = json["data"];
                     da = JSON.parse(da);
                     var data = da["d"];
                     $.each(data, function (k, v) {
-                        html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.title + "</td> <td>" + v.created + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
-                        html.push(" <td><a href='#' onclick='edit_ly_banner(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
-                        html.push(" <a href='ajax.ashx?action=deletelybanner&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
+                        html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.title + "</td><td>" + v.subtitle + "</td><td>" + v.created + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
+                        html.push(" <td><a href='#' onclick='edit_ny_news(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
+                        html.push(" <a href='ajax.ashx?action=deletenynews&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
                     });
-                    $("#ly_banner_list tbody").empty().append(html.join(''));
+                    $("#ny_news_list tbody").empty().append(html.join(''));
                     html = [];
 
-                    $("#lybanner_total").html(lybanner.TotalPage);//共..条数据
+                    $("#nynewslist_total").html(nynewslist.TotalPage);//共..条数据
                     html.push("<ul class='pagination'>");
-                    html.push("<li class='j-first'><a href='javascript:' onclick='lybannerfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
-                    html.push("<li class='j-prev'><a href='javascript:' onclick='lybannerPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
+                    html.push("<li class='j-first'><a href='javascript:' onclick='nynewslistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
+                    html.push("<li class='j-prev'><a href='javascript:' onclick='nynewslistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
 
-                    for (var i = 1; i <= lybanner.MaxPage; i++) {
+                    for (var i = 1; i <= nynewslist.MaxPage; i++) {
                         var c = "j-num";
-                        if (i == lybanner.pageIndex) {
+                        if (i == nynewslist.pageIndex) {
                             c = "selected " + c;
                         }
-                        html.push("<li class='" + c + "'><a href='javascript:' onclick='lybanner_page_click(this)'> " + i + "</a></li>");
+                        html.push("<li class='" + c + "'><a href='javascript:' onclick='nynewslist_page_click(this)'> " + i + "</a></li>");
                     }
-                    html.push("<li class='j-next'><a href='javascript:' onclick='lybannernext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
-                    html.push("<li class='j-last'><a href='javascript:' onclick='lybannerweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
-                    html.push("<li class='jumpto'><span class='p-input'><input  id='lybannerputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='lybannerLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
+                    html.push("<li class='j-next'><a href='javascript:' onclick='nynewslistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
+                    html.push("<li class='j-last'><a href='javascript:' onclick='nynewslistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
+                    html.push("<li class='jumpto'><span class='p-input'><input  id='nynewslistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='nynewslistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
                     html.push("<ul>");
-                    $("#lybannerination").empty().append(html.join(''));
+                    $("#nynewslistination").empty().append(html.join(''));
                     //如果当前页等于1就让首页、上一页不可点击
-                    if (lybanner.pageIndex == 1) {
-                        $("#lybannerination .j-first").addClass("disabled");
-                        $("#lybannerination .j-prev").addClass("disabled");
+                    if (nynewslist.pageIndex == 1) {
+                        $("#nynewslistination .j-first").addClass("disabled");
+                        $("#nynewslistination .j-prev").addClass("disabled");
 
                     }
-                    if (lybanner.pageIndex == lybanner.MaxPage)
+                    if (nynewslist.pageIndex == nynewslist.MaxPage)
                     {
-                        $("#lybannerination .j-next").addClass("disabled");
-                        $("#lybannerination .j-last").addClass("disabled");
+                        $("#nynewslistination .j-next").addClass("disabled");
+                        $("#nynewslistination .j-last").addClass("disabled");
                     }
             }
         });
     }
     //下一页
-    function lybannernext() {
-        lybanner.pageIndex++;
-        if (lybanner.pageIndex > lybanner.MaxPage) {
-            lybanner.pageIndex = lybanner.MaxPage;
+    function nynewslistnext() {
+        nynewslist.pageIndex++;
+        if (nynewslist.pageIndex > nynewslist.MaxPage) {
+            nynewslist.pageIndex = nynewslist.MaxPage;
         }
-        lybannerpage();
+        nynewslistpage();
     }
     //上一页
-    function lybannerPrepage () {
-        lybanner.pageIndex--;
-        if (lybanner.pageIndex < 1) {
-            lybanner.pageIndex = 1;
+    function nynewslistPrepage () {
+        nynewslist.pageIndex--;
+        if (nynewslist.pageIndex < 1) {
+            nynewslist.pageIndex = 1;
         }
-        lybannerpage();
+        nynewslistpage();
     }
     //首页
-    function lybannerfirst() {
-        lybanner.pageIndex = 1;
-        lybannerpage();
+    function nynewslistfirst() {
+        nynewslist.pageIndex = 1;
+        nynewslistpage();
     }
 
     //尾页
-    function lybannerweiye() {
+    function nynewslistweiye() {
 
-        lybanner.pageIndex = lybanner.MaxPage;
-        lybannerpage();
+        nynewslist.pageIndex = nynewslist.MaxPage;
+        nynewslistpage();
 
     }
-    function lybannerLetgo() {
-        var InputValue = $("#lybannerputvalue").val();
-        if (InputValue > lybanner.MaxPage) {
+    function nynewslistLetgo() {
+        var InputValue = $("#nynewslistputvalue").val();
+        if (InputValue > nynewslist.MaxPage) {
             $(this).alertmsg('info', '你输入的数字超过页面范围');
             return;
         }
@@ -105,37 +105,37 @@
             $(this).alertmsg('info', '请输入数字');
             return;
         }
-        lybanner.pageIndex = InputValue;
-        lybannerpage();
+        nynewslist.pageIndex = InputValue;
+        nynewslistpage();
     }
-    function lybanner_page_size_change(_this) {
+    function nynewslist_page_size_change(_this) {
         var checkText = $(_this).find("option:selected").text();
-        lybanner.pageIndex = 1;
-        lybanner.pageSize = checkText;
-        lybannerpage();
+        nynewslist.pageIndex = 1;
+        nynewslist.pageSize = checkText;
+        nynewslistpage();
     }
-    function lybanner_page_click(_this) {
+    function nynewslist_page_click(_this) {
         $(_this).attr("class", "selected");
         var Sum = $(_this).text();
-        lybanner.pageIndex = Sum;
-        lybannerpage();
+        nynewslist.pageIndex = Sum;
+        nynewslistpage();
     }
 
     $(function () {
-        lybannerpage();
+        nynewslistpage();
     });
     function search() {
-        lybanner.pageIndex = 1;
-        lybannerpage();
+        nynewslist.pageIndex = 1;
+        nynewslistpage();
     }
-    var ly_banner_editid;
-    function edit_ly_banner(_this, id, name) {
-        ly_banner_editid = id;
-        $(_this).dialog({ id: 'dialog_addly_banner', url: '/admin/ly/addbanner.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_lybanner_before_close" });
+    var ny_news_editid;
+    function edit_ny_news(_this, id, name) {
+        ny_news_editid = id;
+        $(_this).dialog({ id: 'dialog_addny_news', url: '/admin/ny/addnews.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_nynewslist_before_close" });
     }
-    function dialog_lybanner_before_close($dialog) {
-        ly_banner_editid = undefined;
-        $("body").navtab("refresh", "ly_banner");
+    function dialog_nynewslist_before_close($dialog) {
+        ny_news_editid = undefined;
+        $("body").navtab("refresh", "ny_news");
         return true;
     }
 </script>
@@ -163,7 +163,7 @@
          <button type="submit" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
          <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo" onclick="Clear()">清空查询</a>-->
         <div class="pull-right">
-            <button type="button" class="btn-blue" data-url="ly/addbanner.html" data-id="dialog_addly_banner" data-width="860" data-height="500"
+            <button type="button" class="btn-blue" data-url="ny/addnews.html" data-id="dialog_addny_news" data-width="860" data-height="500"
                     data-toggle="dialog">
                 添加
             </button>
@@ -192,11 +192,12 @@
     </div>-->
 </div>
 <div class="bjui-pageContent tableContent">
-    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="ly_banner_list">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="ny_news_list">
         <thead>
             <tr>
                 <th data-order-field="rowid">序号</th>
-                <th data-order-field="id">标题</th> 
+                <th data-order-field="id">标题</th>
+                <th data-order-field="name">二级标题</th>
                 <th data-order-field="created">创建时间</th>
                 <th data-order-field="birthplace">图片</th>
                 <th data-order-field="#">操作</th>
@@ -208,7 +209,7 @@
 <div class="bjui-pageFooter">
     <div class="pages">
         <span>每页&nbsp;</span>
-        <div class="selectPagesize" onchange="lybanner_page_size_change(this)">
+        <div class="selectPagesize" onchange="nynewslist_page_size_change(this)">
             <select data-toggle="selectpicker">
                 <option value="10" id="three">10</option>
                 <option value="20" id="six">20</option>
@@ -216,9 +217,9 @@
 
             </select>
         </div>
-        <span>&nbsp;条, 共&nbsp;<span id="lybanner_total"> </span> 条</span>
+        <span>&nbsp;条, 共&nbsp;<span id="nynewslist_total"> </span> 条</span>
     </div>
-    <div class="pagination-box" id="lybannerination" data-total="10" data-page-size="2" data-page-current="1">
+    <div class="pagination-box" id="nynewslistination" data-total="10" data-page-size="2" data-page-current="1">
     </div>
 
 </div>

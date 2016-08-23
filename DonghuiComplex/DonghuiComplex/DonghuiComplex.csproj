@@ -630,6 +630,7 @@
     <Content Include="admin\js\js\syntaxhighlighter-2.1.382\styles\shThemeRDark.css" />
     <Content Include="admin\login.aspx" />
     <Content Include="admin\ly\aboutus.html" />
+    <Content Include="admin\ly\addbanner.html" />
     <Content Include="admin\ly\addjingdian.html" />
     <Content Include="admin\ly\addlive.html" />
     <Content Include="admin\ly\addservices.html" />
@@ -641,8 +642,10 @@
     <Content Include="admin\message\messagelist.html" />
     <Content Include="admin\ny\aboutus.html" />
     <Content Include="admin\ny\addaboutus.html" />
+    <Content Include="admin\ny\addnews.html" />
     <Content Include="admin\ny\addproducts.html" />
     <Content Include="admin\ny\message.html" />
+    <Content Include="admin\ny\news.html" />
     <Content Include="admin\ny\products.html" />
     <Content Include="admin\ym\aboutus.html" />
     <Content Include="admin\ym\addaboutus.html" />
@@ -1173,11 +1176,13 @@
     <Compile Include="com\home\message.cs" />
     <Compile Include="com\home\sanbandao.cs" />
     <Compile Include="com\ly\aboutinfo.cs" />
+    <Compile Include="com\ly\banner.cs" />
     <Compile Include="com\ly\jingdian.cs" />
     <Compile Include="com\ly\live.cs" />
     <Compile Include="com\ly\services.cs" />
     <Compile Include="com\message.cs" />
     <Compile Include="com\ny\aboutus.cs" />
+    <Compile Include="com\ny\news.cs" />
     <Compile Include="com\ny\products.cs" />
     <Compile Include="com\price.cs" />
     <Compile Include="com\settings.cs" />

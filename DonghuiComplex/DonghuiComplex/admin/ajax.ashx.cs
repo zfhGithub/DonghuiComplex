@@ -224,7 +224,7 @@ namespace DonghuiComplex.admin
                     break;
                 #endregion
             
-                    #region 服务
+                #region 服务
                 case "addlyservices":
                     status = com.ly.services.addServices(req.Form["ly_services_title"], req.Form["ly_services_subtitle"], req.Form["ly_services_photo"], req.Form["ly_services_content"]);
                     reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
@@ -314,6 +314,36 @@ namespace DonghuiComplex.admin
                     break;
 
                 #endregion
+
+                #region 轮播图
+                case "addlybanner":
+                    status = com.ly.banner.addBanner(req.Form["ly_banner_title"], req.Form["ly_banner_subtitle"], req.Form["ly_banner_photo"], req.Form["ly_banner_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatelybanner":
+                    status = com.ly.banner.updateBanner(req.Params["id"], req.Form["ly_banner_title"], req.Form["ly_banner_subtitle"], req.Form["ly_banner_photo"], req.Form["ly_banner_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "lybannerlist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.ly.banner.getBannerList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.ly.banner.getBannerCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletelybanner":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ly.banner.deleteBannerById(id)));
+                    break;
+                case "getlybannerdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.ly.banner.getBannerDetailById(id)));
+                    break;
+                #endregion
                 #endregion
 
                 #region 农业
@@ -378,10 +408,41 @@ namespace DonghuiComplex.admin
                     break;
                 #endregion
 
+                #region 新闻
+                case "addnynews":
+                    status = com.ny.news.addNews(req.Form["ny_news_title"], req.Form["ny_news_subtitle"], req.Form["ny_news_photo"], req.Form["ny_news_content"]);
+                    reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatenynews":
+                    status = com.ny.news.updateNews(req.Params["id"], req.Form["ny_news_title"], req.Form["ny_news_subtitle"], req.Form["ny_news_photo"], req.Form["ny_news_content"]);
+                    reulst = Utils.GetReulst(200, "修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "nynewslist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.ny.news.getNewsList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.ny.news.getNewsCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletenynews":
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ny.news.deleteNewsById(id)));
+                    break;
+                case "getnynewsdetailbyid":
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(com.ny.news.getNewsDetailById(id)));
+                    break;
+                #endregion
+
                 #endregion
 
 
                 #region 地产
+
                 #region 服务
                 case "adddcservices":
                     status = com.dc.services.addServices(req.Form["dc_services_title"], req.Form["dc_services_subtitle"], req.Form["dc_services_photo"], req.Form["dc_services_content"]);
@@ -412,7 +473,7 @@ namespace DonghuiComplex.admin
                     break;
                     #endregion
 
-                 #region 楼盘
+                #region 楼盘
                     case "adddcproperty":
                     status = com.dc.property.addProperty(req.Form["dc_property_title"], req.Form["dc_property_subtitle"], req.Form["dc_property_photo"], req.Form["dc_property_content"]);
                     reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
@@ -442,7 +503,7 @@ namespace DonghuiComplex.admin
                     break;
                 #endregion
                
-                    #region 团队
+                #region 团队
                 case "adddcmyteam":
                     status = com.dc.myteam.addMyteam(req.Form["dc_myteam_title"], req.Form["dc_myteam_subtitle"], req.Form["dc_myteam_photo"], req.Form["dc_myteam_content"]);
                     reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
@@ -472,7 +533,7 @@ namespace DonghuiComplex.admin
                     break;
                 #endregion
             
-                    #region 轮播图 
+                #region 轮播图 
                 case "adddcbanner":
                     status = com.dc.banner.addBanner(req.Form["dc_banner_title"], req.Form["dc_banner_subtitle"], req.Form["dc_banner_photo"], req.Form["dc_banner_content"]);
                     reulst = Utils.GetReulst(200, "添加成功！", "添加失败！", status, "true");
@@ -533,7 +594,7 @@ namespace DonghuiComplex.admin
                     break;
                     #endregion
 
-                    #endregion
+                #endregion
 
 
             }

@@ -16,6 +16,7 @@ namespace DonghuiComplex.ly_300
         public DataTable jingdian = new DataTable();
         public DataTable services = new DataTable();
         public DataTable live = new DataTable();
+        public DataTable bannerList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             qqList = com.settings.getQQs();
@@ -24,6 +25,7 @@ namespace DonghuiComplex.ly_300
             jingdian = com.ly.jingdian.getJingdianList("1", "3");
             services = com.ly.services.getServicesList("1","4");
             live = com.ly.live.getLiveList("1","6");
+            bannerList = com.ly.banner.getBannerList("1","5");
             if (Request.HttpMethod == "POST")
             {
                 string name = Request.Form["name"];
