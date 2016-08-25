@@ -29,6 +29,11 @@ namespace DonghuiComplex.admin
                     HttpPostedFile file = req.Files[0];
                     res.Write(Utils.UploadImage(file, req.QueryString["type"], context));
                     break;
+                case "updatepassword":
+                    string olepassword = req.Params["olepassword"];
+                    string newpassword = req.Params["newpassword"];
+                    res.Write(Utils.GetReulst(200, "修改成功", "修改失败", com.settings.updatePassword(newpassword, olepassword),"true"));
+                    break;
 
                 #region 留言管理 
                 case "messagelist":

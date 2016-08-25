@@ -103,5 +103,11 @@ namespace DonghuiComplex.com
 
             return s.ExecuteSql(" update Company set CustomerServicePhone='" + CustomerServicePhone + "'");
         }
+        public static int updatePassword(string newpwd, string olepwd)
+        { 
+            string sql = "update Users set PassWord='" + newpwd + "' where id=1 and password='" + olepwd + "'";
+            SQLServerOperating s = new SQLServerOperating();
+            return s.ExecuteSql(sql);
+        }
     }
 }
