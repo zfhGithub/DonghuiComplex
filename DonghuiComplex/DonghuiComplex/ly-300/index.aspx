@@ -103,7 +103,7 @@
 		<div class="row">
             <div class="<%= cn %>">
 				<div class="content<%= i+1 %>">
-					<h3 class="section-heading slideanim"><%= jingdian.Rows[i]["title"] %></h3>
+					<h3 class="section-heading slideanim" style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= jingdian.Rows[i]["id"] %>'"><%= jingdian.Rows[i]["title"] %></h3>
 					<hr class="section-heading-spacer slideanim">
 					<div class="clearfix"></div>
 					<p class="lead slideanim"> <%= jingdian.Rows[i]["subtitle"] %></p>
@@ -143,15 +143,15 @@
 				<div class="ch-info-wrap">
 					<div class="ch-info">
 						<div class="ch-info-front ch-img-1" style="background-image: url(<%=services.Rows[i]["photo"] %>)"></div>
-						<div class="ch-info-back">
-							<h5>  <%=services.Rows[i]["title"] %></h5>
+						<div class="ch-info-back" >
+							<h5><%=services.Rows[i]["title"] %></h5>
 							<p><%=services.Rows[i]["subtitle"] %></p>
 						</div>	
 					</div>
 				</div>
 			</div>
-			<h4 class="slideanim" style="white-space:nowrap;"> <%=services.Rows[i]["title"] %> </h4>
-			<p class="slideanim"> <%=services.Rows[i]["subtitle"] %></p>
+			<h4 class="slideanim" style="white-space:nowrap;cursor:pointer;"onclick="window.location.href='../News.aspx?id=<%= services.Rows[i]["id"] %>'"> <%=services.Rows[i]["title"] %> </h4>
+			<p class="slideanim" style="white-space:nowrap;cursor:pointer;"onclick="window.location.href='../News.aspx?id=<%= services.Rows[i]["id"] %>'"> <%=services.Rows[i]["subtitle"] %></p>
 		</li>
          <%
             }
@@ -342,7 +342,7 @@
 						<div class="clearfix"></div>
 						<div class="form-group col-lg-12">
 							<label>内容</label>
-							<textarea class="form-control" rows="6" name="content"></textarea>
+							<textarea class="form-control" rows="6" name="message"></textarea>
 						</div>
 						<div class="form-group col-lg-12">
 							<button type="submit" class="btn btn-lg btn-outline">提交</button>
