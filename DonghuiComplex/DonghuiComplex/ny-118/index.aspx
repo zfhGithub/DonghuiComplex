@@ -480,9 +480,9 @@
 							<div class="portfolio-wrapper">	
                                 
 						<%--		<a href="<%= productsList.Rows[i]["photo"].ToString() %>" class="b-link-stripe b-animate-go swipebox"  title="">   --%>
-                                <img class="img-responsive" onclick="window.location.href='/News.aspx'" src="<%=productsList.Rows[i]["photo"].ToString()  %>" />
+                                <img class="img-responsive" onclick="window.location.href='../News.aspx?id=<%= productsList.Rows[i]["id"] %>'" src="<%=productsList.Rows[i]["photo"].ToString()  %>" />
                               
-                                     <strong><%= productsList.Rows[i]["title"].ToString() %></strong> 
+                                     <strong  style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= productsList.Rows[i]["id"] %>'"><%= productsList.Rows[i]["title"].ToString() %></strong> 
                                 
 								<%--</a>--%>
 							</div>
@@ -555,7 +555,7 @@
 				<input type="text" name="name" placeholder="姓名" required>
 				<input type="email" name="email" placeholder="E-mail" required>
 				<input type="text" name="phone" placeholder="电话" required>
-				<textarea placeholder="内容" name="content" required></textarea>
+				<textarea placeholder="内容" name="message" required></textarea>
 				<input type="submit" value="提交留言">
 			</form>
 		</div>

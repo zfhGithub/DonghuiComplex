@@ -636,7 +636,6 @@
     <Content Include="admin\ly\addservices.html" />
     <Content Include="admin\ly\jingdianlist.html" />
     <Content Include="admin\ly\live.html" />
-    <Content Include="admin\ly\message.html" />
     <Content Include="admin\ly\services.html" />
     <Content Include="admin\ly\setbanner.html" />
     <Content Include="admin\message\messagelist.html" />
@@ -644,7 +643,6 @@
     <Content Include="admin\ny\addaboutus.html" />
     <Content Include="admin\ny\addnews.html" />
     <Content Include="admin\ny\addproducts.html" />
-    <Content Include="admin\ny\message.html" />
     <Content Include="admin\ny\news.html" />
     <Content Include="admin\ny\products.html" />
     <Content Include="admin\ym\aboutus.html" />

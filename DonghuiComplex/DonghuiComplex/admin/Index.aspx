@@ -272,8 +272,7 @@ $(function(){
 
                                 <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">农业模块</li> 
                                 <li data-id="42" data-pid="4" data-url="ny/aboutus.html"data-tabid="ny_aboutus" >关于我们</li> 
-                                <li data-id="43" data-pid="4" data-url="ny/products.html"data-tabid="ny_products" >产品</li> 
-                                <li data-id="44" data-pid="4" data-url="ny/message.html"data-tabid="ny_message" >留言</li>  
+                                <li data-id="43" data-pid="4" data-url="ny/products.html"data-tabid="ny_products" >产品</li>  
                                 <li data-id="45" data-pid="4" data-url="ny/news.html"data-tabid="ny_news">新闻</li>  
 
                                 <li data-id="5" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">地产模块</li> 
@@ -282,12 +281,9 @@ $(function(){
                                 <li data-id="54" data-pid="5" data-url="dc/myteam.html"data-tabid="dc_myteam">团队</li>
                                 <li data-id="55" data-pid="5" data-url="dc/banner.html"data-tabid="dc_banner" >轮播图</li> 
                                 <li data-id="56" data-pid="5" data-url="dc/news.html"data-tabid="dc_news" >新闻</li> 
-
-                                <li data-id="6" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">文章管理</li> 
-                                <li data-id="62" data-pid="6" data-url="article/articlelist.html" data-tabid="setBanner1" >文章列表</li> 
-                                  
-                                 <li data-id="7" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">系统设置</li> 
-                                <li data-id="72" data-pid="7" data-url="article/articlelist.html" data-tabid="setBanner1" >文章列表</li> 
+                                 
+                                <li data-id="7" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">系统设置</li> 
+                                <li data-id="72" data-pid="7" data-url="message/messagelist.html" data-tabid="messagelist">留言</li> 
                             </ul>                
 
                            

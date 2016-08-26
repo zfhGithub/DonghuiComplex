@@ -226,7 +226,8 @@
                           </div>
                       </div>
                       <h3><a href="../News.aspx?id=<%= myteamList.Rows[i]["id"] %>"> <%= myteamList.Rows[i]["title"] %> </a></h3>
-                      <p><%= myteamList.Rows[i]["subtitle"] %></p>
+                      <p style="cursor:pointer;" onclick="window.location.href='../News.aspx?id=<%= myteamList.Rows[i]["id"] %>'">
+                          <%= myteamList.Rows[i]["subtitle"] %></p>
 
                   </div>
               </div>
@@ -425,7 +426,7 @@
                          <p class="your-para">电话:</p>
 						<input type="text" value="" name="phone" placeholder="电话" />
 						<p class="your-para">内容:</p>
-						<textarea cols="77" rows="6" name="content" placeholder="内容"></textarea>
+						<textarea cols="77" rows="6" name="message" placeholder="内容"></textarea>
 						<div class="send">
 							<input type="submit" value="提交" >
 						</div>

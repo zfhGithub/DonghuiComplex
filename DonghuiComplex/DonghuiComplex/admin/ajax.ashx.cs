@@ -29,6 +29,12 @@ namespace DonghuiComplex.admin
                     HttpPostedFile file = req.Files[0];
                     res.Write(Utils.UploadImage(file, req.QueryString["type"], context));
                     break;
+                case "updatepassword":
+                    string olepassword = req.Params["olepassword"];
+                    string newpassword = req.Params["newpassword"];
+                    res.Write(Utils.GetReulst(200, "修改成功", "修改失败", com.settings.updatePassword(newpassword, olepassword),"true"));
+                    break;
+
                 #region 留言管理 
                 case "messagelist":
                     string currentIndex = req.Form["pageIndex"];
@@ -38,6 +44,10 @@ namespace DonghuiComplex.admin
                     jsonDic.Add("count", com.message.getMessageListCount());
                     JavaScriptSerializer js = new JavaScriptSerializer();
                     res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletemessage":
+                    string id = req.Params["pid"];
+                    res.Write(Utils.GetReulst(200, "删除成功", "删除失败", com.message.deleteMessage(id)));
                     break;
                 #endregion
 
@@ -111,7 +121,7 @@ namespace DonghuiComplex.admin
                     res.Write(js.Serialize(jsonDic));
                     break;
                 case "deleteymteam":
-                    string id = req.QueryString["id"];
+                      id = req.QueryString["id"];
                     res.Write(Utils.GetReulst(200, "删除成功！", "删除失败！", com.ym.myteam.deleteMyteamById(id)));
                     break;
                 case "getymteamdetailbyid":
