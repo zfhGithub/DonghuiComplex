@@ -315,6 +315,7 @@
 					</ul>
 				</div>
 			</footer>
+        <!-- 客服 -->
       <div id="rightArrow" class="open-im">&nbsp;</div>
     
         <div id="floatDivBoxs">
@@ -359,6 +360,7 @@
             <a href="javascript:;" name="close" style="left: 235px;"></a>
         </ul>
     </div>
+        <!--客服end-->
  
 		<!-- Scripts -->
         <%--<script src="assets/js/jQuery.js"></script>--%>
