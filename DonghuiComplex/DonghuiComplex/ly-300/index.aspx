@@ -23,6 +23,16 @@
 <link href='http://fonts.useso.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 <script src="js/SmoothScroll.min.js"></script>
 <script type="text/javascript" src="js/modernizr.custom.js"></script> 
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?00ebc76436134757d89c7529c68821e1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- Fixed navbar -->

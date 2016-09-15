@@ -23,6 +23,16 @@
 
                 <link href="assets/customerservice/customer-service.css" rel="stylesheet" />
     <link href="assets/customerservice/lanren.css" rel="stylesheet" />
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?00ebc76436134757d89c7529c68821e1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 	</head>
 	<body>
    
